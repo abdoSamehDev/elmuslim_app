@@ -171,9 +171,16 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: KFGQPC Hafs Smart
+    - family: ElMessiri
       fonts:
-        - asset: assets/fonts/HafsSmart_08.ttf
+        - asset: assets/fonts/ElMessiri-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/ElMessiri-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/ElMessiri-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/ElMessiri-Regular.ttf
+          weight: 400
     - family: me_quran
       fonts:
         - asset: assets/fonts/me_quran.ttf

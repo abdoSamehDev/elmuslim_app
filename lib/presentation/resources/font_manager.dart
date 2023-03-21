@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class FontConstants{
   static const String meQuranFontFamily = "me_quran";
-  static const String hafsSmartFontFamily = "KFGQPC Hafs Smart";
+  static const String elMessiriFontFamily = "ElMessiri";
 }
 
 class FontWeightsManager{

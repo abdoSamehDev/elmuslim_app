@@ -8,17 +8,20 @@ ThemeData getApplicationLightTheme() {
   return ThemeData(
     useMaterial3: true,
 
+
+
     //colors
     primaryColor: ColorManager.lightPrimary,
     scaffoldBackgroundColor: ColorManager.lightBackground,
-    splashColor: ColorManager.lightSecondary,
+    splashColor: ColorManager.gold,
     disabledColor: ColorManager.lightGrey,
-
+    shadowColor: ColorManager.black,
     //cardView theme
     cardTheme: const CardTheme(
-        color: ColorManager.white,
-        shadowColor: ColorManager.black,
-        elevation: AppSize.s4),
+      color: ColorManager.white,
+      shadowColor: ColorManager.black,
+      elevation: AppSize.s4,
+    ),
 
     // appBarTheme
     appBarTheme: AppBarTheme(
@@ -30,12 +33,24 @@ ThemeData getApplicationLightTheme() {
           getRegularStyle(fontFamily: FontConstants.meQuranFontFamily),
     ),
 
+    // bottomNavigationBarTheme
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: ColorManager.lightPrimary,
+      elevation: AppSize.s4,
+      enableFeedback: true,
+      selectedItemColor: ColorManager.white,
+      selectedLabelStyle: getSemiBoldStyle(),
+      unselectedItemColor: ColorManager.lightSecondary,
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
+    ),
+
     //button theme
     buttonTheme: const ButtonThemeData(
       shape: StadiumBorder(),
       buttonColor: ColorManager.lightPrimary,
       disabledColor: ColorManager.lightGrey,
-      splashColor: ColorManager.lightSecondary,
+      splashColor: ColorManager.gold,
     ),
 
     //elevated button theme
@@ -55,31 +70,31 @@ ThemeData getApplicationLightTheme() {
     //text theme
     textTheme: TextTheme(
       //Display
-      displayLarge: getBoldStyle(fontSize: FontSize.s32),
-      displayMedium: getBoldStyle(fontSize: FontSize.s28),
-      displaySmall: getBoldStyle(fontSize: FontSize.s24),
+      displayLarge: getBoldStyle(fontSize: FontSize.s32, color: ColorManager.gold),
+      displayMedium: getBoldStyle(fontSize: FontSize.s28, color: ColorManager.gold),
+      displaySmall: getBoldStyle(fontSize: FontSize.s24, color: ColorManager.gold),
 
       //Headline
-      headlineLarge: getSemiBoldStyle(fontSize: FontSize.s20),
-      headlineMedium: getSemiBoldStyle(fontSize: FontSize.s18),
-      headlineSmall: getSemiBoldStyle(fontSize: FontSize.s16),
+      headlineLarge: getSemiBoldStyle(fontSize: FontSize.s20, color: ColorManager.gold),
+      headlineMedium: getSemiBoldStyle(fontSize: FontSize.s18, color: ColorManager.gold),
+      headlineSmall: getSemiBoldStyle(fontSize: FontSize.s16, color: ColorManager.gold),
 
       //Title
-      titleLarge: getMediumStyle(fontSize: FontSize.s20),
-      titleMedium: getMediumStyle(fontSize: FontSize.s18),
-      titleSmall: getMediumStyle(fontSize: FontSize.s16),
+      titleLarge: getMediumStyle(fontSize: FontSize.s20, color: ColorManager.gold),
+      titleMedium: getMediumStyle(fontSize: FontSize.s18, color: ColorManager.gold),
+      titleSmall: getMediumStyle(fontSize: FontSize.s16, color: ColorManager.gold),
 
       //Body
-      bodyLarge: getRegularStyle(fontSize: FontSize.s18),
-      bodyMedium: getRegularStyle(fontSize: FontSize.s16),
-      bodySmall: getRegularStyle(fontSize: FontSize.s12),
+      bodyLarge: getRegularStyle(fontSize: FontSize.s18, color: ColorManager.gold),
+      bodyMedium: getRegularStyle(fontSize: FontSize.s16, color: ColorManager.gold),
+      bodySmall: getRegularStyle(fontSize: FontSize.s12, color: ColorManager.gold),
 
       //label
       //text button
       labelLarge:
           getRegularStyle(fontSize: FontSize.s16, color: ColorManager.gold),
       //button label
-      labelMedium: getRegularStyle(fontSize: FontSize.s12),
+      labelMedium: getRegularStyle(fontSize: FontSize.s12, color: ColorManager.gold),
       //caption
       labelSmall: getRegularStyle(
         fontSize: FontSize.s10,
@@ -140,7 +155,7 @@ ThemeData getApplicationLDarkTheme() {
     //colors
     primaryColor: ColorManager.darkPrimary,
     scaffoldBackgroundColor: ColorManager.darkBackground,
-    splashColor: ColorManager.darkSecondary,
+    splashColor: ColorManager.gold,
     disabledColor: ColorManager.darkGrey,
 
     //cardView theme
@@ -157,6 +172,18 @@ ThemeData getApplicationLDarkTheme() {
       shadowColor: ColorManager.darkSecondary,
       titleTextStyle:
           getRegularStyle(fontFamily: FontConstants.meQuranFontFamily),
+    ),
+
+    // bottomNavigationBarTheme
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: ColorManager.darkPrimary,
+      elevation: AppSize.s4,
+      enableFeedback: true,
+      selectedItemColor: ColorManager.white,
+      selectedLabelStyle: getSemiBoldStyle(),
+      unselectedItemColor: ColorManager.darkSecondary,
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
     ),
 
     //button theme

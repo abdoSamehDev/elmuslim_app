@@ -6,7 +6,7 @@ import 'package:islamic_app/presentation/resources/font_manager.dart';
 
 TextStyle _getTextStyle({
   required double fontSize,
-  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  String fontFamily =  FontConstants.elMessiriFontFamily,
   required FontWeight fontWeight,
   required Color color,
 }) {
@@ -21,7 +21,7 @@ TextStyle _getTextStyle({
 //regular style
 TextStyle getRegularStyle({
   double fontSize = FontSize.s14,
-  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  String fontFamily =  FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
@@ -35,7 +35,7 @@ TextStyle getRegularStyle({
 //medium style
 TextStyle getMediumStyle({
   double fontSize = FontSize.s14,
-  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  String fontFamily =  FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
@@ -49,7 +49,7 @@ TextStyle getMediumStyle({
 //semi bold style
 TextStyle getSemiBoldStyle({
   double fontSize = FontSize.s14,
-  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  String fontFamily =  FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
@@ -63,7 +63,7 @@ TextStyle getSemiBoldStyle({
 //bold style
 TextStyle getBoldStyle({
   double fontSize = FontSize.s14,
-  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  String fontFamily =  FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
