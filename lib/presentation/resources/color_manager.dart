@@ -24,11 +24,11 @@ class ColorManager{
   //Dark Theme Colors
   // static const Color darkBackground = Color(0xff133D2F);
   // static const Color darkPrimary = Color(0xff15713F);
-  // static const Color darkSecondary = Color(0xff324431);
+  static const Color darkSecondary = Color(0xff324431);
   // static const Color darkGrey = Color(0xff9E9E9E);
 
   static const Color darkBackground = Color(0xff133D2F);
   static const Color darkPrimary = Color(0xffF8EFDF);
-  static const Color darkSecondary = Color(0xff15713F);
+  // static const Color darkSecondary = Color(0xff15713F);
   static const Color darkGrey = Color(0xff9E9E9E);
 }

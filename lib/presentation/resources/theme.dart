@@ -8,8 +8,6 @@ ThemeData getApplicationLightTheme() {
   return ThemeData(
     useMaterial3: true,
 
-
-
     //colors
     primaryColor: ColorManager.lightPrimary,
     scaffoldBackgroundColor: ColorManager.lightBackground,
@@ -179,9 +177,9 @@ ThemeData getApplicationLDarkTheme() {
       backgroundColor: ColorManager.darkPrimary,
       elevation: AppSize.s4,
       enableFeedback: true,
-      selectedItemColor: ColorManager.white,
+      selectedItemColor: ColorManager.darkSecondary,
       selectedLabelStyle: getSemiBoldStyle(),
-      unselectedItemColor: ColorManager.darkSecondary,
+      unselectedItemColor: ColorManager.darkGrey,
       showSelectedLabels: true,
       showUnselectedLabels: false,
     ),
