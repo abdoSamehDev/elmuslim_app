@@ -1,0 +1,75 @@
+
+
+import 'package:flutter/material.dart';
+import 'package:islamic_app/presentation/resources/color_manager.dart';
+import 'package:islamic_app/presentation/resources/font_manager.dart';
+
+TextStyle _getTextStyle({
+  required double fontSize,
+  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  required FontWeight fontWeight,
+  required Color color,
+}) {
+  return TextStyle(
+    fontSize: fontSize,
+    fontFamily: fontFamily,
+    fontWeight: fontWeight,
+    color: color,
+  );
+}
+
+//regular style
+TextStyle getRegularStyle({
+  double fontSize = FontSize.s14,
+  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  Color color = ColorManager.white,
+}) {
+  return _getTextStyle(
+    fontSize: fontSize,
+    fontFamily: fontFamily,
+    fontWeight: FontWeightsManager.regular,
+    color: color,
+  );
+}
+
+//medium style
+TextStyle getMediumStyle({
+  double fontSize = FontSize.s14,
+  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  Color color = ColorManager.white,
+}) {
+  return _getTextStyle(
+    fontSize: fontSize,
+    fontFamily: fontFamily,
+    fontWeight: FontWeightsManager.medium,
+    color: color,
+  );
+}
+
+//semi bold style
+TextStyle getSemiBoldStyle({
+  double fontSize = FontSize.s14,
+  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  Color color = ColorManager.white,
+}) {
+  return _getTextStyle(
+    fontSize: fontSize,
+    fontFamily: fontFamily,
+    fontWeight: FontWeightsManager.semiBold,
+    color: color,
+  );
+}
+
+//bold style
+TextStyle getBoldStyle({
+  double fontSize = FontSize.s14,
+  String fontFamily =  FontConstants.hafsSmartFontFamily,
+  Color color = ColorManager.white,
+}) {
+  return _getTextStyle(
+    fontSize: fontSize,
+    fontFamily: fontFamily,
+    fontWeight: FontWeightsManager.bold,
+    color: color,
+  );
+}
