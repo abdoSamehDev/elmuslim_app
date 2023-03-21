@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic_app/presentation/resources/routes_manager.dart';
 import 'package:islamic_app/presentation/resources/theme.dart';
@@ -23,11 +24,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       darkTheme: getApplicationLDarkTheme(),
       theme: getApplicationLightTheme(),
       themeMode: ThemeMode.system,
       onGenerateRoute: RoutesGenerator.getRoute,
-      initialRoute: Routes.splashRoute,
+      initialRoute: Routes.homeRoute,
     );
   }
 }
