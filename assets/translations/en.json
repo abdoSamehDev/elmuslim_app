@@ -1,6 +1,8 @@
 {
   "no_route_found": "No Route found",
   "quran": "Quran",
+  "hadith": "Hadith",
+  "azkar": "Azkar",
   "settings": "Settings",
   "profile": "Profile"
 }
