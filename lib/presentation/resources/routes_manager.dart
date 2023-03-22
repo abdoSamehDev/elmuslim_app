@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic_app/presentation/resources/strings_manager.dart';
-import 'package:islamic_app/presentation/screens/home/view/home_view.dart';
-import 'package:islamic_app/presentation/screens/settings/viewmodel/settings_viewmodel.dart';
-import 'package:islamic_app/presentation/screens/splash/view/splash_view.dart';
+import 'package:islamic_app/presentation/views/home/view/home_view.dart';
+import 'package:islamic_app/presentation/views/settings/viewmodel/settings_viewmodel.dart';
+import 'package:islamic_app/presentation/views/splash/view/splash_view.dart';
 
 class Routes {
   static const String splashRoute = "/";

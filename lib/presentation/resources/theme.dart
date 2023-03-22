@@ -178,6 +178,10 @@ ThemeData getApplicationLDarkTheme() {
       elevation: AppSize.s4,
       enableFeedback: true,
       selectedItemColor: ColorManager.darkSecondary,
+      selectedIconTheme: const IconThemeData(
+        color: ColorManager.darkSecondary,
+        size: AppSize.s35
+      ),
       selectedLabelStyle: getSemiBoldStyle(),
       unselectedItemColor: ColorManager.darkGrey,
       showSelectedLabels: true,

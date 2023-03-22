@@ -1,5 +1,12 @@
 const String assetPath = "assets/";
 const String jsonPath = "assets/json";
+const String imagePath = "assets/images";
+
+
+class ImageAsset {
+  //Bot Nav Icons
+  static const String quranIcon = "$imagePath/quran-ic.svg";
+}
 
 class JsonAsset{
   static const String quranAsset = "$jsonPath/quran.json";
