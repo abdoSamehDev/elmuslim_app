@@ -1,5 +1,10 @@
 class AppStrings {
   static const String noRouteFound = "no_route_found";
+  static const String loading = "loading";
+  static const String error = "error";
+  static const String success = "success";
+  static const String retryAgain = "retry_again";
+  static const String ok = "ok";
   static const String quran = "quran";
   static const String hadith = "hadith";
   static const String azkar = "azkar";

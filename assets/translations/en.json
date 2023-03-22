@@ -1,5 +1,10 @@
 {
   "no_route_found": "No Route found",
+  "loading": "Loading...",
+  "error": "Error!",
+  "success": "Success!",
+  "retry_again": "Retry Again",
+  "ok": "Ok",
   "quran": "Quran",
   "hadith": "Hadith",
   "azkar": "Azkar",
