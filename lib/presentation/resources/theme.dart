@@ -4,6 +4,26 @@ import 'package:islamic_app/presentation/resources/font_manager.dart';
 import 'package:islamic_app/presentation/resources/styles_manager.dart';
 import 'package:islamic_app/presentation/resources/values.dart';
 
+
+enum ThemeType{
+  dark,
+  light,
+}
+
+const String dark = "dark";
+const String light = "light";
+
+extension ThemeTypeExtension on ThemeType{
+  String getValue(){
+    switch(this){
+
+      case ThemeType.dark:
+        return dark;
+      case ThemeType.light:
+        return light;
+    }
+  }
+}
 ThemeData getApplicationLightTheme() {
   return ThemeData(
     useMaterial3: true,
@@ -34,20 +54,20 @@ ThemeData getApplicationLightTheme() {
     ),
 
     // bottomNavigationBarTheme
-    // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    //   backgroundColor: ColorManager.lightPrimary,
-    //   elevation: AppSize.s4,
-    //   enableFeedback: true,
-    //   selectedItemColor: ColorManager.white,
-    //   selectedLabelStyle: getSemiBoldStyle(),
-    //   selectedIconTheme: const IconThemeData(
-    //       color: ColorManager.white,
-    //       size: AppSize.s35
-    //   ),
-    //   unselectedItemColor: ColorManager.lightSecondary,
-    //   showSelectedLabels: true,
-    //   showUnselectedLabels: false,
-    // ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: ColorManager.lightPrimary,
+      elevation: AppSize.s4,
+      enableFeedback: true,
+      selectedItemColor: ColorManager.white,
+      selectedLabelStyle: getSemiBoldStyle(),
+      selectedIconTheme: const IconThemeData(
+          color: ColorManager.white,
+          size: AppSize.s35
+      ),
+      unselectedItemColor: ColorManager.lightSecondary,
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
+    ),
 
     //button theme
     buttonTheme: const ButtonThemeData(
@@ -173,7 +193,7 @@ ThemeData getApplicationLDarkTheme() {
 
     // appBarTheme
     appBarTheme: AppBarTheme(
-      color: ColorManager.darkPrimary,
+      color: ColorManager.darkSecondary,
       centerTitle: true,
       elevation: AppSize.s4,
       shadowColor: ColorManager.darkSecondary,
@@ -182,20 +202,20 @@ ThemeData getApplicationLDarkTheme() {
     ),
 
     // bottomNavigationBarTheme
-    // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    //   backgroundColor: ColorManager.darkPrimary,
-    //   elevation: AppSize.s4,
-    //   enableFeedback: true,
-    //   selectedItemColor: ColorManager.darkSecondary,
-    //   selectedIconTheme: const IconThemeData(
-    //     color: ColorManager.darkSecondary,
-    //     size: AppSize.s35
-    //   ),
-    //   selectedLabelStyle: getSemiBoldStyle(),
-    //   unselectedItemColor: ColorManager.darkGrey,
-    //   showSelectedLabels: true,
-    //   showUnselectedLabels: false,
-    // ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: ColorManager.gold,
+      elevation: AppSize.s4,
+      enableFeedback: true,
+      selectedItemColor: ColorManager.darkSecondary,
+      selectedIconTheme: const IconThemeData(
+        color: ColorManager.darkSecondary,
+        size: AppSize.s35
+      ),
+      selectedLabelStyle: getSemiBoldStyle(),
+      unselectedItemColor: ColorManager.darkGrey,
+      showSelectedLabels: true,
+      showUnselectedLabels: false,
+    ),
 
     //button theme
     buttonTheme: const ButtonThemeData(

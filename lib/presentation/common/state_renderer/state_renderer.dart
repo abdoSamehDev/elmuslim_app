@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:islamic_app/app/constants.dart';
+import 'package:islamic_app/app/utils/constants.dart';
+
 import 'package:islamic_app/presentation/resources/strings_manager.dart';
 import 'package:islamic_app/presentation/resources/values.dart';
 import 'package:lottie/lottie.dart';

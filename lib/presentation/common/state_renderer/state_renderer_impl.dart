@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:islamic_app/app/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:islamic_app/app/utils/constants.dart';
 import 'package:islamic_app/presentation/common/state_renderer/state_renderer.dart';
 import 'package:islamic_app/presentation/resources/strings_manager.dart';
 

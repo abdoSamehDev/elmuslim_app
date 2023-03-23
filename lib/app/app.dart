@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:islamic_app/app/app_prefs.dart';
-import 'package:islamic_app/app/di.dart';
+import 'package:islamic_app/app/utils/app_prefs.dart';
+import 'package:islamic_app/app/utils/di.dart';
 import 'package:islamic_app/presentation/resources/routes_manager.dart';
 import 'package:islamic_app/presentation/resources/theme.dart';
 

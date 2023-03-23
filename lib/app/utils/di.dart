@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:islamic_app/app/app_prefs.dart';
+import 'package:islamic_app/app/utils/app_prefs.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final instance = GetIt.instance;
