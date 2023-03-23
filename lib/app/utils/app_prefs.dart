@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:islamic_app/app/utils/di.dart';
 import 'package:islamic_app/presentation/resources/language_manager.dart';
 import 'package:islamic_app/presentation/resources/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,9 +10,9 @@ const String prefsLangKey = "LANG_KEY";
 const String themeModeKey = "THEME_MODE_KEY";
 
 class AppPreferences {
-  final SharedPreferences _preferences;
+  final SharedPreferences _preferences = instance<SharedPreferences>();
 
-  AppPreferences(this._preferences);
+  AppPreferences();
 
   Future<String> getAppLanguage() async {
     String? language = _preferences.getString(prefsLangKey);
