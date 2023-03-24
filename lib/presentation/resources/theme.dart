@@ -32,14 +32,15 @@ ThemeData getApplicationLightTheme() {
     primaryColor: ColorManager.lightPrimary,
     secondaryHeaderColor: ColorManager.white,
     scaffoldBackgroundColor: ColorManager.lightBackground,
+    canvasColor: ColorManager.lightPrimary,
     splashColor: ColorManager.gold,
     disabledColor: ColorManager.lightGrey,
-    shadowColor: ColorManager.black,
+    shadowColor: ColorManager.lightSecondary,
     unselectedWidgetColor: ColorManager.lightGrey,
     //cardView theme
     cardTheme: const CardTheme(
       color: ColorManager.white,
-      shadowColor: ColorManager.black,
+      shadowColor: ColorManager.lightSecondary,
       elevation: AppSize.s4,
     ),
 
@@ -54,20 +55,20 @@ ThemeData getApplicationLightTheme() {
     ),
 
     // bottomNavigationBarTheme
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: ColorManager.lightPrimary,
-      elevation: AppSize.s4,
-      enableFeedback: true,
-      selectedItemColor: ColorManager.white,
-      selectedLabelStyle: getSemiBoldStyle(),
-      selectedIconTheme: const IconThemeData(
-          color: ColorManager.white,
-          size: AppSize.s35
-      ),
-      unselectedItemColor: ColorManager.lightSecondary,
-      showSelectedLabels: true,
-      showUnselectedLabels: false,
-    ),
+    // bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    //   backgroundColor: ColorManager.lightPrimary,
+    //   elevation: AppSize.s4,
+    //   enableFeedback: true,
+    //   selectedItemColor: ColorManager.white,
+    //   selectedLabelStyle: getSemiBoldStyle(),
+    //   selectedIconTheme: const IconThemeData(
+    //       color: ColorManager.white,
+    //       size: AppSize.s35
+    //   ),
+    //   unselectedItemColor: ColorManager.lightSecondary,
+    //   showSelectedLabels: true,
+    //   showUnselectedLabels: false,
+    // ),
 
     //button theme
     buttonTheme: const ButtonThemeData(
@@ -180,9 +181,10 @@ ThemeData getApplicationLDarkTheme() {
     primaryColor: ColorManager.darkPrimary,
     secondaryHeaderColor: ColorManager.darkSecondary,
     scaffoldBackgroundColor: ColorManager.darkBackground,
+    canvasColor: ColorManager.darkPrimary,
     splashColor: ColorManager.gold,
     disabledColor: ColorManager.darkGrey,
-    shadowColor: ColorManager.white,
+    shadowColor: ColorManager.darkPrimary,
     unselectedWidgetColor: ColorManager.darkGrey,
 
     //cardView theme
@@ -193,29 +195,29 @@ ThemeData getApplicationLDarkTheme() {
 
     // appBarTheme
     appBarTheme: AppBarTheme(
-      color: ColorManager.darkSecondary,
+      color: ColorManager.darkPrimary,
       centerTitle: true,
       elevation: AppSize.s4,
-      shadowColor: ColorManager.darkSecondary,
+      shadowColor: ColorManager.darkPrimary,
       titleTextStyle:
           getRegularStyle(fontFamily: FontConstants.meQuranFontFamily),
     ),
 
     // bottomNavigationBarTheme
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: ColorManager.gold,
-      elevation: AppSize.s4,
-      enableFeedback: true,
-      selectedItemColor: ColorManager.darkSecondary,
-      selectedIconTheme: const IconThemeData(
-        color: ColorManager.darkSecondary,
-        size: AppSize.s35
-      ),
-      selectedLabelStyle: getSemiBoldStyle(),
-      unselectedItemColor: ColorManager.darkGrey,
-      showSelectedLabels: true,
-      showUnselectedLabels: false,
-    ),
+    // bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    //   backgroundColor: ColorManager.gold,
+    //   elevation: AppSize.s4,
+    //   enableFeedback: true,
+    //   selectedItemColor: ColorManager.darkSecondary,
+    //   selectedIconTheme: const IconThemeData(
+    //     color: ColorManager.darkSecondary,
+    //     size: AppSize.s35
+    //   ),
+    //   selectedLabelStyle: getSemiBoldStyle(),
+    //   unselectedItemColor: ColorManager.darkGrey,
+    //   showSelectedLabels: true,
+    //   showUnselectedLabels: false,
+    // ),
 
     //button theme
     buttonTheme: const ButtonThemeData(

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class AzkarModel extends Equatable {
  final String category;
- final int count;
+ final String count;
  final String description;
  final String reference;
  final String zekr;

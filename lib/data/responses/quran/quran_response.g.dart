@@ -13,7 +13,6 @@ AyahResponse _$AyahResponseFromJson(Map<String, dynamic> json) => AyahResponse(
       json['juz'] as int,
       json['page'] as int,
       json['hizbQuarter'] as int,
-      json['sajda'] as bool,
     );
 
 Map<String, dynamic> _$AyahResponseToJson(AyahResponse instance) =>
@@ -24,7 +23,6 @@ Map<String, dynamic> _$AyahResponseToJson(AyahResponse instance) =>
       'juz': instance.juz,
       'page': instance.page,
       'hizbQuarter': instance.hizbQuarter,
-      'sajda': instance.sajda,
     };
 
 QuranResponse _$QuranResponseFromJson(Map<String, dynamic> json) =>

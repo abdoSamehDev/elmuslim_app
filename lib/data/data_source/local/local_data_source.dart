@@ -20,22 +20,23 @@ class LocalDataSourceImpl implements LocalDataSource{
   @override
   Future<List<AzkarResponse>> getAzkarData() async{
     final jsonString = await fetchDataFromJson(azkarPath);
-    List<AzkarResponse> data = jsonDecode(jsonString);
-    return data;
+    final data = jsonDecode(jsonString);
+    // return data;
+    return List<AzkarResponse>.from((data as List).map((e) => AzkarResponse.fromJson(e)));
   }
 
   @override
   Future<List<HadithResponse>> getHadithData() async{
     final jsonString = await fetchDataFromJson(hadithPath);
-    List<HadithResponse> data = jsonDecode(jsonString);
-    return data;
+    final data = jsonDecode(jsonString);
+    return List<HadithResponse>.from((data as List).map((e) => HadithResponse.fromJson(e)));
   }
 
   @override
   Future<List<QuranResponse>> getQuranData()  async{
     final jsonString = await fetchDataFromJson(quranPath);
-    List<QuranResponse> data = jsonDecode(jsonString);
-    return data;
+    final data = jsonDecode(jsonString);
+    return List<QuranResponse>.from((data as List).map((e) => QuranResponse.fromJson(e)));
   }
 
 }

@@ -15,7 +15,6 @@ extension AyahResponseMapper on AyahResponse {
       juz: juz.orZero(),
       page: page.orZero(),
       hizbQuarter: hizbQuarter.orZero(),
-      sajda: sajda,
     );
   }
 }
@@ -48,7 +47,7 @@ extension AzkarResponseMapper on AzkarResponse {
   AzkarModel toDomain() {
     return AzkarModel(
       category: category.orEmpty(),
-      count: count.orZero(),
+      count: count.orEmpty(),
       description: description.orEmpty(),
       reference: reference.orEmpty(),
       zekr: zekr.orEmpty(),

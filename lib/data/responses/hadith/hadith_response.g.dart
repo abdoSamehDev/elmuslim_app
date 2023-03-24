@@ -8,8 +8,8 @@ part of 'hadith_response.dart';
 
 HadithResponse _$HadithResponseFromJson(Map<String, dynamic> json) =>
     HadithResponse(
-      json['description'] as String,
-      json['hadith'] as String,
+      json['description'] as String?,
+      json['hadith'] as String?,
     );
 
 Map<String, dynamic> _$HadithResponseToJson(HadithResponse instance) =>

@@ -17,11 +17,10 @@ class AyahResponse{
   int page;
   @JsonKey(name: "hizbQuarter")
   int hizbQuarter;
-  @JsonKey(name: "sajda")
-  bool sajda;
+
 
   AyahResponse(this.number, this.text, this.numberInSurah, this.juz, this.page,
-      this.hizbQuarter, this.sajda);
+      this.hizbQuarter, );
 
   //from Json
 factory AyahResponse.fromJson(Map<String, dynamic> json) => _$AyahResponseFromJson(json);

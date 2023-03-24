@@ -5,9 +5,9 @@ part 'hadith_response.g.dart';
 @JsonSerializable()
 class HadithResponse{
   @JsonKey(name: "description")
-  String description;
+  String? description;
   @JsonKey(name: "hadith")
-  String hadith;
+  String? hadith;
 
 
 

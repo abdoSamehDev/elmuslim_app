@@ -9,7 +9,7 @@ part of 'azkar_response.dart';
 AzkarResponse _$AzkarResponseFromJson(Map<String, dynamic> json) =>
     AzkarResponse(
       json['category'] as String,
-      json['count'] as int,
+      json['count'] as String,
       json['description'] as String,
       json['reference'] as String,
       json['zekr'] as String,

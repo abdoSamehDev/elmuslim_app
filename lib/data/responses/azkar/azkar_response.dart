@@ -7,7 +7,7 @@ class AzkarResponse{
   @JsonKey(name: "category")
   String category;
   @JsonKey(name: "count")
-  int count;
+  String count;
   @JsonKey(name: "description")
   String description;
   @JsonKey(name: "reference")
