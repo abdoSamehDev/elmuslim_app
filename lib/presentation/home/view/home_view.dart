@@ -19,7 +19,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => instance<HomeCubit>()..getQuranData()..getHadithData()..getAzkarData(),
+      create: (context) => instance<HomeCubit>(),
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {

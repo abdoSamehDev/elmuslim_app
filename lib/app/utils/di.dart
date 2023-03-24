@@ -7,6 +7,9 @@ import 'package:islamic_app/domain/usecase/azkar_usecase.dart';
 import 'package:islamic_app/domain/usecase/hadith_usecase.dart';
 import 'package:islamic_app/domain/usecase/quran_usecase.dart';
 import 'package:islamic_app/presentation/home/cubit/home_cubit.dart';
+import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
+import 'package:islamic_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
+import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../presentation/home/viewmodel/home_viewmodel.dart';
@@ -25,6 +28,9 @@ Future initAppModule() async {
 
   //BLoC
   instance.registerFactory<HomeCubit>(() => HomeCubit());
+  instance.registerFactory<QuranCubit>(() => QuranCubit());
+  instance.registerFactory<HadithCubit>(() => HadithCubit());
+  instance.registerFactory<AzkarCubit>(() => AzkarCubit());
 
   //UseCases
   // instance.registerFactory<QuranUseCase>(
