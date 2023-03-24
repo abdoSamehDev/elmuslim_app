@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AzkarScreen extends StatelessWidget {
-  const AzkarScreen({Key? key}) : super(key: key);
+class ZekrBuilderView extends StatelessWidget {
+  const ZekrBuilderView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

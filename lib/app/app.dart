@@ -1,7 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islamic_app/app/utils/app_prefs.dart';
 import 'package:islamic_app/app/utils/di.dart';
+import 'package:islamic_app/presentation/home/cubit/home_cubit.dart';
+import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
+import 'package:islamic_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
+import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:islamic_app/presentation/resources/routes_manager.dart';
 import 'package:islamic_app/presentation/resources/theme.dart';
 
@@ -30,22 +35,33 @@ class _MyAppState extends State<MyApp> {
   void didChangeDependencies() {
     _preferences.getAppLocale().then((locale) => context.setLocale(locale));
     super.didChangeDependencies();
-
-
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      darkTheme: getApplicationLDarkTheme(),
-      theme: getApplicationLightTheme(),
-      themeMode: ThemeMode.system,
-      onGenerateRoute: RoutesGenerator.getRoute,
-      initialRoute: Routes.homeRoute,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (BuildContext context) => instance<HomeCubit>()),
+        BlocProvider(create: (BuildContext context) => instance<QuranCubit>()..getQuranData()),
+        BlocProvider(create: (BuildContext context) => instance<HadithCubit>()..getHadithData()),
+        BlocProvider(create: (BuildContext context) => instance<AzkarCubit>()..getAzkarData()),
+      ],
+      child: BlocConsumer<HomeCubit, HomeState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            darkTheme: getApplicationLDarkTheme(),
+            theme: getApplicationLightTheme(),
+            themeMode: ThemeMode.system,
+            onGenerateRoute: RoutesGenerator.getRoute,
+            initialRoute: Routes.homeRoute,
+          );
+        },
+      ),
     );
   }
 }
