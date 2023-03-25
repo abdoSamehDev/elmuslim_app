@@ -50,7 +50,7 @@ ThemeData getApplicationLightTheme() {
       elevation: AppSize.s4,
       shadowColor: ColorManager.lightSecondary,
       titleTextStyle: TextStyle(
-        fontSize: FontSize.s24,
+        // fontSize: FontSize.s24,
         fontFamily: FontConstants.meQuranFontFamily,
         fontWeight: FontWeightsManager.medium,
         color: ColorManager.gold,
@@ -221,7 +221,7 @@ ThemeData getApplicationLDarkTheme() {
       elevation: AppSize.s4,
       shadowColor: ColorManager.darkPrimary,
       titleTextStyle: TextStyle(
-        fontSize: FontSize.s24,
+        // fontSize: FontSize.s24,
         fontFamily: FontConstants.meQuranFontFamily,
         fontWeight: FontWeightsManager.medium,
         color: ColorManager.gold, wordSpacing: 5, letterSpacing: 0.1,

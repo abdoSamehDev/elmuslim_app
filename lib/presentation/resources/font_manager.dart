@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FontConstants{
   static const String meQuranFontFamily = "me_quran";
@@ -14,13 +15,13 @@ class FontWeightsManager{
 }
 
 class FontSize {
-  static const double s10 = 10.0;
-  static const double s12 = 12.0;
-  static const double s14 = 14.0;
-  static const double s16 = 16.0;
-  static const double s18 = 18.0;
-  static const double s20 = 20.0;
-  static const double s24 = 24.0;
-  static const double s28 = 28.0;
-  static const double s32 = 32.0;
+  static double s10 = 10.0.sp;
+  static double s12 = 12.0.sp;
+  static double s14 = 14.0.sp;
+  static double s16 = 16.0.sp;
+  static double s18 = 18.0.sp;
+  static double s20 = 20.0.sp;
+  static double s24 = 24.0.sp;
+  static double s28 = 28.0.sp;
+  static double s32 = 32.0.sp;
 }

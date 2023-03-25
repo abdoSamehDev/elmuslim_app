@@ -14,6 +14,10 @@ void main() async {
   await initAppModule();
   Bloc.observer = MyBlocObserver();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(
     EasyLocalization(
       supportedLocales: const [arabicLocale, englishLocale],

@@ -37,7 +37,7 @@ class TestScreen extends StatelessWidget {
             color: Theme.of(context).secondaryHeaderColor,
             // ColorManager.darkSecondary,
             size: AppSize.s35),
-        selectedLabelStyle: getSemiBoldStyle(),
+        selectedLabelStyle: getSemiBoldStyle(fontSize: FontSize.s14),
         unselectedItemColor: Theme.of(context).unselectedWidgetColor,
         unselectedIconTheme: IconThemeData(
           color: Theme.of(context).unselectedWidgetColor,

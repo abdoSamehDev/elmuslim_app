@@ -20,7 +20,7 @@ TextStyle _getTextStyle({
 
 //regular style
 TextStyle getRegularStyle({
-  double fontSize = FontSize.s14,
+  required double fontSize,
   String fontFamily =  FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
@@ -34,7 +34,7 @@ TextStyle getRegularStyle({
 
 //medium style
 TextStyle getMediumStyle({
-  double fontSize = FontSize.s14,
+  required double fontSize,
   String fontFamily =  FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
@@ -48,7 +48,7 @@ TextStyle getMediumStyle({
 
 //semi bold style
 TextStyle getSemiBoldStyle({
-  double fontSize = FontSize.s14,
+  required double fontSize,
   String fontFamily =  FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
@@ -62,7 +62,7 @@ TextStyle getSemiBoldStyle({
 
 //bold style
 TextStyle getBoldStyle({
-  double fontSize = FontSize.s14,
+  required double fontSize,
   String fontFamily =  FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {

@@ -35,8 +35,8 @@ class RoutesGenerator {
         return MaterialPageRoute(builder: (_) =>  const SurahBuilderView());
       // case Routes.hadithRoute:
       //   return MaterialPageRoute(builder: (_) =>  const HadithBuilderView(hadithModel: hadithModel));
-      case Routes.azkarRoute:
-        return MaterialPageRoute(builder: (_) =>  const ZekrBuilderView());
+      // case Routes.azkarRoute:
+      //   return MaterialPageRoute(builder: (_) =>  const ZekrBuilderView());
       // case Routes.settingsRoute:
       //   return MaterialPageRoute(builder: (_) => const SettingsView());
       default:

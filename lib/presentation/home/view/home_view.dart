@@ -39,7 +39,7 @@ class HomeView extends StatelessWidget {
 
                   // ColorManager.darkSecondary,
                   size: AppSize.s24),
-              selectedLabelStyle: getSemiBoldStyle(),
+              selectedLabelStyle: getSemiBoldStyle(fontSize: FontSize.s14),
               unselectedLabelStyle: getRegularStyle(fontSize: FontSize.s12),
               unselectedItemColor: Theme.of(context).unselectedWidgetColor,
               unselectedIconTheme: IconThemeData(
