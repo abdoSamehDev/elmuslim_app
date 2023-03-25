@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/app/utils/extentions.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
 import 'package:islamic_app/presentation/resources/font_manager.dart';
+import 'package:islamic_app/presentation/resources/values.dart';
 
 class AzkarScreen extends StatelessWidget {
   const AzkarScreen({Key? key}) : super(key: key);
@@ -44,24 +46,30 @@ class AzkarScreen extends StatelessWidget {
       required String azkarName,
       // required String pageNo,
       required BuildContext context}) {
-    return ListTile(
-      style: ListTileStyle.list,
-      leading: Text(
-        azkarId,
-        style: Theme.of(context)
-            .textTheme
-            .titleSmall
-            ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
+    return Padding(
+      padding: EdgeInsets.only(bottom: AppPadding.p5.h),
+      child: ListTile(
+        style: ListTileStyle.list,
+        leading: Padding(
+          padding:  EdgeInsets.only(top: AppPadding.p5.h),
+          child: Text(
+            azkarId,
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
+          ),
+        ),
+        title: Text(
+          azkarName,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontFamily: FontConstants.meQuranFontFamily,
+                wordSpacing: 3,
+                letterSpacing: 0.1,
+              ),
+        ),
+        onTap: () {},
       ),
-      title: Text(
-        azkarName,
-        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontFamily: FontConstants.meQuranFontFamily,
-              wordSpacing: 3,
-              letterSpacing: 0.1,
-            ),
-      ),
-      onTap: () {},
     );
   }
 }

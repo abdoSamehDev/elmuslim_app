@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/app/utils/di.dart';
 import 'package:islamic_app/presentation/home/cubit/home_cubit.dart';
 import 'package:islamic_app/presentation/home/viewmodel/home_viewmodel.dart';
@@ -29,21 +30,26 @@ class HomeView extends StatelessWidget {
               backgroundColor: Theme.of(context).primaryColor,
               title: Text(
                 _viewModel.titles[currentIndex],
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: ColorManager.gold
+                ),
+
               ),
             ),
             bottomNavigationBar: BottomNavigationBar(
               selectedItemColor: ColorManager.gold,
               // ColorManager.darkSecondary,
-              selectedIconTheme: const IconThemeData(
+              selectedIconTheme: IconThemeData(
                   color: ColorManager.gold,
 
                   // ColorManager.darkSecondary,
-                  size: AppSize.s24),
+                  size: AppSize.s20.r),
               selectedLabelStyle: getSemiBoldStyle(fontSize: FontSize.s14),
               unselectedLabelStyle: getRegularStyle(fontSize: FontSize.s12),
               unselectedItemColor: Theme.of(context).unselectedWidgetColor,
               unselectedIconTheme: IconThemeData(
                 color: Theme.of(context).unselectedWidgetColor,
+                  size: AppSize.s20.r
               ),
               // ColorManager.darkGrey,
               showSelectedLabels: true,
@@ -58,8 +64,8 @@ class HomeView extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     ImageAsset.quranIcon,
-                    width: AppSize.s24,
-                    height: AppSize.s24,
+                    width: AppSize.s20.r,
+                    height: AppSize.s20.r,
                     color: currentIndex == 0
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
@@ -69,8 +75,8 @@ class HomeView extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     ImageAsset.hadithIcon,
-                    width: AppSize.s24,
-                    height: AppSize.s24,
+                    width: AppSize.s20.r,
+                    height: AppSize.s20.r,
                     color: currentIndex == 1
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
@@ -80,8 +86,8 @@ class HomeView extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     ImageAsset.azkarIcon,
-                    width: AppSize.s24,
-                    height: AppSize.s24,
+                    width: AppSize.s20.r,
+                    height: AppSize.s20.r,
                     color: currentIndex == 2
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
@@ -95,7 +101,7 @@ class HomeView extends StatelessWidget {
               ],
             ),
             body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
+              padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
               child: _viewModel.screens[currentIndex],
             ),
           );

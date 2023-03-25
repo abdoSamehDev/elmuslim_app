@@ -224,7 +224,9 @@ ThemeData getApplicationLDarkTheme() {
         // fontSize: FontSize.s24,
         fontFamily: FontConstants.meQuranFontFamily,
         fontWeight: FontWeightsManager.medium,
-        color: ColorManager.gold, wordSpacing: 5, letterSpacing: 0.1,
+        color: ColorManager.gold,
+        // wordSpacing: 5,
+        // letterSpacing: 0.1,
       ),
       iconTheme: IconThemeData(
         color: ColorManager.white,
