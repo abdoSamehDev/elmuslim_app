@@ -11,7 +11,6 @@ import 'package:islamic_app/presentation/home/cubit/home_cubit.dart';
 import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
 import 'package:islamic_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
 import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
-import 'package:islamic_app/presentation/zekr_builder/viewmodel/zekr_builder_viewmodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../presentation/home/viewmodel/home_viewmodel.dart';
@@ -53,7 +52,7 @@ Future initAppModule() async {
   instance.registerFactory<PageController>(() => PageController());
 
   //ViewModels
-  instance.registerFactory<ZekrBuilderViewModel>(() => ZekrBuilderViewModel());
+  // instance.registerFactory<ZekrBuilderViewModel>(() => ZekrBuilderViewModel());
 }
 
 void initQuranModule() {

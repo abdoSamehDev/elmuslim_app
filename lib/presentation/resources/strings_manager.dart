@@ -9,6 +9,7 @@ class AppStrings {
   static const String hadith = "hadith";
   static const String azkar = "azkar";
   static const String azkarReference = "azkar_reference";
+  static const String azkarReward = "azkar_reward";
   static const String settings = "settings";
   static const String profile = "profile";
 }

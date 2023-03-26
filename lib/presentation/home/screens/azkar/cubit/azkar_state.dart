@@ -19,3 +19,5 @@ class AzkarGetDataErrorState extends AzkarState {
 
   const AzkarGetDataErrorState(this.error);
 }
+
+class AzkarCounterState extends AzkarState {}
