@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
 import 'package:islamic_app/presentation/resources/font_manager.dart';
 import 'package:islamic_app/presentation/resources/styles_manager.dart';
@@ -37,27 +38,27 @@ ThemeData getApplicationLightTheme() {
     shadowColor: ColorManager.lightSecondary,
     unselectedWidgetColor: ColorManager.lightGrey,
     //cardView theme
-    cardTheme: const CardTheme(
+    cardTheme:  CardTheme(
       color: ColorManager.white,
       shadowColor: ColorManager.lightSecondary,
-      elevation: AppSize.s4,
+      elevation: AppSize.s4.r,
     ),
 
     // appBarTheme
-    appBarTheme: const AppBarTheme(
+    appBarTheme:  AppBarTheme(
       color: ColorManager.lightPrimary,
       centerTitle: true,
-      elevation: AppSize.s4,
+      elevation: AppSize.s4.r,
       shadowColor: ColorManager.lightSecondary,
       titleTextStyle: TextStyle(
         // fontSize: FontSize.s24,
         fontFamily: FontConstants.meQuranFontFamily,
         fontWeight: FontWeightsManager.medium,
         color: ColorManager.gold,
-        wordSpacing: 5,
-        letterSpacing: 0.1,
+        wordSpacing: AppSize.s5.w,
+        letterSpacing: AppSize.s0_1.w,
       ),
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: ColorManager.white,
       ),
     ),
@@ -94,9 +95,9 @@ ThemeData getApplicationLightTheme() {
         foregroundColor: ColorManager.white,
         disabledForegroundColor: ColorManager.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSize.s14),
+          borderRadius: BorderRadius.circular(AppSize.s14.r),
         ),
-        textStyle: getRegularStyle(fontSize: FontSize.s12),
+        textStyle: getRegularStyle(fontSize: FontSize.s12.r),
       ),
     ),
 
@@ -150,7 +151,7 @@ ThemeData getApplicationLightTheme() {
 
     //input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: const EdgeInsets.all(AppPadding.p8),
+      contentPadding: EdgeInsets.all(AppPadding.p8.w),
       hintStyle: getRegularStyle(
         fontSize: FontSize.s14,
         color: ColorManager.lightGrey,
@@ -166,29 +167,29 @@ ThemeData getApplicationLightTheme() {
 
       //enabled border style
       enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
+        borderSide: BorderSide(
           color: ColorManager.lightGrey,
-          width: AppSize.s1_5,
+          width: AppSize.s1_5.r,
         ),
-        borderRadius: BorderRadius.circular(AppSize.s8),
+        borderRadius: BorderRadius.circular(AppSize.s8.r),
       ),
 
       //focused border style
       focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
+        borderSide: BorderSide(
           color: ColorManager.lightPrimary,
-          width: AppSize.s1_5,
+          width: AppSize.s1_5.r,
         ),
-        borderRadius: BorderRadius.circular(AppSize.s8),
+        borderRadius: BorderRadius.circular(AppSize.s8.r),
       ),
 
       //error border style
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
+        borderSide: BorderSide(
           color: ColorManager.error,
-          width: AppSize.s1_5,
+          width: AppSize.s1_5.r,
         ),
-        borderRadius: BorderRadius.circular(AppSize.s8),
+        borderRadius: BorderRadius.circular(AppSize.s8.r),
       ),
     ),
   );
@@ -209,18 +210,18 @@ ThemeData getApplicationLDarkTheme() {
     unselectedWidgetColor: ColorManager.darkGrey,
 
     //cardView theme
-    cardTheme: const CardTheme(
+    cardTheme:  CardTheme(
         color: ColorManager.white,
         shadowColor: ColorManager.black,
-        elevation: AppSize.s4),
+        elevation: AppSize.s4.r),
 
     // appBarTheme
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       color: ColorManager.darkPrimary,
       centerTitle: true,
-      elevation: AppSize.s4,
+      elevation: AppSize.s4.r,
       shadowColor: ColorManager.darkPrimary,
-      titleTextStyle: TextStyle(
+      titleTextStyle: const TextStyle(
         // fontSize: FontSize.s24,
         fontFamily: FontConstants.meQuranFontFamily,
         fontWeight: FontWeightsManager.medium,
@@ -228,7 +229,7 @@ ThemeData getApplicationLDarkTheme() {
         // wordSpacing: 5,
         // letterSpacing: 0.1,
       ),
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: ColorManager.white,
       ),
     ),
@@ -265,9 +266,9 @@ ThemeData getApplicationLDarkTheme() {
         foregroundColor: ColorManager.white,
         disabledForegroundColor: ColorManager.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSize.s14),
+          borderRadius: BorderRadius.circular(AppSize.s14.r),
         ),
-        textStyle: getRegularStyle(fontSize: FontSize.s12),
+        textStyle: getRegularStyle(fontSize: FontSize.s12.r),
       ),
     ),
 
@@ -311,7 +312,7 @@ ThemeData getApplicationLDarkTheme() {
 
     //input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: const EdgeInsets.all(AppPadding.p8),
+      contentPadding: EdgeInsets.all(AppPadding.p8.w),
       hintStyle: getRegularStyle(
         fontSize: FontSize.s14,
         color: ColorManager.darkGrey,
@@ -327,29 +328,29 @@ ThemeData getApplicationLDarkTheme() {
 
       //enabled border style
       enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
+        borderSide: BorderSide(
           color: ColorManager.darkGrey,
-          width: AppSize.s1_5,
+          width: AppSize.s1_5.r,
         ),
-        borderRadius: BorderRadius.circular(AppSize.s8),
+        borderRadius: BorderRadius.circular(AppSize.s8.r),
       ),
 
       //focused border style
       focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
+        borderSide: BorderSide(
           color: ColorManager.darkPrimary,
-          width: AppSize.s1_5,
+          width: AppSize.s1_5.r,
         ),
-        borderRadius: BorderRadius.circular(AppSize.s8),
+        borderRadius: BorderRadius.circular(AppSize.s8.r),
       ),
 
       //error border style
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(
+        borderSide:  BorderSide(
           color: ColorManager.error,
-          width: AppSize.s1_5,
+          width: AppSize.s1_5.r,
         ),
-        borderRadius: BorderRadius.circular(AppSize.s8),
+        borderRadius: BorderRadius.circular(AppSize.s8.r),
       ),
     ),
   );

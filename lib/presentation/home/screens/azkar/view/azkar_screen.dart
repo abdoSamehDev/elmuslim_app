@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/app/utils/extentions.dart';
+import 'package:islamic_app/domain/models/azkar/azkar_model.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
 import 'package:islamic_app/presentation/resources/font_manager.dart';
 import 'package:islamic_app/presentation/resources/values.dart';
+import 'package:islamic_app/presentation/zekr_builder/view/zekr_builder_view.dart';
 
 class AzkarScreen extends StatelessWidget {
   const AzkarScreen({Key? key}) : super(key: key);
@@ -27,6 +29,8 @@ class AzkarScreen extends StatelessWidget {
             itemBuilder: (context, index) => _azkarIndexItem(
                 azkarId: (index + 1).toString(),
                 azkarName: azkarCategoryList[index].orEmpty(),
+                azkarList: state.azkarList,
+                index: index,
                 // pageNo: state.azkarList[index].ayahs[0].page.toString(),
                 context: context),
             separatorBuilder: (context, index) => getSeparator(context),
@@ -44,6 +48,8 @@ class AzkarScreen extends StatelessWidget {
   Widget _azkarIndexItem(
       {required String azkarId,
       required String azkarName,
+      required List<AzkarModel> azkarList,
+      required int index,
       // required String pageNo,
       required BuildContext context}) {
     return Padding(
@@ -68,7 +74,9 @@ class AzkarScreen extends StatelessWidget {
                 letterSpacing: 0.1,
               ),
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ZekrBuilderView(azkarList: azkarList, category: azkarName,)));
+        },
       ),
     );
   }
