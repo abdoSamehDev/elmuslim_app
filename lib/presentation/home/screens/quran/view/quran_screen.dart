@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islamic_app/app/utils/extentions.dart';
+import 'package:islamic_app/domain/models/quran/quran_model.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
 import 'package:islamic_app/presentation/resources/font_manager.dart';
 import 'package:islamic_app/presentation/resources/values.dart';
+import 'package:islamic_app/presentation/surah_builder/view/surah_builder_view.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({Key? key}) : super(key: key);
@@ -22,9 +25,10 @@ class QuranScreen extends StatelessWidget {
           return ListView.separated(
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => _surahsIndexItem(
-                surahId: (index + 1).toString(),
+                surahId: (index + 1).toArabic(),
                 surahName: state.quranList[index].name,
-                pageNo: state.quranList[index].ayahs[0].page.toString(),
+                pageNo: state.quranList[index].ayahs[0].page,
+                quranList: state.quranList,
                 context: context),
             separatorBuilder: (context, index) => getSeparator(context),
             itemCount: state.quranList.length,
@@ -41,7 +45,8 @@ class QuranScreen extends StatelessWidget {
   Widget _surahsIndexItem(
       {required String surahId,
       required String surahName,
-      required String pageNo,
+      required int pageNo,
+        required List<QuranModel> quranList,
       required BuildContext context}) {
     return Padding(
       padding: EdgeInsets.only(bottom: AppPadding.p5.h),
@@ -54,7 +59,7 @@ class QuranScreen extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodySmall
-                ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
+                // ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
           ),
         ),
         title: Text(
@@ -65,13 +70,15 @@ class QuranScreen extends StatelessWidget {
               ?.copyWith(fontFamily: FontConstants.meQuranFontFamily, wordSpacing: 5, letterSpacing: 0.1),
         ),
         trailing: Text(
-          pageNo,
+          pageNo.toArabic(),
           style: Theme.of(context)
               .textTheme
               .titleSmall
-              ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
+              // ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SurahBuilderView(quranList: quranList, surahName: surahName,pageNo: pageNo),));
+        },
       ),
     );
   }

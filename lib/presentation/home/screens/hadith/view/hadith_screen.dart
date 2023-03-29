@@ -53,11 +53,11 @@ class HadithScreen extends StatelessWidget {
         leading: Padding(
           padding:  EdgeInsets.only(top: AppPadding.p5.h),
           child: Text(
-              (index + 1).toString(),
+              (index + 1).toArabic(),
             style: Theme.of(context)
                 .textTheme
                 .bodySmall
-                ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
+                // ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
           ),
         ),
         title: Text(

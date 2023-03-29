@@ -27,7 +27,7 @@ class AzkarScreen extends StatelessWidget {
           return ListView.separated(
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => _azkarIndexItem(
-                azkarId: (index + 1).toString(),
+                azkarId: (index + 1).toArabic(),
                 azkarName: azkarCategoryList[index].orEmpty(),
                 azkarList: state.azkarList,
                 index: index,
@@ -63,7 +63,7 @@ class AzkarScreen extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodySmall
-                ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
+                // ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
           ),
         ),
         title: Text(

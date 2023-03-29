@@ -3,7 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FontConstants{
   static const String meQuranFontFamily = "me_quran";
+  static const String alQalamQuranFontFamily = "Al_Qalam_Quran";
+  static const String uthmanicScriptHAFSRegularFontFamily = "KFGQPC_Uthmanic_Script_HAFS_Regular";
   static const String elMessiriFontFamily = "ElMessiri";
+  static const String besmellahFontFamily = "110_Besmellah";
+  static const String hafsFontFamily = "Hafs";
+  static const String hafsSmartFontFamily = "HafsSmart";
+  static const String nabiFontFamily = "Nabi";
 }
 
 class FontWeightsManager{

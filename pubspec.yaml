@@ -187,6 +187,24 @@ flutter:
     - family: me_quran
       fonts:
         - asset: assets/fonts/me_quran.ttf
+    - family: KFGQPC_Uthmanic_Script_HAFS_Regular
+      fonts:
+        - asset: assets/fonts/KFGQPC Uthmanic Script HAFS Regular.otf
+    - family: Al_Qalam_Quran
+      fonts:
+        - asset: assets/fonts/Al Qalam Quran.ttf
+    - family: 110_Besmellah
+      fonts:
+        - asset: assets/fonts/110_Besmellah.ttf
+    - family: Hafs
+      fonts:
+        - asset: assets/fonts/Hafs.ttf
+    - family: Nabi
+      fonts:
+        - asset: assets/fonts/Nabi.ttf
+    - family: HafsSmart
+      fonts:
+        - asset: assets/fonts/HafsSmart.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
