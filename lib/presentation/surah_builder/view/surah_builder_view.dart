@@ -16,7 +16,7 @@ class SurahBuilderView extends StatelessWidget {
   final String surahName;
   final int pageNo;
 
-  SurahBuilderView(
+  const SurahBuilderView(
       {Key? key,
       required this.quranList,
       required this.surahName,
@@ -83,7 +83,7 @@ class SurahBuilderView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "${AppStrings.juz.tr()}: ${ayahs[0].juz.toArabic()}، ${AppStrings.hizb.tr()}: ${ayahs[0].hizbQuarter.toArabic()} ",
+                            "${AppStrings.juz.tr()}: ${ayahs[0].juz.toString().tr()}، ${AppStrings.hizb.tr()}: ${ayahs[0].hizbQuarter.toString().tr()} ",
                             // "",
                             // textDirection: TextDirection.rtl,
                             style: Theme.of(context)
@@ -112,20 +112,20 @@ class SurahBuilderView extends StatelessWidget {
                         ],
                       ),
                       getSeparator(context),
-                      Text("\u0668",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(
-                            // fontWeight: FontWeightsManager.regular,
-                            height: AppSize.s1_5.h,
-                            // fontSize: 15,
-                            fontFamily:
-                            FontConstants.hafsFontFamily,
-                            // wordSpacing: 2,
-                            // letterSpacing: 0.1,
-                          ),
-                      ),
+                      // Text("\u0668",
+                      //     style: Theme.of(context)
+                      //         .textTheme
+                      //         .bodyLarge
+                      //         ?.copyWith(
+                      //       // fontWeight: FontWeightsManager.regular,
+                      //       height: AppSize.s1_5.h,
+                      //       // fontSize: 15,
+                      //       fontFamily:
+                      //       FontConstants.hafsFontFamily,
+                      //       // wordSpacing: 2,
+                      //       // letterSpacing: 0.1,
+                      //     ),
+                      // ),
                       // Text("۞ ٱلَّذِينَ يَنقُضُونَ عَهْدَ ٱللَّهِ مِنۢ بَعْدِ مِيثَـٰقِهِۦ وَيَقْطَعُونَ مَآ أَمَرَ ٱللَّهُ بِهِۦٓ أَن يُوصَلَ وَيُفْسِدُونَ فِى ٱلْأَرْضِ ۚ أُوْلَـٰٓئِكَ هُمُ ٱلْخَـٰسِرُونَ كَثِيرًۭا وَيَهْدِى ٣٠",
                       //   style: Theme.of(context)
                       //       .textTheme
@@ -308,7 +308,7 @@ class SurahBuilderView extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(vertical: AppPadding.p8.h),
                         child: Text(
-                          (index + 1).toArabic(),
+                          (index + 1).toString().tr(),
                           // "\u06DD${794.toArabic()}\u06DD",
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
