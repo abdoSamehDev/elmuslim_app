@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/app/utils/extentions.dart';
+import 'package:islamic_app/app/utils/extensions.dart';
 import 'package:islamic_app/domain/models/azkar/azkar_model.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
@@ -27,7 +28,7 @@ class AzkarScreen extends StatelessWidget {
           return ListView.separated(
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) => _azkarIndexItem(
-                azkarId: (index + 1).toArabic(),
+                azkarId: (index + 1).toString().tr(),
                 azkarName: azkarCategoryList[index].orEmpty(),
                 azkarList: state.azkarList,
                 index: index,
@@ -62,8 +63,8 @@ class AzkarScreen extends StatelessWidget {
             azkarId,
             style: Theme.of(context)
                 .textTheme
-                .bodySmall
-                // ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
+                .titleSmall
+                ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
           ),
         ),
         title: Text(

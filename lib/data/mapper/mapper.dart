@@ -1,4 +1,4 @@
-import 'package:islamic_app/app/utils/extentions.dart';
+import 'package:islamic_app/app/utils/extensions.dart';
 import 'package:islamic_app/data/responses/quran/quran_response.dart';
 import 'package:islamic_app/domain/models/azkar/azkar_model.dart';
 import 'package:islamic_app/domain/models/hadith/hadith_model.dart';

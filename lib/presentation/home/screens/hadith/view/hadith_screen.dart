@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/app/utils/extentions.dart';
+import 'package:islamic_app/app/utils/extensions.dart';
 import 'package:islamic_app/domain/models/hadith/hadith_model.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/hadith_builder/view/hadith_builder_view.dart';
@@ -53,11 +54,11 @@ class HadithScreen extends StatelessWidget {
         leading: Padding(
           padding:  EdgeInsets.only(top: AppPadding.p5.h),
           child: Text(
-              (index + 1).toArabic(),
+              (index + 1).toString().tr(),
             style: Theme.of(context)
                 .textTheme
-                .bodySmall
-                // ?.copyWith(fontFamily: FontConstants.meQuranFontFamily),
+                .titleSmall
+                ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
           ),
         ),
         title: Text(

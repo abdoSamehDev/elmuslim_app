@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/app/utils/extentions.dart';
+import 'package:islamic_app/app/utils/extensions.dart';
 import 'package:islamic_app/domain/models/hadith/hadith_model.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
