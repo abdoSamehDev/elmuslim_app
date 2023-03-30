@@ -184,6 +184,12 @@ flutter:
           weight: 500
         - asset: assets/fonts/ElMessiri-Regular.ttf
           weight: 400
+    - family: UthmanTN
+      fonts:
+        - asset: assets/fonts/UthmanTNB.ttf
+          weight: 700
+        - asset: assets/fonts/UthmanTN.ttf
+          weight: 400
     - family: me_quran
       fonts:
         - asset: assets/fonts/me_quran.ttf
@@ -202,9 +208,9 @@ flutter:
     - family: Nabi
       fonts:
         - asset: assets/fonts/Nabi.ttf
-    - family: HafsSmart
+    - family: HafsSmart_08
       fonts:
-        - asset: assets/fonts/HafsSmart.ttf
+        - asset: assets/fonts/HafsSmart_08.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
