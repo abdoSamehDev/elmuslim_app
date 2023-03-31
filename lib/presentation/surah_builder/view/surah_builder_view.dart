@@ -32,6 +32,12 @@ class SurahBuilderView extends StatelessWidget {
         final PageController pageController =
             PageController(initialPage: pageNo - 1);
 
+        //Get Current App Locale
+        final currentLocale = context.locale;
+
+        //Check if current app language is English
+        bool isEnglish = currentLocale.languageCode == LanguageType.english.getValue();
+
         return Scaffold(
           // appBar: AppBar(
           //   title: Text(
@@ -64,6 +70,8 @@ class SurahBuilderView extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(AppPadding.p8.r),
               child: PageView.builder(
+                scrollDirection: Axis.horizontal,
+                reverse: isEnglish,
                 controller: pageController,
                 itemCount: 604,
                 itemBuilder: (BuildContext context, int index) {

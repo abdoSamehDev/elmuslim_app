@@ -14,4 +14,13 @@ class HomeChangeBotNavIndexState extends HomeState {
 
 }
 
+class HomeChangeAppThemeState extends HomeState {
+
+
+}
+class HomeChangeAppLanguageState extends HomeState {
+
+
+}
+
 

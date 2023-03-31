@@ -14,7 +14,7 @@ class AppPreferences {
 
   AppPreferences();
 
-  Future<String> getAppLanguage() async {
+  String getAppLanguage()  {
     String? language = _preferences.getString(prefsLangKey);
     if (language != null && language.isNotEmpty) {
       return language;
@@ -23,8 +23,8 @@ class AppPreferences {
     }
   }
 
-  Future changeAppLanguage() async {
-    String currentLanguage = await getAppLanguage();
+   changeAppLanguage()  {
+    String currentLanguage =  getAppLanguage();
     if (currentLanguage == LanguageType.arabic.getValue()) {
       _preferences.setString(prefsLangKey, LanguageType.english.getValue());
     } else {
@@ -33,7 +33,7 @@ class AppPreferences {
   }
 
   Future<Locale> getAppLocale() async {
-    String currentLanguage = await getAppLanguage();
+    String currentLanguage = getAppLanguage();
     if (currentLanguage == LanguageType.arabic.getValue()) {
       return arabicLocale;
     } else {
@@ -41,7 +41,7 @@ class AppPreferences {
     }
   }
 
-  Future<ThemeMode> getAppTheme() async {
+  ThemeMode getAppTheme()  {
     String? themeMode = _preferences.getString(themeModeKey);
     if (themeMode != null && themeMode.isNotEmpty) {
       if (themeMode == ThemeType.dark.getValue()) {
@@ -50,12 +50,12 @@ class AppPreferences {
         return ThemeMode.light;
       }
     } else {
-      return ThemeMode.system;
+      return ThemeMode.light;
     }
   }
 
-  Future changeAppTheme() async {
-    ThemeMode currentTheme = await getAppTheme();
+  void  changeAppTheme() {
+    ThemeMode currentTheme = getAppTheme();
     if (currentTheme == ThemeMode.dark) {
       _preferences.setString(themeModeKey, ThemeType.light.getValue());
     } else {

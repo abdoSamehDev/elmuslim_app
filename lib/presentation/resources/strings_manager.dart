@@ -14,5 +14,8 @@ class AppStrings {
   static const String azkarReference = "azkar_reference";
   static const String azkarReward = "azkar_reward";
   static const String settings = "settings";
+  static const String changeAppLanguage = "change_app_language";
+  static const String changeAppLanguageIcon = "change_app_language_icon";
+  static const String changeAppTheme = "change_app_theme";
   static const String profile = "profile";
 }

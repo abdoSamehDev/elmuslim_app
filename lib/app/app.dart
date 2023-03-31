@@ -69,7 +69,7 @@ class _MyAppState extends State<MyApp> {
                 locale: context.locale,
                 darkTheme: getApplicationLDarkTheme(),
                 theme: getApplicationLightTheme(),
-                themeMode: ThemeMode.system,
+                themeMode: _preferences.getAppTheme(),
                 onGenerateRoute: RoutesGenerator.getRoute,
                 initialRoute: Routes.homeRoute,
               );

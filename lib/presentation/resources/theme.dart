@@ -13,6 +13,8 @@ enum ThemeType {
 const String dark = "dark";
 const String light = "light";
 
+ThemeMode currentThemeMode = ThemeMode.system;
+
 extension ThemeTypeExtension on ThemeType {
   String getValue() {
     switch (this) {
@@ -61,6 +63,11 @@ ThemeData getApplicationLightTheme() {
       iconTheme: const IconThemeData(
         color: ColorManager.white,
       ),
+    ),
+
+    iconTheme: IconThemeData(
+        color: ColorManager.black,
+        size: AppSize.s24.r
     ),
 
     // bottomNavigationBarTheme
@@ -232,6 +239,11 @@ ThemeData getApplicationLDarkTheme() {
       iconTheme: const IconThemeData(
         color: ColorManager.white,
       ),
+    ),
+
+    iconTheme: IconThemeData(
+      color: ColorManager.white,
+      size: AppSize.s24.r
     ),
 
     // bottomNavigationBarTheme
