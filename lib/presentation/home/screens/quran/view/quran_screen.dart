@@ -67,7 +67,7 @@ class QuranScreen extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .titleLarge
-              ?.copyWith(fontFamily: FontConstants.meQuranFontFamily, wordSpacing: 5, letterSpacing: 0.1),
+              ?.copyWith(fontFamily: FontConstants.meQuranFontFamily, wordSpacing: 5.w, letterSpacing: 0.1.w),
         ),
         trailing: Text(
           pageNo.toString().tr(),

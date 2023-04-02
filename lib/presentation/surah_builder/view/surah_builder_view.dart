@@ -36,36 +36,10 @@ class SurahBuilderView extends StatelessWidget {
         final currentLocale = context.locale;
 
         //Check if current app language is English
-        bool isEnglish = currentLocale.languageCode == LanguageType.english.getValue();
+        bool isEnglish =
+            currentLocale.languageCode == LanguageType.english.getValue();
 
         return Scaffold(
-          // appBar: AppBar(
-          //   title: Text(
-          //     surahName,
-          //     style: Theme
-          //         .of(context)
-          //         .textTheme
-          //         .titleLarge
-          //         ?.copyWith(color: ColorManager.gold, fontFamily: FontConstants.meQuranFontFamily),
-          //   ),
-          // ),
-          // floatingActionButton: FloatingActionButton(
-          //   onPressed: () {
-          //     // _pageController.animateToPage(3, curve: Curves.ease, duration: const Duration(milliseconds: 300));
-          //     _count++;
-          //   },
-          //   enableFeedback: true,
-          //   backgroundColor: Theme.of(context).secondaryHeaderColor,
-          //   child: SvgPicture.asset(
-          //     ImageAsset.azkarIcon,
-          //     width: AppSize.s24.h,
-          //     height: AppSize.s24.h,
-          //     color: ColorManager.gold,
-          //     // Theme.of(context).primaryColor,
-          //   ),
-          // ),
-          // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
           body: SafeArea(
             child: Padding(
               padding: EdgeInsets.all(AppPadding.p8.r),
@@ -75,23 +49,22 @@ class SurahBuilderView extends StatelessWidget {
                 controller: pageController,
                 itemCount: 604,
                 itemBuilder: (BuildContext context, int index) {
-                  // final List<QuranModel> quranPageFromName =
-                  //     cubit.getQuranPageFromName(
-                  //         quranList: quranList,
-                  //         surahName: surahName,
-                  //         pageNo: index + 1);
+                  var quranPageNumber = index + 1;
+                  final List<QuranModel> pageSurahsList = cubit.getPageSurahs(
+                      quran: quranList, pageNo: quranPageNumber);
+                  final List<String> pageSurahsNamesList =
+                      List.of(pageSurahsList.map((surah) => surah.name));
+
+                  final String surahNameOnScreen = pageSurahsNamesList[0];
                   final List<AyahModel> ayahs = cubit.getAyahsFromPageNo(
-                      quranList: quranList, pageNo: index + 1);
-                  final String surahNameOnScreen = cubit.getSurahNameFromPageNo(
-                      quranList: quranList, pageNo: index + 1);
-                  // int count = cubit.count;
+                      quranList: quranList, pageNo: quranPageNumber);
                   return Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "${AppStrings.juz.tr()}: ${ayahs[0].juz.toString().tr()}، ${AppStrings.hizb.tr()}: ${ayahs[0].hizbQuarter.toString().tr()} ",
+                            "${AppStrings.juz.tr()}: ${ayahs.first.juz.toString().tr()}، ${AppStrings.hizb.tr()}: ${((ayahs.first.hizbQuarter / 4).ceil()).toString().tr()} ",
                             // "",
                             // textDirection: TextDirection.rtl,
                             style: Theme.of(context)
@@ -112,42 +85,19 @@ class SurahBuilderView extends StatelessWidget {
                                 .labelSmall
                                 ?.copyWith(
                                     // height: AppSize.s1.h,
-                                    fontFamily:
-                                        FontConstants.uthmanTNFontFamily,
+                                    wordSpacing: 5.w,
+                                    letterSpacing: 0.1.w,
+                                    fontFamily: FontConstants.meQuranFontFamily,
                                     color: Theme.of(context)
                                         .unselectedWidgetColor),
                           ),
                         ],
                       ),
                       getSeparator(context),
-                      // Text("\u0668",
-                      //     style: Theme.of(context)
-                      //         .textTheme
-                      //         .bodyLarge
-                      //         ?.copyWith(
-                      //       // fontWeight: FontWeightsManager.regular,
-                      //       height: AppSize.s1_5.h,
-                      //       // fontSize: 15,
-                      //       fontFamily:
-                      //       FontConstants.hafsFontFamily,
-                      //       // wordSpacing: 2,
-                      //       // letterSpacing: 0.1,
-                      //     ),
-                      // ),
-                      // Text("۞ ٱلَّذِينَ يَنقُضُونَ عَهْدَ ٱللَّهِ مِنۢ بَعْدِ مِيثَـٰقِهِۦ وَيَقْطَعُونَ مَآ أَمَرَ ٱللَّهُ بِهِۦٓ أَن يُوصَلَ وَيُفْسِدُونَ فِى ٱلْأَرْضِ ۚ أُوْلَـٰٓئِكَ هُمُ ٱلْخَـٰسِرُونَ كَثِيرًۭا وَيَهْدِى ٣٠",
-                      //   style: Theme.of(context)
-                      //       .textTheme
-                      //       .headlineLarge
-                      //       ?.copyWith(
-                      //     // fontWeight: FontWeightsManager.regular,
-                      //     height: AppSize.s1_5.h,
-                      //     // fontSize: 15,
-                      //     fontFamily:
-                      //     FontConstants.hafsFontFamily,
-                      //     // wordSpacing: 2,
-                      //     // letterSpacing: 0.1,
-                      //   ),),
-                      if (index + 1 == 1 || index + 1 == 2)
+
+
+                      //For the first two pages in the Quran
+                      if (quranPageNumber == 1 || quranPageNumber == 2)
                         Expanded(
                           child: Center(
                             child: Text.rich(
@@ -158,22 +108,23 @@ class SurahBuilderView extends StatelessWidget {
                                     .titleLarge
                                     ?.copyWith(
                                       height: AppSize.s1_5.h,
-                                      fontFamily:
-                                          FontConstants.hafsFontFamily,
+                                      fontFamily: FontConstants.hafsFontFamily,
+                                      fontSize: FontSize.s24
                                       // wordSpacing: 3,
                                       // letterSpacing: 0.1,
                                     ),
                                 TextSpan(
                                   children: [
-                                    for (var ayah in ayahs)
-                                      if (ayah.page == 1)
+                                    if (quranPageNumber == 1) //Surah Al-Fatiha
+
+                                      for (var ayah in ayahs)
                                         TextSpan(
                                           text: ayah.numberInSurah == 1
                                               ? "$surahNameOnScreen\n${ayah.text} ${ayah.numberInSurah.toArabic()} \n\n"
                                               : "${ayah.text} ${ayah.numberInSurah.toArabic()} ",
                                         ),
-                                    for (var ayah in ayahs)
-                                      if (ayah.page != 1)
+                                    if (quranPageNumber == 2) //Surah Al-Baqra
+                                      for (var ayah in ayahs)
                                         TextSpan(
                                           text: ayah.numberInSurah == 1
                                               ? "$surahNameOnScreen\n${AppStrings.basmalah}\n\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
@@ -183,140 +134,178 @@ class SurahBuilderView extends StatelessWidget {
                                 )),
                           ),
                         ),
-                      if (index + 1 != 1 && index + 1 != 2)
+                      //Every page with only one surah in it except the first page of Al-Tawba Surah
+                      if (quranPageNumber != 1 &&
+                          quranPageNumber != 2 &&
+                          quranPageNumber != 187 &&
+                          pageSurahsList.length == 1)
                         Expanded(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               // for (var ayah in ayahs)
-                                Text.rich(
-                                    textAlign: TextAlign.center,
-                                    // textDirection: TextDirection.rtl,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge
-                                        ?.copyWith(
-                                          height: AppSize.s1_5.h,
-                                          fontFamily:
-                                              FontConstants.hafsFontFamily,
-                                          // wordSpacing: 2,
-                                          // letterSpacing: 0.1,
-                                        ),
-                                    TextSpan(
-
-                                      locale: arabicLocale,
-                                      children: [
-                                        for (var ayah in ayahs)
-                                          if (ayah.page != 187)
-                                            TextSpan(
-
+                              Text.rich(
+                                  textAlign: TextAlign.center,
+                                  // textDirection: TextDirection.rtl,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
+                                        height: 1.23.h,
+                                        fontFamily:
+                                            FontConstants.hafsFontFamily,
+                                        // fontSize: 20.sp
+                                        // wordSpacing: 2,
+                                        // letterSpacing: 0.1,
+                                      ),
+                                  TextSpan(
+                                    // locale: arabicLocale,
+                                    children: [
+                                      for (var ayah in ayahs)
+                                        if (ayah == ayahs[0])
+                                          TextSpan(
                                               text: ayah.numberInSurah == 1
                                                   ? "$surahNameOnScreen\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
-                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} ",
-                                            ),
-                                        for (var ayah in ayahs)
-                                          if (ayah.page == 187)
-                                            TextSpan(
-                                              text: ayah.numberInSurah == 1
-                                                  ? "$surahNameOnScreen\n${ayah.text} ${ayah.numberInSurah.toArabic()} "
-                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} ",
-                                            ),
-                                      ],
-                                    )),
+                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
+                                      for (var ayah in ayahs)
+                                        if (ayah != ayahs[0])
+                                          TextSpan(
+                                              text:
+                                                  "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
+                                    ],
+                                  )),
                             ],
                           ),
                         ),
 
-                      // for (var ayah in ayahs)
-                      // _ayahBuilder(ayah, context),
-                      // Expanded(
-                      //   child: Text.rich(
-                      //       // style:
-                      //       textAlign: TextAlign.center,
-                      //       textDirection: TextDirection.rtl,
-                      //       style: Theme.of(context)
-                      //           .textTheme
-                      //           .bodyLarge
-                      //           ?.copyWith(
-                      //             height: AppSize.s1_5.h,
-                      //             fontFamily: FontConstants.elMessiriFontFamily,
-                      //             wordSpacing: 3,
-                      //             letterSpacing: 0.1,
-                      //           ),
-                      //       TextSpan(children: [
-                      //         for (var ayah in ayahs)
-                      //           TextSpan(
-                      //             text:
-                      //                 "${ayah.text} \uFD3F${ayah.numberInSurah.toArabic()}\uFD3E ",
-                      //             // textAlign: TextAlign.right,
-                      //             // textDirection: TextDirection.rtl,
-                      //             // style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      //             //       height: AppSize.s1_5.h,
-                      //             //       fontFamily: FontConstants.meQuranFontFamily,
-                      //             //       wordSpacing: 3,
-                      //             //       letterSpacing: 0.1,
-                      //             //     ),
-                      //           ),
-                      //       ])),
-                      // ),
-                      //     for (var ayah in ayahs)
-                      //       if (index == 0)
-                      //         Row(
-                      //           children: [
-                      //             Text(
-                      //                 ayah.text,
-                      //                 textAlign: TextAlign.right,
-                      //                 textDirection: TextDirection.rtl,
-                      //                 style: Theme.of(context)
-                      //                     .textTheme
-                      //                     .bodyLarge
-                      //                     ?.copyWith(
-                      //                       height: AppSize.s1_5.h,
-                      //                       fontFamily: FontConstants
-                      //                           .meQuranFontFamily,
-                      //                       wordSpacing: 3,
-                      //                       letterSpacing: 0.1,
-                      //                     )),
-                      //             Text(
-                      // "\uFD3F${ayah.numberInSurah}\uFD3E",
-                      //                 textAlign: TextAlign.right,
-                      //                 textDirection: TextDirection.rtl,
-                      //                 style: Theme.of(context)
-                      //                     .textTheme
-                      //                     .bodyLarge
-                      //                     ?.copyWith(
-                      //                       height: AppSize.s1_5.h,
-                      //                       fontFamily: FontConstants
-                      //                           .meQuranFontFamily,
-                      //                       wordSpacing: 3,
-                      //                       letterSpacing: 0.1,
-                      //                     )),
-                      //           ],
-                      //         ),
-                      //     for (var ayah in ayahs)
-                      //       if (index != 0)
-                      //         Text(
-                      //             ayah.text.replaceAll(
-                      //                 "${AppStrings.basmalah}ِ",
-                      //                 ""),
-                      //             textAlign: TextAlign.right,
-                      //             textDirection: TextDirection.rtl,
-                      //             style: Theme.of(context)
-                      //                 .textTheme
-                      //                 .bodyLarge
-                      //                 ?.copyWith(
-                      //               height: AppSize.s1_5.h,
-                      //               fontFamily: FontConstants
-                      //                   .meQuranFontFamily,
-                      //               wordSpacing: 3,
-                      //               letterSpacing: 0.1,
-                      //             )),
+                      //Every page with two surah in it
+                      if (pageSurahsList.length == 2)
+                        Expanded(
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text.rich(
+                                  textAlign: TextAlign.center,
+                                  // textDirection: TextDirection.rtl,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
+                                        height: 1.23.h,
+                                        fontFamily:
+                                            FontConstants.hafsFontFamily,
+                                        // fontSize: 20.sp
+                                        // wordSpacing: 2,
+                                        // letterSpacing: 0.1,
+                                      ),
+                                  TextSpan(
+                                    children: [
+                                      for (var ayah in ayahs)
+                                        if (ayah == ayahs[0])
+                                          TextSpan(
+                                              text: ayah.numberInSurah == 1
+                                                  ? "$surahNameOnScreen\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
+                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
+                                      // for (var surah in pageSurahsList)
+                                      for (var ayah in ayahs)
+                                        if (ayah != ayahs[0])
+                                          TextSpan(
+                                              text: ayah.numberInSurah == 1
+                                                  ? "\n\n${pageSurahsNamesList[1]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
+                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
+                                    ],
+                                  )),
+                            ],
+                          ),
+                        ),
+
+                      //Every page with three surah in it
+                      if (pageSurahsList.length == 3)
+                        Expanded(
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text.rich(
+                                  textAlign: TextAlign.center,
+                                  // textDirection: TextDirection.rtl,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
+                                        height: 1.1.h,
+                                        fontFamily:
+                                            FontConstants.hafsFontFamily,
+                                        fontSize: 22.sp
+                                        // wordSpacing: 2,
+                                        // letterSpacing: 0.1,
+                                      ),
+                                  TextSpan(
+                                    children: [
+                                      for (var ayah in pageSurahsList[0].ayahs)
+                                        if (ayah.page == quranPageNumber)
+                                          TextSpan(
+                                              text: ayah.numberInSurah == 1
+                                                  ? "${pageSurahsNamesList[0]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
+                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
+                                      for (var ayah in pageSurahsList[1].ayahs)
+                                        if (ayah.page == quranPageNumber)
+                                          TextSpan(
+                                              text: ayah.numberInSurah == 1
+                                                  ? "\n\n${pageSurahsNamesList[1]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
+                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
+                                      for (var ayah in pageSurahsList[2].ayahs)
+                                        if (ayah.page == quranPageNumber)
+                                          TextSpan(
+                                              text: ayah.numberInSurah == 1
+                                                  ? "\n\n${pageSurahsNamesList[2]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
+                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
+                                    ],
+                                  )),
+                            ],
+                          ),
+                        ),
+
+                      //For the first page of Al-Tawba Surah
+                      if (quranPageNumber == 187)
+                        Expanded(
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // for (var ayah in ayahs)
+                              Text.rich(
+                                  textAlign: TextAlign.center,
+                                  // textDirection: TextDirection.rtl,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
+                                        height: 1.23.h,
+                                        fontFamily:
+                                            FontConstants.hafsFontFamily,
+                                        // fontSize: 18.sp
+                                        // wordSpacing: 2,
+                                        // letterSpacing: 0.1,
+                                      ),
+                                  TextSpan(
+                                    // locale: arabicLocale,
+                                    children: [
+                                      for (var ayah in ayahs)
+                                        TextSpan(
+                                          text: ayah.numberInSurah == 1
+                                              ? "$surahNameOnScreen\n${ayah.text} ${ayah.numberInSurah.toArabic()} "
+                                              : "${ayah.text} ${ayah.numberInSurah.toArabic()} ",
+                                        ),
+                                    ],
+                                  )),
+                            ],
+                          ),
+                        ),
                       getSeparator(context),
                       Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: AppPadding.p8.h),
                         child: Text(
-                          (index + 1).toString().tr(),
+                          (quranPageNumber).toString().tr(),
                           // "\u06DD${794.toArabic()}\u06DD",
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
@@ -329,86 +318,6 @@ class SurahBuilderView extends StatelessWidget {
                                       Theme.of(context).unselectedWidgetColor),
                         ),
                       ),
-                      // Column(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   crossAxisAlignment: CrossAxisAlignment.center,
-                      //   children: [
-                      //     Padding(
-                      //       padding: EdgeInsets.all(AppPadding.p12.h),
-                      //       child: Column(
-                      //         mainAxisAlignment: MainAxisAlignment.center,
-                      //         crossAxisAlignment: CrossAxisAlignment.center,
-                      //         children: [
-                      //
-                      //           Padding(
-                      //             padding: EdgeInsets.all(AppPadding.p8.h),
-                      //             child: Text(
-                      //               "$count/${surahFromName[index].count
-                      //                   .isEmpty
-                      //                   ? "1"
-                      //                   : surahFromName[index]
-                      //                   .count}",
-                      //               textAlign: TextAlign.center,
-                      //               style: Theme
-                      //                   .of(context)
-                      //                   .textTheme
-                      //                   .bodySmall
-                      //                   ?.copyWith(
-                      //                 height: AppSize.s1.h,
-                      //                 // color:
-                      //                 // // Theme.of(context).unselectedWidgetColor,
-                      //                 // ColorManager.gold),
-                      //               ),
-                      //             ),
-                      //           ),
-                      //           ElevatedButton(
-                      //             style: ElevatedButton.styleFrom(
-                      //               backgroundColor:
-                      //               Theme
-                      //                   .of(context)
-                      //                   .secondaryHeaderColor,
-                      //               enableFeedback: true,
-                      //               shape: RoundedRectangleBorder(
-                      //                 borderRadius:
-                      //                 BorderRadius.circular(AppSize.s8.r),
-                      //               ),
-                      //             ),
-                      //             onPressed: () {
-                      //               cubit.zekrCounter(int.parse(surahFromName[index].count
-                      //                   .isEmpty
-                      //                   ? "1"
-                      //                   : surahFromName[index]
-                      //                   .count), _pageController, index);
-                      //             },
-                      //             child: SvgPicture.asset(
-                      //               ImageAsset.azkarIcon,
-                      //               width: AppSize.s50.h,
-                      //               height: AppSize.s50.h,
-                      //               color: ColorManager.gold,
-                      //               // Theme.of(context).primaryColor,
-                      //             ),
-                      //           ),
-                      //
-                      //         ],
-                      //       ),
-                      //     ),
-                      //
-                      //     // IconButton(
-                      //     //   tooltip: "",
-                      //     //   color: Theme.of(context).secondaryHeaderColor,
-                      //     //   onPressed: () {},
-                      //     //   icon: SvgPicture.asset(
-                      //     //     ImageAsset.azkarIcon,
-                      //     //     width: AppSize.s24.h,
-                      //     //     height: AppSize.s24.h,
-                      //     //     color: ColorManager.gold,
-                      //     //     // Theme.of(context).primaryColor,
-                      //     //   ),
-                      //     // ),
-                      //     // getSeparator(context),
-                      //
-                      //   ],
-                      // ),
                     ],
                   );
                 },
