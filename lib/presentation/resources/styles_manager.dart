@@ -1,12 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
 import 'package:islamic_app/presentation/resources/font_manager.dart';
 
 TextStyle _getTextStyle({
   required double fontSize,
-  String fontFamily =  FontConstants.elMessiriFontFamily,
+  String fontFamily = FontConstants.elMessiriFontFamily,
   required FontWeight fontWeight,
   required Color color,
 }) {
@@ -21,7 +19,7 @@ TextStyle _getTextStyle({
 //regular style
 TextStyle getRegularStyle({
   required double fontSize,
-  String fontFamily =  FontConstants.elMessiriFontFamily,
+  String fontFamily = FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
@@ -35,7 +33,7 @@ TextStyle getRegularStyle({
 //medium style
 TextStyle getMediumStyle({
   required double fontSize,
-  String fontFamily =  FontConstants.elMessiriFontFamily,
+  String fontFamily = FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
@@ -49,7 +47,7 @@ TextStyle getMediumStyle({
 //semi bold style
 TextStyle getSemiBoldStyle({
   required double fontSize,
-  String fontFamily =  FontConstants.elMessiriFontFamily,
+  String fontFamily = FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
@@ -63,7 +61,7 @@ TextStyle getSemiBoldStyle({
 //bold style
 TextStyle getBoldStyle({
   required double fontSize,
-  String fontFamily =  FontConstants.elMessiriFontFamily,
+  String fontFamily = FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(

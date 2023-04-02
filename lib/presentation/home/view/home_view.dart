@@ -20,92 +20,86 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  BlocConsumer<HomeCubit, HomeState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          var cubit = HomeCubit.get(context);
-          int currentIndex = cubit.currentIndex;
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Theme.of(context).primaryColor,
-              title: Text(
-                _viewModel.titles[currentIndex],
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: ColorManager.gold
-                ),
-
-              ),
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var cubit = HomeCubit.get(context);
+        int currentIndex = cubit.currentIndex;
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            title: Text(
+              _viewModel.titles[currentIndex],
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(color: ColorManager.gold),
             ),
-            bottomNavigationBar: BottomNavigationBar(
-              selectedItemColor: ColorManager.gold,
-              // ColorManager.darkSecondary,
-              selectedIconTheme: IconThemeData(
-                  color: ColorManager.gold,
-
-                  // ColorManager.darkSecondary,
-                  size: AppSize.s20.r),
-              selectedLabelStyle: getSemiBoldStyle(fontSize: FontSize.s14),
-              unselectedLabelStyle: getRegularStyle(fontSize: FontSize.s12),
-              unselectedItemColor: Theme.of(context).unselectedWidgetColor,
-              unselectedIconTheme: IconThemeData(
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: ColorManager.gold,
+            selectedIconTheme:
+                IconThemeData(color: ColorManager.gold, size: AppSize.s20.r),
+            selectedLabelStyle: getSemiBoldStyle(fontSize: FontSize.s14),
+            unselectedLabelStyle: getRegularStyle(fontSize: FontSize.s12),
+            unselectedItemColor: Theme.of(context).unselectedWidgetColor,
+            unselectedIconTheme: IconThemeData(
                 color: Theme.of(context).unselectedWidgetColor,
-                  size: AppSize.s20.r
+                size: AppSize.s20.r),
+            // ColorManager.darkGrey,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            enableFeedback: true,
+            currentIndex: currentIndex,
+            onTap: (int index) {
+              cubit.changeBotNavIndex(index);
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  ImageAsset.quranIcon,
+                  width: AppSize.s20.r,
+                  height: AppSize.s20.r,
+                  color: currentIndex == 0
+                      ? ColorManager.gold
+                      : Theme.of(context).unselectedWidgetColor,
+                ),
+                label: AppStrings.quran.tr(),
               ),
-              // ColorManager.darkGrey,
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              enableFeedback: true,
-              currentIndex: currentIndex,
-              onTap: (int index) {
-                // currentIndex = index;
-                cubit.changeBotNavIndex(index);
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    ImageAsset.quranIcon,
-                    width: AppSize.s20.r,
-                    height: AppSize.s20.r,
-                    color: currentIndex == 0
-                        ? ColorManager.gold
-                        : Theme.of(context).unselectedWidgetColor,
-                  ),
-                  label: AppStrings.quran.tr(),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  ImageAsset.hadithIcon,
+                  width: AppSize.s20.r,
+                  height: AppSize.s20.r,
+                  color: currentIndex == 1
+                      ? ColorManager.gold
+                      : Theme.of(context).unselectedWidgetColor,
                 ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    ImageAsset.hadithIcon,
-                    width: AppSize.s20.r,
-                    height: AppSize.s20.r,
-                    color: currentIndex == 1
-                        ? ColorManager.gold
-                        : Theme.of(context).unselectedWidgetColor,
-                  ),
-                  label: AppStrings.hadith.tr(),
+                label: AppStrings.hadith.tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  ImageAsset.azkarIcon,
+                  width: AppSize.s20.r,
+                  height: AppSize.s20.r,
+                  color: currentIndex == 2
+                      ? ColorManager.gold
+                      : Theme.of(context).unselectedWidgetColor,
                 ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    ImageAsset.azkarIcon,
-                    width: AppSize.s20.r,
-                    height: AppSize.s20.r,
-                    color: currentIndex == 2
-                        ? ColorManager.gold
-                        : Theme.of(context).unselectedWidgetColor,
-                  ),
-                  label: AppStrings.azkar.tr(),
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.settings_outlined),
-                  label: AppStrings.settings.tr(),
-                ),
-              ],
-            ),
-            body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
-              child: _viewModel.screens[currentIndex],
-            ),
-          );
-        },
-      );
+                label: AppStrings.azkar.tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.settings_outlined),
+                label: AppStrings.settings.tr(),
+              ),
+            ],
+          ),
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
+            child: _viewModel.screens[currentIndex],
+          ),
+        );
+      },
+    );
   }
 }

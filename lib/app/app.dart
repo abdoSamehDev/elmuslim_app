@@ -28,9 +28,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   final AppPreferences _preferences = instance<AppPreferences>();
-
 
   @override
   void didChangeDependencies() {
@@ -41,42 +39,41 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider(
-                create: (BuildContext context) => instance<HomeCubit>()),
-            BlocProvider(create: (BuildContext context) =>
-            instance<QuranCubit>()
-              ..getQuranData()),
-            BlocProvider(create: (BuildContext context) =>
-            instance<HadithCubit>()
-              ..getHadithData()),
-            BlocProvider(create: (BuildContext context) =>
-            instance<AzkarCubit>()
-              ..getAzkarData()),
-          ],
-          child: BlocConsumer<HomeCubit, HomeState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                locale: context.locale,
-                darkTheme: getApplicationLDarkTheme(),
-                theme: getApplicationLightTheme(),
-                themeMode: _preferences.getAppTheme(),
-                onGenerateRoute: RoutesGenerator.getRoute,
-                initialRoute: Routes.homeRoute,
-              );
-            },
-          ),
-        );
-      }
-    );
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                  create: (BuildContext context) => instance<HomeCubit>()),
+              BlocProvider(
+                  create: (BuildContext context) =>
+                      instance<QuranCubit>()..getQuranData()),
+              BlocProvider(
+                  create: (BuildContext context) =>
+                      instance<HadithCubit>()..getHadithData()),
+              BlocProvider(
+                  create: (BuildContext context) =>
+                      instance<AzkarCubit>()..getAzkarData()),
+            ],
+            child: BlocConsumer<HomeCubit, HomeState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                  darkTheme: getApplicationLDarkTheme(),
+                  theme: getApplicationLightTheme(),
+                  themeMode: _preferences.getAppTheme(),
+                  onGenerateRoute: RoutesGenerator.getRoute,
+                  initialRoute: Routes.homeRoute,
+                );
+              },
+            ),
+          );
+        });
   }
 }

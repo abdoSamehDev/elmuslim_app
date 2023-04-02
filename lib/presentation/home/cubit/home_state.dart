@@ -4,23 +4,10 @@ abstract class HomeState {
   const HomeState();
 }
 
-class HomeInitial extends HomeState {
+class HomeInitial extends HomeState {}
 
+class HomeChangeBotNavIndexState extends HomeState {}
 
-}
+class HomeChangeAppThemeState extends HomeState {}
 
-class HomeChangeBotNavIndexState extends HomeState {
-
-
-}
-
-class HomeChangeAppThemeState extends HomeState {
-
-
-}
-class HomeChangeAppLanguageState extends HomeState {
-
-
-}
-
-
+class HomeChangeAppLanguageState extends HomeState {}

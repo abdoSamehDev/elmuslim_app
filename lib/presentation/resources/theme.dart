@@ -40,14 +40,14 @@ ThemeData getApplicationLightTheme() {
     shadowColor: ColorManager.lightSecondary,
     unselectedWidgetColor: ColorManager.lightGrey,
     //cardView theme
-    cardTheme:  CardTheme(
+    cardTheme: CardTheme(
       color: ColorManager.white,
       shadowColor: ColorManager.lightSecondary,
       elevation: AppSize.s4.r,
     ),
 
     // appBarTheme
-    appBarTheme:  AppBarTheme(
+    appBarTheme: AppBarTheme(
       color: ColorManager.lightPrimary,
       centerTitle: true,
       elevation: AppSize.s4.r,
@@ -65,26 +65,7 @@ ThemeData getApplicationLightTheme() {
       ),
     ),
 
-    iconTheme: IconThemeData(
-        color: ColorManager.black,
-        size: AppSize.s24.r
-    ),
-
-    // bottomNavigationBarTheme
-    // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    //   backgroundColor: ColorManager.lightPrimary,
-    //   elevation: AppSize.s4,
-    //   enableFeedback: true,
-    //   selectedItemColor: ColorManager.white,
-    //   selectedLabelStyle: getSemiBoldStyle(),
-    //   selectedIconTheme: const IconThemeData(
-    //       color: ColorManager.white,
-    //       size: AppSize.s35
-    //   ),
-    //   unselectedItemColor: ColorManager.lightSecondary,
-    //   showSelectedLabels: true,
-    //   showUnselectedLabels: false,
-    // ),
+    iconTheme: IconThemeData(color: ColorManager.black, size: AppSize.s24.r),
 
     //button theme
     buttonTheme: const ButtonThemeData(
@@ -217,7 +198,7 @@ ThemeData getApplicationLDarkTheme() {
     unselectedWidgetColor: ColorManager.darkGrey,
 
     //cardView theme
-    cardTheme:  CardTheme(
+    cardTheme: CardTheme(
         color: ColorManager.white,
         shadowColor: ColorManager.black,
         elevation: AppSize.s4.r),
@@ -241,26 +222,7 @@ ThemeData getApplicationLDarkTheme() {
       ),
     ),
 
-    iconTheme: IconThemeData(
-      color: ColorManager.white,
-      size: AppSize.s24.r
-    ),
-
-    // bottomNavigationBarTheme
-    // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    //   backgroundColor: ColorManager.gold,
-    //   elevation: AppSize.s4,
-    //   enableFeedback: true,
-    //   selectedItemColor: ColorManager.darkSecondary,
-    //   selectedIconTheme: const IconThemeData(
-    //     color: ColorManager.darkSecondary,
-    //     size: AppSize.s35
-    //   ),
-    //   selectedLabelStyle: getSemiBoldStyle(),
-    //   unselectedItemColor: ColorManager.darkGrey,
-    //   showSelectedLabels: true,
-    //   showUnselectedLabels: false,
-    // ),
+    iconTheme: IconThemeData(color: ColorManager.white, size: AppSize.s24.r),
 
     //button theme
     buttonTheme: const ButtonThemeData(
@@ -358,7 +320,7 @@ ThemeData getApplicationLDarkTheme() {
 
       //error border style
       focusedErrorBorder: OutlineInputBorder(
-        borderSide:  BorderSide(
+        borderSide: BorderSide(
           color: ColorManager.error,
           width: AppSize.s1_5.r,
         ),

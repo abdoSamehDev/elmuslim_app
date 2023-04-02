@@ -11,7 +11,7 @@ class HadithModel extends Equatable {
 
   @override
   List<Object?> get props => [
-    description,
-    hadith,
-  ];
+        description,
+        hadith,
+      ];
 }

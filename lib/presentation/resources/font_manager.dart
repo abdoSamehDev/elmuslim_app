@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FontConstants{
+class FontConstants {
   static const String meQuranFontFamily = "me_quran";
   static const String uthmanTNFontFamily = "UthmanTN";
-  // static const String alQalamQuranFontFamily = "Al_Qalam_Quran";
-  // static const String uthmanicScriptHAFSRegularFontFamily = "KFGQPC_Uthmanic_Script_HAFS_Regular";
   static const String elMessiriFontFamily = "ElMessiri";
-  // static const String besmellahFontFamily = "110_Besmellah";
   static const String hafsFontFamily = "Hafs";
-  // static const String hafsSmartFontFamily = "HafsSmart_08";
-  // static const String nabiFontFamily = "Nabi";
 }
 
-class FontWeightsManager{
+class FontWeightsManager {
   static const FontWeight light = FontWeight.w300;
   static const FontWeight regular = FontWeight.w400;
   static const FontWeight medium = FontWeight.w500;

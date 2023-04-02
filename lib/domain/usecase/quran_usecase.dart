@@ -6,14 +6,13 @@ import 'package:islamic_app/domain/usecase/base_usecase.dart';
 
 import '../../app/utils/di.dart';
 
-class QuranUseCase implements BaseUseCase<void, List<QuranModel>>{
+class QuranUseCase implements BaseUseCase<void, List<QuranModel>> {
   final Repository _repository = instance<Repository>();
-
 
   QuranUseCase();
 
   @override
-  Future<Either<Failure, List<QuranModel>>> call(_) async{
-return await _repository.getQuranData();
+  Future<Either<Failure, List<QuranModel>>> call(_) async {
+    return await _repository.getQuranData();
   }
 }

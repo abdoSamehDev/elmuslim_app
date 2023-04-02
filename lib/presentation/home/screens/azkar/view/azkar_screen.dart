@@ -32,7 +32,6 @@ class AzkarScreen extends StatelessWidget {
                 azkarName: azkarCategoryList[index].orEmpty(),
                 azkarList: state.azkarList,
                 index: index,
-                // pageNo: state.azkarList[index].ayahs[0].page.toString(),
                 context: context),
             separatorBuilder: (context, index) => getSeparator(context),
             itemCount: azkarCategoryList.length,
@@ -58,7 +57,7 @@ class AzkarScreen extends StatelessWidget {
       child: ListTile(
         style: ListTileStyle.list,
         leading: Padding(
-          padding:  EdgeInsets.only(top: AppPadding.p5.h),
+          padding: EdgeInsets.only(top: AppPadding.p5.h),
           child: Text(
             azkarId,
             style: Theme.of(context)
@@ -71,12 +70,18 @@ class AzkarScreen extends StatelessWidget {
           azkarName,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontFamily: FontConstants.meQuranFontFamily,
-                wordSpacing: 3,
-                letterSpacing: 0.1,
+                wordSpacing: AppSize.s3.w,
+                letterSpacing: AppSize.s0_1.w,
               ),
         ),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ZekrBuilderView(azkarList: azkarList, category: azkarName,)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ZekrBuilderView(
+                        azkarList: azkarList,
+                        category: azkarName,
+                      )));
         },
       ),
     );

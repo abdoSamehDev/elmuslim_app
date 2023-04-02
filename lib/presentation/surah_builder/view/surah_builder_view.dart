@@ -13,14 +13,10 @@ import 'package:islamic_app/presentation/resources/values.dart';
 
 class SurahBuilderView extends StatelessWidget {
   final List<QuranModel> quranList;
-  final String surahName;
   final int pageNo;
 
   const SurahBuilderView(
-      {Key? key,
-      required this.quranList,
-      required this.surahName,
-      required this.pageNo})
+      {Key? key, required this.quranList, required this.pageNo})
       : super(key: key);
 
   @override
@@ -55,7 +51,7 @@ class SurahBuilderView extends StatelessWidget {
                   final List<String> pageSurahsNamesList =
                       List.of(pageSurahsList.map((surah) => surah.name));
 
-                  final String surahNameOnScreen = pageSurahsNamesList[0];
+                  final String surahNameOnScreen = pageSurahsNamesList.first;
                   final List<AyahModel> ayahs = cubit.getAyahsFromPageNo(
                       quranList: quranList, pageNo: quranPageNumber);
                   return Column(
@@ -65,28 +61,23 @@ class SurahBuilderView extends StatelessWidget {
                         children: [
                           Text(
                             "${AppStrings.juz.tr()}: ${ayahs.first.juz.toString().tr()}، ${AppStrings.hizb.tr()}: ${((ayahs.first.hizbQuarter / 4).ceil()).toString().tr()} ",
-                            // "",
-                            // textDirection: TextDirection.rtl,
                             style: Theme.of(context)
                                 .textTheme
                                 .labelSmall
                                 ?.copyWith(
                                     fontFamily:
                                         FontConstants.uthmanTNFontFamily,
-                                    // height: AppSize.s1.h,
                                     color: Theme.of(context)
                                         .unselectedWidgetColor),
                           ),
                           Text(
                             surahNameOnScreen,
-                            // textDirection: TextDirection.RTL,
                             style: Theme.of(context)
                                 .textTheme
                                 .labelSmall
                                 ?.copyWith(
-                                    // height: AppSize.s1.h,
-                                    wordSpacing: 5.w,
-                                    letterSpacing: 0.1.w,
+                                    wordSpacing: AppSize.s5.w,
+                                    letterSpacing: AppSize.s0_1.w,
                                     fontFamily: FontConstants.meQuranFontFamily,
                                     color: Theme.of(context)
                                         .unselectedWidgetColor),
@@ -95,24 +86,20 @@ class SurahBuilderView extends StatelessWidget {
                       ),
                       getSeparator(context),
 
-
                       //For the first two pages in the Quran
                       if (quranPageNumber == 1 || quranPageNumber == 2)
                         Expanded(
                           child: Center(
                             child: Text.rich(
                                 textAlign: TextAlign.center,
-                                // textDirection: TextDirection.rtl,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge
                                     ?.copyWith(
-                                      height: AppSize.s1_5.h,
-                                      fontFamily: FontConstants.hafsFontFamily,
-                                      fontSize: FontSize.s24
-                                      // wordSpacing: 3,
-                                      // letterSpacing: 0.1,
-                                    ),
+                                        height: AppSize.s1_5.h,
+                                        fontFamily:
+                                            FontConstants.hafsFontFamily,
+                                        fontSize: FontSize.s24),
                                 TextSpan(
                                   children: [
                                     if (quranPageNumber == 1) //Surah Al-Fatiha
@@ -141,34 +128,27 @@ class SurahBuilderView extends StatelessWidget {
                           pageSurahsList.length == 1)
                         Expanded(
                           child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              // for (var ayah in ayahs)
                               Text.rich(
                                   textAlign: TextAlign.center,
-                                  // textDirection: TextDirection.rtl,
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge
                                       ?.copyWith(
-                                        height: 1.23.h,
+                                        height: AppSize.s1_23.h,
                                         fontFamily:
                                             FontConstants.hafsFontFamily,
-                                        // fontSize: 20.sp
-                                        // wordSpacing: 2,
-                                        // letterSpacing: 0.1,
                                       ),
                                   TextSpan(
-                                    // locale: arabicLocale,
                                     children: [
                                       for (var ayah in ayahs)
-                                        if (ayah == ayahs[0])
+                                        if (ayah == ayahs.first)
                                           TextSpan(
                                               text: ayah.numberInSurah == 1
                                                   ? "$surahNameOnScreen\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
                                                   : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
                                       for (var ayah in ayahs)
-                                        if (ayah != ayahs[0])
+                                        if (ayah != ayahs.first)
                                           TextSpan(
                                               text:
                                                   "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
@@ -182,33 +162,27 @@ class SurahBuilderView extends StatelessWidget {
                       if (pageSurahsList.length == 2)
                         Expanded(
                           child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text.rich(
                                   textAlign: TextAlign.center,
-                                  // textDirection: TextDirection.rtl,
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge
                                       ?.copyWith(
-                                        height: 1.23.h,
+                                        height: AppSize.s1_23.h,
                                         fontFamily:
                                             FontConstants.hafsFontFamily,
-                                        // fontSize: 20.sp
-                                        // wordSpacing: 2,
-                                        // letterSpacing: 0.1,
                                       ),
                                   TextSpan(
                                     children: [
                                       for (var ayah in ayahs)
-                                        if (ayah == ayahs[0])
+                                        if (ayah == ayahs.first)
                                           TextSpan(
                                               text: ayah.numberInSurah == 1
                                                   ? "$surahNameOnScreen\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
                                                   : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
-                                      // for (var surah in pageSurahsList)
                                       for (var ayah in ayahs)
-                                        if (ayah != ayahs[0])
+                                        if (ayah != ayahs.first)
                                           TextSpan(
                                               text: ayah.numberInSurah == 1
                                                   ? "\n\n${pageSurahsNamesList[1]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
@@ -223,29 +197,24 @@ class SurahBuilderView extends StatelessWidget {
                       if (pageSurahsList.length == 3)
                         Expanded(
                           child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text.rich(
                                   textAlign: TextAlign.center,
-                                  // textDirection: TextDirection.rtl,
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge
                                       ?.copyWith(
-                                        height: 1.1.h,
-                                        fontFamily:
-                                            FontConstants.hafsFontFamily,
-                                        fontSize: 22.sp
-                                        // wordSpacing: 2,
-                                        // letterSpacing: 0.1,
-                                      ),
+                                          height: AppSize.s1_1.h,
+                                          fontFamily:
+                                              FontConstants.hafsFontFamily,
+                                          fontSize: 22.sp),
                                   TextSpan(
                                     children: [
-                                      for (var ayah in pageSurahsList[0].ayahs)
+                                      for (var ayah in pageSurahsList.first.ayahs)
                                         if (ayah.page == quranPageNumber)
                                           TextSpan(
                                               text: ayah.numberInSurah == 1
-                                                  ? "${pageSurahsNamesList[0]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
+                                                  ? "${pageSurahsNamesList.first}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
                                                   : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
                                       for (var ayah in pageSurahsList[1].ayahs)
                                         if (ayah.page == quranPageNumber)
@@ -269,25 +238,18 @@ class SurahBuilderView extends StatelessWidget {
                       if (quranPageNumber == 187)
                         Expanded(
                           child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              // for (var ayah in ayahs)
                               Text.rich(
                                   textAlign: TextAlign.center,
-                                  // textDirection: TextDirection.rtl,
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge
                                       ?.copyWith(
-                                        height: 1.23.h,
+                                        height: AppSize.s1_23.h,
                                         fontFamily:
                                             FontConstants.hafsFontFamily,
-                                        // fontSize: 18.sp
-                                        // wordSpacing: 2,
-                                        // letterSpacing: 0.1,
                                       ),
                                   TextSpan(
-                                    // locale: arabicLocale,
                                     children: [
                                       for (var ayah in ayahs)
                                         TextSpan(
@@ -306,7 +268,6 @@ class SurahBuilderView extends StatelessWidget {
                             EdgeInsets.symmetric(vertical: AppPadding.p8.h),
                         child: Text(
                           (quranPageNumber).toString().tr(),
-                          // "\u06DD${794.toArabic()}\u06DD",
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
                               .textTheme
@@ -328,49 +289,4 @@ class SurahBuilderView extends StatelessWidget {
       },
     );
   }
-
-// Widget _surahsIndexItem(
-//     {required surahId, required surahName, required surahNoOfAyahs}) {
-//   return ListTile(
-//     leading: Text(surahId),
-//     title: Text(surahName),
-//     trailing: Text(surahNoOfAyahs),
-//     onTap: () {},
-//   );
-// }
-//
-// Widget _ayahBuilder(AyahModel ayah, BuildContext context) {
-//   return Row(
-//     mainAxisSize: MainAxisSize.min,
-//     children: [
-//       Text.rich(TextSpan(children: [
-//         TextSpan(
-//           text: ayah.text,
-//           // textAlign: TextAlign.right,
-//           // textDirection: TextDirection.rtl,
-//           // style: Theme.of(context).textTheme.bodySmall?.copyWith(
-//           //       height: AppSize.s1_5.h,
-//           //       fontFamily: FontConstants.meQuranFontFamily,
-//           //       wordSpacing: 3,
-//           //       letterSpacing: 0.1,
-//           //     ),
-//         ),
-//         // SizedBox(
-//         //   width: AppSize.s5.w,
-//         // ),
-//         TextSpan(
-//           text: "\uFD3F${ayah.numberInSurah}\uFD3E",
-//           // textAlign: TextAlign.right,
-//           // textDirection: TextDirection.rtl,
-//           // style: Theme.of(context).textTheme.bodySmall?.copyWith(
-//           //       height: AppSize.s1_5.h,
-//           //       fontFamily: FontConstants.meQuranFontFamily,
-//           //       wordSpacing: 3,
-//           //       letterSpacing: 0.1,
-//           //     ),
-//         ),
-//       ]))
-//     ],
-//   );
-// }
 }

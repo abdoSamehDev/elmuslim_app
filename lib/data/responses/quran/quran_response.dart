@@ -1,10 +1,9 @@
-
 import 'package:json_annotation/json_annotation.dart';
+
 part 'quran_response.g.dart';
 
-
 @JsonSerializable()
-class AyahResponse{
+class AyahResponse {
   @JsonKey(name: "number")
   int number;
   @JsonKey(name: "text")
@@ -18,19 +17,25 @@ class AyahResponse{
   @JsonKey(name: "hizbQuarter")
   int hizbQuarter;
 
-
-  AyahResponse(this.number, this.text, this.numberInSurah, this.juz, this.page,
-      this.hizbQuarter, );
+  AyahResponse(
+    this.number,
+    this.text,
+    this.numberInSurah,
+    this.juz,
+    this.page,
+    this.hizbQuarter,
+  );
 
   //from Json
-factory AyahResponse.fromJson(Map<String, dynamic> json) => _$AyahResponseFromJson(json);
+  factory AyahResponse.fromJson(Map<String, dynamic> json) =>
+      _$AyahResponseFromJson(json);
 
 //to Json
-Map<String, dynamic> toJson() => _$AyahResponseToJson(this);
+  Map<String, dynamic> toJson() => _$AyahResponseToJson(this);
 }
 
 @JsonSerializable()
-class QuranResponse{
+class QuranResponse {
   @JsonKey(name: "number")
   int number;
   @JsonKey(name: "name")
@@ -48,7 +53,8 @@ class QuranResponse{
       this.englishNameTranslation, this.revelationType, this.ayahs);
 
   //from Json
-  factory QuranResponse.fromJson(Map<String, dynamic> json) => _$QuranResponseFromJson(json);
+  factory QuranResponse.fromJson(Map<String, dynamic> json) =>
+      _$QuranResponseFromJson(json);
 
 //to Json
   Map<String, dynamic> toJson() => _$QuranResponseToJson(this);

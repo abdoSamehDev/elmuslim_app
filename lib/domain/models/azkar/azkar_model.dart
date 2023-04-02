@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 class AzkarModel extends Equatable {
- final String category;
- final String count;
- final String description;
- final String reference;
- final String zekr;
+  final String category;
+  final String count;
+  final String description;
+  final String reference;
+  final String zekr;
 
- const AzkarModel({
+  const AzkarModel({
     required this.category,
     required this.count,
     required this.description,
@@ -17,10 +17,10 @@ class AzkarModel extends Equatable {
 
   @override
   List<Object> get props => [
-    category,
-    count,
-    description,
-   reference,
-    zekr,
-  ];
+        category,
+        count,
+        description,
+        reference,
+        zekr,
+      ];
 }

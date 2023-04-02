@@ -7,6 +7,7 @@ import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
 import 'package:islamic_app/presentation/resources/font_manager.dart';
+import 'package:islamic_app/presentation/resources/language_manager.dart';
 import 'package:islamic_app/presentation/resources/values.dart';
 import 'package:islamic_app/presentation/surah_builder/view/surah_builder_view.dart';
 
@@ -18,6 +19,13 @@ class QuranScreen extends StatelessWidget {
     return BlocConsumer<QuranCubit, QuranState>(
       listener: (context, state) {},
       builder: (context, state) {
+        //Get Current App Locale
+        final currentLocale = context.locale;
+
+        //Check if current app language is English
+        bool isEnglish =
+            currentLocale.languageCode == LanguageType.english.getValue();
+
         if (state is QuranGetDataLoadingState) {
           return const Center(
               child: CircularProgressIndicator(color: ColorManager.gold));
@@ -27,8 +35,10 @@ class QuranScreen extends StatelessWidget {
             itemBuilder: (context, index) => _surahsIndexItem(
                 surahId: (index + 1).toString().tr(),
                 surahName: state.quranList[index].name,
+                englishSurahName: state.quranList[index].englishName,
                 pageNo: state.quranList[index].ayahs[0].page,
                 quranList: state.quranList,
+                isEnglish: isEnglish,
                 context: context),
             separatorBuilder: (context, index) => getSeparator(context),
             itemCount: state.quranList.length,
@@ -45,15 +55,17 @@ class QuranScreen extends StatelessWidget {
   Widget _surahsIndexItem(
       {required String surahId,
       required String surahName,
+      required String englishSurahName,
       required int pageNo,
-        required List<QuranModel> quranList,
+      required List<QuranModel> quranList,
+      required bool isEnglish,
       required BuildContext context}) {
     return Padding(
       padding: EdgeInsets.only(bottom: AppPadding.p5.h),
       child: ListTile(
         style: ListTileStyle.list,
         leading: Padding(
-          padding:  EdgeInsets.only(top: AppPadding.p5.h),
+          padding: EdgeInsets.only(top: AppPadding.p5.h),
           child: Text(
             surahId,
             style: Theme.of(context)
@@ -62,12 +74,26 @@ class QuranScreen extends StatelessWidget {
                 ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
           ),
         ),
-        title: Text(
-          surahName,
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge
-              ?.copyWith(fontFamily: FontConstants.meQuranFontFamily, wordSpacing: 5.w, letterSpacing: 0.1.w),
+        title: Padding(
+          padding: EdgeInsets.symmetric(vertical: AppPadding.p5.h),
+          child: Text(
+            isEnglish ? englishSurahName : surahName,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontFamily: FontConstants.meQuranFontFamily,
+                wordSpacing: AppSize.s5.w,
+                letterSpacing: AppSize.s0_1.w),
+          ),
+        ),
+        subtitle: Padding(
+          padding: EdgeInsets.symmetric(vertical: AppPadding.p5.h),
+          child: Text(
+            isEnglish ? surahName : englishSurahName,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                fontFamily: FontConstants.meQuranFontFamily,
+                color: Theme.of(context).unselectedWidgetColor,
+                wordSpacing: AppSize.s5.w,
+                letterSpacing: AppSize.s0_1.w),
+          ),
         ),
         trailing: Text(
           pageNo.toString().tr(),
@@ -77,7 +103,12 @@ class QuranScreen extends StatelessWidget {
               ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
         ),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SurahBuilderView(quranList: quranList, surahName: surahName,pageNo: pageNo),));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    SurahBuilderView(quranList: quranList, pageNo: pageNo),
+              ));
         },
       ),
     );

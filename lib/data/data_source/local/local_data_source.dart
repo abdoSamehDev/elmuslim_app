@@ -9,34 +9,37 @@ const String quranPath = "assets/json/quran.json";
 const String hadithPath = "assets/json/40_hadith_nawawi.json";
 const String azkarPath = "assets/json/azkar.json";
 
-
-abstract class LocalDataSource{
+abstract class LocalDataSource {
   Future<List<QuranResponse>> getQuranData();
+
   Future<List<HadithResponse>> getHadithData();
+
   Future<List<AzkarResponse>> getAzkarData();
 }
 
-class LocalDataSourceImpl implements LocalDataSource{
+class LocalDataSourceImpl implements LocalDataSource {
   @override
-  Future<List<AzkarResponse>> getAzkarData() async{
+  Future<List<AzkarResponse>> getAzkarData() async {
     final jsonString = await fetchDataFromJson(azkarPath);
     final data = jsonDecode(jsonString);
     // return data;
-    return List<AzkarResponse>.from((data as List).map((e) => AzkarResponse.fromJson(e)));
+    return List<AzkarResponse>.from(
+        (data as List).map((e) => AzkarResponse.fromJson(e)));
   }
 
   @override
-  Future<List<HadithResponse>> getHadithData() async{
+  Future<List<HadithResponse>> getHadithData() async {
     final jsonString = await fetchDataFromJson(hadithPath);
     final data = jsonDecode(jsonString);
-    return List<HadithResponse>.from((data as List).map((e) => HadithResponse.fromJson(e)));
+    return List<HadithResponse>.from(
+        (data as List).map((e) => HadithResponse.fromJson(e)));
   }
 
   @override
-  Future<List<QuranResponse>> getQuranData()  async{
+  Future<List<QuranResponse>> getQuranData() async {
     final jsonString = await fetchDataFromJson(quranPath);
     final data = jsonDecode(jsonString);
-    return List<QuranResponse>.from((data as List).map((e) => QuranResponse.fromJson(e)));
+    return List<QuranResponse>.from(
+        (data as List).map((e) => QuranResponse.fromJson(e)));
   }
-
 }

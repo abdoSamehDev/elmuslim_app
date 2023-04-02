@@ -16,12 +16,14 @@ class HadithBuilderView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(hadithModel.hadith.orEmpty().split('''
+        title: Text(
+          hadithModel.hadith.orEmpty().split('''
 
 ''')[0].orEmpty(),
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: ColorManager.gold
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: ColorManager.gold),
         ),
       ),
       body: Padding(
@@ -39,17 +41,16 @@ class HadithBuilderView extends StatelessWidget {
 ''')[1].orEmpty(),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  height: AppSize.s1_5.h,
-                ),
+                      height: AppSize.s1_5.h,
+                    ),
               ),
               getSeparator(context),
               Text(
                 hadithModel.description.orEmpty(),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  height: AppSize.s1.h,
-                  color:  Theme.of(context).unselectedWidgetColor
-                ),
+                    height: AppSize.s1.h,
+                    color: Theme.of(context).unselectedWidgetColor),
               ),
             ],
           ),

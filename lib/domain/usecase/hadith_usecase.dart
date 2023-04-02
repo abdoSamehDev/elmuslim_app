@@ -5,9 +5,8 @@ import 'package:islamic_app/domain/models/hadith/hadith_model.dart';
 import 'package:islamic_app/domain/repository/repository.dart';
 import 'package:islamic_app/domain/usecase/base_usecase.dart';
 
-class HadithUseCase implements BaseUseCase<void, List<HadithModel>>{
+class HadithUseCase implements BaseUseCase<void, List<HadithModel>> {
   final Repository _repository = instance<Repository>();
-
 
   HadithUseCase();
 

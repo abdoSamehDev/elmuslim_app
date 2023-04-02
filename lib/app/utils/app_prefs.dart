@@ -14,7 +14,7 @@ class AppPreferences {
 
   AppPreferences();
 
-  String getAppLanguage()  {
+  String getAppLanguage() {
     String? language = _preferences.getString(prefsLangKey);
     if (language != null && language.isNotEmpty) {
       return language;
@@ -23,8 +23,8 @@ class AppPreferences {
     }
   }
 
-   changeAppLanguage()  {
-    String currentLanguage =  getAppLanguage();
+  changeAppLanguage() {
+    String currentLanguage = getAppLanguage();
     if (currentLanguage == LanguageType.arabic.getValue()) {
       _preferences.setString(prefsLangKey, LanguageType.english.getValue());
     } else {
@@ -41,7 +41,7 @@ class AppPreferences {
     }
   }
 
-  ThemeMode getAppTheme()  {
+  ThemeMode getAppTheme() {
     String? themeMode = _preferences.getString(themeModeKey);
     if (themeMode != null && themeMode.isNotEmpty) {
       if (themeMode == ThemeType.dark.getValue()) {
@@ -54,7 +54,7 @@ class AppPreferences {
     }
   }
 
-  void  changeAppTheme() {
+  void changeAppTheme() {
     ThemeMode currentTheme = getAppTheme();
     if (currentTheme == ThemeMode.dark) {
       _preferences.setString(themeModeKey, ThemeType.light.getValue());

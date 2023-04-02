@@ -8,13 +8,13 @@ import 'package:islamic_app/app/utils/di.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-
   final AppPreferences _preferences = instance<AppPreferences>();
+
   HomeCubit() : super(HomeInitial());
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
-int currentIndex = 0;
+  int currentIndex = 0;
 
   void changeBotNavIndex(int index) {
     currentIndex = index;
@@ -23,27 +23,19 @@ int currentIndex = 0;
 
   late bool isDarkModeOn;
 
-  bool isDarkMode(BuildContext context){
+  bool isDarkMode(BuildContext context) {
     final Brightness brightness = MediaQuery.of(context).platformBrightness;
     print(brightness);
     isDarkModeOn = brightness == Brightness.dark ? true : false;
     return isDarkModeOn;
   }
 
-  // void changeAppTheme(bool? value, BuildContext context){
-  //   isDarkMode(context);
-  //   isDarkModeOn = value!;
-  //
-  //   emit(HomeChangeAppThemeState());
-  // }
-
-  bool darkModeOn(BuildContext context){
-
+  bool darkModeOn(BuildContext context) {
     final currentThemeMode = _preferences.getAppTheme();
     return currentThemeMode == ThemeMode.dark;
   }
 
-  void changeAppTheme(){
+  void changeAppTheme() {
     _preferences.changeAppTheme();
 
     emit(HomeChangeAppThemeState());

@@ -8,7 +8,6 @@ class AyahModel extends Equatable {
   final int page;
   final int hizbQuarter;
 
-
   const AyahModel({
     required this.number,
     required this.text,
@@ -16,7 +15,6 @@ class AyahModel extends Equatable {
     required this.juz,
     required this.page,
     required this.hizbQuarter,
-
   });
 
   @override
@@ -27,7 +25,6 @@ class AyahModel extends Equatable {
         juz,
         page,
         hizbQuarter,
-
       ];
 }
 

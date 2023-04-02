@@ -24,22 +24,13 @@ Future initAppModule() async {
   instance.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
 
   //app prefs instance
-  instance.registerLazySingleton<AppPreferences>(
-      () => AppPreferences());
+  instance.registerLazySingleton<AppPreferences>(() => AppPreferences());
 
   //BLoC
   instance.registerFactory<HomeCubit>(() => HomeCubit());
   instance.registerFactory<QuranCubit>(() => QuranCubit());
   instance.registerFactory<HadithCubit>(() => HadithCubit());
   instance.registerFactory<AzkarCubit>(() => AzkarCubit());
-
-  //UseCases
-  // instance.registerFactory<QuranUseCase>(
-  //     () => QuranUseCase(instance<Repository>()));
-  // instance.registerFactory<HadithUseCase>(
-  //     () => HadithUseCase());
-  // instance.registerFactory<AzkarUseCase>(
-  //     () => AzkarUseCase());
 
   //Repository
   instance.registerLazySingleton<Repository>(
@@ -50,9 +41,6 @@ Future initAppModule() async {
 
   //Page Controller
   instance.registerFactory<PageController>(() => PageController());
-
-  //ViewModels
-  // instance.registerFactory<ZekrBuilderViewModel>(() => ZekrBuilderViewModel());
 }
 
 void initQuranModule() {
@@ -65,13 +53,11 @@ void initQuranModule() {
 void initHadithModule() {
   if (!GetIt.I.isRegistered<HadithUseCase>()) {
     instance.registerFactory<HadithUseCase>(() => HadithUseCase());
-    // instance.registerFactory<HomeViewModel>(() => HomeViewModel());
   }
 }
 
 void initAzkarModule() {
   if (!GetIt.I.isRegistered<AzkarUseCase>()) {
     instance.registerFactory<AzkarUseCase>(() => AzkarUseCase());
-    // instance.registerFactory<HomeViewModel>(() => HomeViewModel());
   }
 }

@@ -13,8 +13,7 @@ import 'package:islamic_app/domain/models/quran/quran_model.dart';
 
 import '../../domain/repository/repository.dart';
 
-class RepositoryImpl implements Repository{
-
+class RepositoryImpl implements Repository {
   final LocalDataSource _localDataSource;
 
   RepositoryImpl(this._localDataSource);
@@ -24,7 +23,7 @@ class RepositoryImpl implements Repository{
     final data = await _localDataSource.getAzkarData();
     try {
       return Right(data.map((e) => e.toDomain()).toList());
-    } on LocalException catch(failure) {
+    } on LocalException catch (failure) {
       return Left(LocalFailure(failure.message));
     }
   }
@@ -34,7 +33,7 @@ class RepositoryImpl implements Repository{
     final data = await _localDataSource.getHadithData();
     try {
       return Right(data.map((e) => e.toDomain()).toList());
-    } on LocalException catch(failure) {
+    } on LocalException catch (failure) {
       return Left(LocalFailure(failure.message));
     }
   }
@@ -44,7 +43,7 @@ class RepositoryImpl implements Repository{
     final data = await _localDataSource.getQuranData();
     try {
       return Right(data.map((e) => e.toDomain()).toList());
-    } on LocalException catch(failure) {
+    } on LocalException catch (failure) {
       return Left(LocalFailure(failure.message));
     }
   }

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-enum LanguageType{
+enum LanguageType {
   english,
   arabic,
 }
@@ -13,10 +13,9 @@ const String arabic = "ar";
 const Locale englishLocale = Locale("en");
 const Locale arabicLocale = Locale("ar");
 
-extension LanguageTypeExtension on LanguageType{
-  String getValue(){
-    switch(this){
-
+extension LanguageTypeExtension on LanguageType {
+  String getValue() {
+    switch (this) {
       case LanguageType.english:
         return english;
       case LanguageType.arabic:

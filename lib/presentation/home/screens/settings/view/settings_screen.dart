@@ -15,12 +15,9 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {
-
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
-        // bool darkMode = cubit.isDarkModeOn;
         bool darkMode = cubit.darkModeOn(context);
         return ListView(
           children: [
@@ -31,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
                 AppStrings.changeAppLanguageIcon.tr(),
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontFamily: FontConstants.elMessiriFontFamily,
-                      height: 1.8.h,
+                      height: AppSize.s1_8.h,
                     ),
               ),
               onTap: () {
@@ -44,14 +41,13 @@ class SettingsScreen extends StatelessWidget {
               icon: Icons.brightness_2_outlined,
               settingName: AppStrings.changeAppTheme.tr(),
               trailing: Switch(
-                overlayColor: MaterialStateColor.resolveWith(
-                    (states) {
-                      if (states.contains(MaterialState.selected)) {
-                        return ColorManager.lightPrimary;
-                      } else {
-                        return ColorManager.gold;
-                      }
-                    }),
+                overlayColor: MaterialStateColor.resolveWith((states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return ColorManager.lightPrimary;
+                  } else {
+                    return ColorManager.gold;
+                  }
+                }),
                 activeTrackColor: ColorManager.darkSecondary,
                 thumbIcon: MaterialStateProperty.resolveWith((states) {
                   if (states.contains(MaterialState.selected)) {
@@ -101,7 +97,6 @@ class SettingsScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: AppPadding.p5.h),
       child: ListTile(
-        // style: ListTileStyle.list,
         leading: Padding(
           padding: EdgeInsets.only(top: AppPadding.p5.h),
           child: Icon(
@@ -113,9 +108,9 @@ class SettingsScreen extends StatelessWidget {
           settingName,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontFamily: FontConstants.elMessiriFontFamily,
-                wordSpacing: 3.w,
-                letterSpacing: 0.5.w,
-                height: 2.4.h,
+                wordSpacing: AppSize.s3.w,
+                letterSpacing: AppSize.s0_5.w,
+                height: AppSize.s2_4.h,
               ),
         ),
         trailing: trailing,
