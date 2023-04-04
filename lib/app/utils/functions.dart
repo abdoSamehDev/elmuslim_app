@@ -19,7 +19,7 @@ double calculateFontSize(int noOfChars) {
   } else if (400 < noOfChars && noOfChars < 600) {
     fontSize = FontSize.s20;
   } else if (600 < noOfChars && noOfChars < 800) {
-    fontSize = FontSize.s18;
+    fontSize = FontSize.s17;
   } else if (800 < noOfChars && noOfChars < 1000) {
     fontSize = FontSize.s16;
   } else {

@@ -12,6 +12,7 @@ import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.da
 import 'package:islamic_app/presentation/resources/assets_manager.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
 import 'package:islamic_app/presentation/resources/font_manager.dart';
+import 'package:islamic_app/presentation/resources/language_manager.dart';
 import 'package:islamic_app/presentation/resources/strings_manager.dart';
 import 'package:islamic_app/presentation/resources/values.dart';
 
@@ -32,6 +33,12 @@ class ZekrBuilderView extends StatelessWidget {
 
         final List<AzkarModel> azkarFromCategory = cubit.getAzkarFromCategory(
             azkarList: azkarList, category: category);
+        //Get Current App Locale
+        final currentLocale = context.locale;
+
+        //Check if current app language is English
+        bool isEnglish =
+            currentLocale.languageCode == LanguageType.english.getValue();
         return Scaffold(
           appBar: AppBar(
             title: Text(
@@ -45,11 +52,11 @@ class ZekrBuilderView extends StatelessWidget {
           body: Padding(
             padding: EdgeInsets.all(AppPadding.p8.r),
             child: PageView.builder(
+              reverse: isEnglish,
               controller: _pageController,
               itemCount: azkarFromCategory.length,
               itemBuilder: (BuildContext context, int index) {
                 int count = cubit.count;
-                print(count);
                 return Column(
                   children: [
                     Padding(

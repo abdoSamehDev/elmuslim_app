@@ -19,22 +19,23 @@ class AzkarScreen extends StatelessWidget {
     return BlocConsumer<AzkarCubit, AzkarState>(
       listener: (context, state) {},
       builder: (context, state) {
+        AzkarCubit cubit = AzkarCubit.get(context);
         if (state is AzkarGetDataLoadingState) {
           return const Center(
               child: CircularProgressIndicator(color: ColorManager.gold));
         } else if (state is AzkarGetDataSuccessState) {
-          List<String> azkarCategoryList =
-              List.from(state.azkarList.map((e) => e.category).toSet());
           return ListView.separated(
             physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) => _azkarIndexItem(
+            itemBuilder: (context, index) {
+              return _azkarIndexItem(
                 azkarId: (index + 1).toString().tr(),
-                azkarName: azkarCategoryList[index].orEmpty(),
+                azkarName: cubit.getAzkarCategories(azkarList: state.azkarList)[index].orEmpty(),
                 azkarList: state.azkarList,
                 index: index,
-                context: context),
+                context: context);
+            },
             separatorBuilder: (context, index) => getSeparator(context),
-            itemCount: azkarCategoryList.length,
+            itemCount: cubit.getAzkarCategories(azkarList: state.azkarList).length,
           );
         } else if (state is AzkarGetDataErrorState) {
           return Container();

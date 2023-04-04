@@ -21,14 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeChangeBotNavIndexState());
   }
 
-  late bool isDarkModeOn;
 
-  bool isDarkMode(BuildContext context) {
-    final Brightness brightness = MediaQuery.of(context).platformBrightness;
-    print(brightness);
-    isDarkModeOn = brightness == Brightness.dark ? true : false;
-    return isDarkModeOn;
-  }
 
   bool darkModeOn(BuildContext context) {
     final currentThemeMode = _preferences.getAppTheme();

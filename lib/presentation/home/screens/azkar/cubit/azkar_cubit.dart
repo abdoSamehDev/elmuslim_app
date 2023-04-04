@@ -29,6 +29,13 @@ class AzkarCubit extends Cubit<AzkarState> {
     return azkar;
   }
 
+  List<String> getAzkarCategories(
+      {required List<AzkarModel> azkarList,}) {
+    List<String> azkarCategories =
+    List.from(azkarList.map((e) => e.category).toSet());
+    return azkarCategories;
+  }
+
   int count = 0;
 
   void zekrCounter(int maxCounts, PageController controller, int index) {
