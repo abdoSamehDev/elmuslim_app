@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -92,6 +93,7 @@ class SurahBuilderView extends StatelessWidget {
                           child: Center(
                             child: Text.rich(
                                 textAlign: TextAlign.center,
+                                textDirection: ui.TextDirection.rtl,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge
@@ -132,6 +134,7 @@ class SurahBuilderView extends StatelessWidget {
                         Expanded(
                           child: Center(
                             child: Text.rich(
+                                textDirection: ui.TextDirection.rtl,
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
@@ -167,6 +170,7 @@ class SurahBuilderView extends StatelessWidget {
                         Expanded(
                           child: Center(
                             child: Text.rich(
+                                textDirection: ui.TextDirection.rtl,
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
@@ -203,6 +207,7 @@ class SurahBuilderView extends StatelessWidget {
                         Expanded(
                           child: Center(
                             child: Text.rich(
+                                textDirection: ui.TextDirection.rtl,
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
@@ -246,6 +251,7 @@ class SurahBuilderView extends StatelessWidget {
                         Expanded(
                           child: Center(
                             child: Text.rich(
+                                textDirection: ui.TextDirection.rtl,
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
