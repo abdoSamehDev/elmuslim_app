@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islamic_app/app/utils/di.dart';
 import 'package:islamic_app/app/utils/extensions.dart';
 import 'package:islamic_app/domain/models/azkar/azkar_model.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
@@ -16,7 +17,9 @@ class AzkarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AzkarCubit, AzkarState>(
+    return BlocProvider(
+  create: (BuildContext context) => instance<AzkarCubit>()..getAzkarData(),
+  child: BlocConsumer<AzkarCubit, AzkarState>(
       listener: (context, state) {},
       builder: (context, state) {
         AzkarCubit cubit = AzkarCubit.get(context);
@@ -43,7 +46,8 @@ class AzkarScreen extends StatelessWidget {
           return Container();
         }
       },
-    );
+    ),
+);
   }
 
   Widget _azkarIndexItem(
