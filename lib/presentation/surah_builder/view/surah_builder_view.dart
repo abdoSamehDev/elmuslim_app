@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/app/utils/extensions.dart';
+import 'package:islamic_app/app/utils/functions.dart';
 import 'package:islamic_app/domain/models/quran/quran_model.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
@@ -96,10 +96,13 @@ class SurahBuilderView extends StatelessWidget {
                                     .textTheme
                                     .titleLarge
                                     ?.copyWith(
-                                        height: AppSize.s1_5.h,
-                                        fontFamily:
-                                            FontConstants.hafsFontFamily,
-                                        fontSize: FontSize.s24),
+                                      height: AppSize.s1_5.h,
+                                      fontFamily:
+                                          FontConstants.meQuranFontFamily,
+                                      fontSize:
+                                          calculateQuranPageFontSize(ayahs, 1),
+                                      wordSpacing: AppSize.s3.w,
+                                    ),
                                 TextSpan(
                                   children: [
                                     if (quranPageNumber == 1) //Surah Al-Fatiha
@@ -107,15 +110,15 @@ class SurahBuilderView extends StatelessWidget {
                                       for (var ayah in ayahs)
                                         TextSpan(
                                           text: ayah.numberInSurah == 1
-                                              ? "$surahNameOnScreen\n${ayah.text} ${ayah.numberInSurah.toArabic()} \n\n"
-                                              : "${ayah.text} ${ayah.numberInSurah.toArabic()} ",
+                                              ? "$surahNameOnScreen\n${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}\n\n"
+                                              : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}",
                                         ),
                                     if (quranPageNumber == 2) //Surah Al-Baqra
                                       for (var ayah in ayahs)
                                         TextSpan(
                                           text: ayah.numberInSurah == 1
-                                              ? "$surahNameOnScreen\n${AppStrings.basmalah}\n\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
-                                              : "${ayah.text} ${ayah.numberInSurah.toArabic()} ",
+                                              ? "$surahNameOnScreen\n${AppStrings.basmalah}\n\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")}${getAyahNumberWithSymbol(ayah.numberInSurah)}"
+                                              : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}",
                                         ),
                                   ],
                                 )),
@@ -127,139 +130,144 @@ class SurahBuilderView extends StatelessWidget {
                           quranPageNumber != 187 &&
                           pageSurahsList.length == 1)
                         Expanded(
-                          child: Column(
-                            children: [
-                              Text.rich(
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.copyWith(
-                                        height: AppSize.s1_23.h,
-                                        fontFamily:
-                                            FontConstants.hafsFontFamily,
-                                      ),
-                                  TextSpan(
-                                    children: [
-                                      for (var ayah in ayahs)
-                                        if (ayah == ayahs.first)
-                                          TextSpan(
-                                              text: ayah.numberInSurah == 1
-                                                  ? "$surahNameOnScreen\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
-                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
-                                      for (var ayah in ayahs)
-                                        if (ayah != ayahs.first)
-                                          TextSpan(
-                                              text:
-                                                  "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
-                                    ],
-                                  )),
-                            ],
+                          child: Center(
+                            child: Text.rich(
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                      height: AppSize.s1_5.h,
+                                      fontFamily:
+                                          FontConstants.meQuranFontFamily,
+                                      fontSize:
+                                          calculateQuranPageFontSize(ayahs, 1),
+                                      wordSpacing: AppSize.s3.w,
+                                    ),
+                                TextSpan(
+                                  children: [
+                                    for (var ayah in ayahs)
+                                      if (ayah == ayahs.first)
+                                        TextSpan(
+                                            text: ayah.numberInSurah == 1
+                                                ? "$surahNameOnScreen\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")}${getAyahNumberWithSymbol(ayah.numberInSurah)}"
+                                                : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}"),
+                                    for (var ayah in ayahs)
+                                      if (ayah != ayahs.first)
+                                        TextSpan(
+                                            text:
+                                                "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}"),
+                                  ],
+                                )),
                           ),
                         ),
 
                       //Every page with two surah in it
                       if (pageSurahsList.length == 2)
                         Expanded(
-                          child: Column(
-                            children: [
-                              Text.rich(
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.copyWith(
-                                        height: AppSize.s1_23.h,
-                                        fontFamily:
-                                            FontConstants.hafsFontFamily,
-                                      ),
-                                  TextSpan(
-                                    children: [
-                                      for (var ayah in ayahs)
-                                        if (ayah == ayahs.first)
-                                          TextSpan(
-                                              text: ayah.numberInSurah == 1
-                                                  ? "$surahNameOnScreen\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
-                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
-                                      for (var ayah in ayahs)
-                                        if (ayah != ayahs.first)
-                                          TextSpan(
-                                              text: ayah.numberInSurah == 1
-                                                  ? "\n\n${pageSurahsNamesList[1]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
-                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
-                                    ],
-                                  )),
-                            ],
+                          child: Center(
+                            child: Text.rich(
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                      height: AppSize.s1_5.h,
+                                      fontFamily:
+                                          FontConstants.meQuranFontFamily,
+                                      fontSize:
+                                          calculateQuranPageFontSize(ayahs, 2),
+                                      wordSpacing: AppSize.s3.w,
+                                    ),
+                                TextSpan(
+                                  children: [
+                                    for (var ayah in ayahs)
+                                      if (ayah == ayahs.first)
+                                        TextSpan(
+                                            text: ayah.numberInSurah == 1
+                                                ? "$surahNameOnScreen\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")}${getAyahNumberWithSymbol(ayah.numberInSurah)}"
+                                                : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}"),
+                                    for (var ayah in ayahs)
+                                      if (ayah != ayahs.first)
+                                        TextSpan(
+                                            text: ayah.numberInSurah == 1
+                                                ? "\n\n${pageSurahsNamesList[1]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")}${getAyahNumberWithSymbol(ayah.numberInSurah)}"
+                                                : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}"),
+                                  ],
+                                )),
                           ),
                         ),
 
                       //Every page with three surah in it
                       if (pageSurahsList.length == 3)
                         Expanded(
-                          child: Column(
-                            children: [
-                              Text.rich(
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.copyWith(
-                                          height: AppSize.s1_1.h,
-                                          fontFamily:
-                                              FontConstants.hafsFontFamily,
-                                          fontSize: 22.sp),
-                                  TextSpan(
-                                    children: [
-                                      for (var ayah in pageSurahsList.first.ayahs)
-                                        if (ayah.page == quranPageNumber)
-                                          TextSpan(
-                                              text: ayah.numberInSurah == 1
-                                                  ? "${pageSurahsNamesList.first}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
-                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
-                                      for (var ayah in pageSurahsList[1].ayahs)
-                                        if (ayah.page == quranPageNumber)
-                                          TextSpan(
-                                              text: ayah.numberInSurah == 1
-                                                  ? "\n\n${pageSurahsNamesList[1]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
-                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
-                                      for (var ayah in pageSurahsList[2].ayahs)
-                                        if (ayah.page == quranPageNumber)
-                                          TextSpan(
-                                              text: ayah.numberInSurah == 1
-                                                  ? "\n\n${pageSurahsNamesList[2]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")} ${ayah.numberInSurah.toArabic()} "
-                                                  : "${ayah.text} ${ayah.numberInSurah.toArabic()} "),
-                                    ],
-                                  )),
-                            ],
+                          child: Center(
+                            child: Text.rich(
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                      height: AppSize.s1_5.h,
+                                      fontFamily:
+                                          FontConstants.meQuranFontFamily,
+                                      fontSize:
+                                          calculateQuranPageFontSize(ayahs, 3),
+                                      wordSpacing: AppSize.s3.w,
+                                    ),
+                                TextSpan(
+                                  children: [
+                                    for (var ayah
+                                        in pageSurahsList.first.ayahs)
+                                      if (ayah.page == quranPageNumber)
+                                        TextSpan(
+                                            text: ayah.numberInSurah == 1
+                                                ? "${pageSurahsNamesList.first}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")}${getAyahNumberWithSymbol(ayah.numberInSurah)}"
+                                                : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}"),
+                                    for (var ayah in pageSurahsList[1].ayahs)
+                                      if (ayah.page == quranPageNumber)
+                                        TextSpan(
+                                            text: ayah.numberInSurah == 1
+                                                ? "\n\n${pageSurahsNamesList[1]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")}${getAyahNumberWithSymbol(ayah.numberInSurah)}"
+                                                : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}"),
+                                    for (var ayah in pageSurahsList[2].ayahs)
+                                      if (ayah.page == quranPageNumber)
+                                        TextSpan(
+                                            text: ayah.numberInSurah == 1
+                                                ? "\n\n${pageSurahsNamesList[2]}\n${AppStrings.basmalah}\n${ayah.text.replaceAll("${AppStrings.basmalah}ِ", "")}${getAyahNumberWithSymbol(ayah.numberInSurah)}"
+                                                : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}"),
+                                  ],
+                                )),
                           ),
                         ),
 
                       //For the first page of Al-Tawba Surah
                       if (quranPageNumber == 187)
                         Expanded(
-                          child: Column(
-                            children: [
-                              Text.rich(
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.copyWith(
-                                        height: AppSize.s1_23.h,
-                                        fontFamily:
-                                            FontConstants.hafsFontFamily,
+                          child: Center(
+                            child: Text.rich(
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                      height: AppSize.s1_5.h,
+                                      fontFamily:
+                                          FontConstants.meQuranFontFamily,
+                                      fontSize:
+                                          calculateQuranPageFontSize(ayahs, 1),
+                                      wordSpacing: AppSize.s3.w,
+                                    ),
+                                TextSpan(
+                                  children: [
+                                    for (var ayah in ayahs)
+                                      TextSpan(
+                                        text: ayah.numberInSurah == 1
+                                            ? "$surahNameOnScreen\n${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}"
+                                            : "${ayah.text}${getAyahNumberWithSymbol(ayah.numberInSurah)}",
                                       ),
-                                  TextSpan(
-                                    children: [
-                                      for (var ayah in ayahs)
-                                        TextSpan(
-                                          text: ayah.numberInSurah == 1
-                                              ? "$surahNameOnScreen\n${ayah.text} ${ayah.numberInSurah.toArabic()} "
-                                              : "${ayah.text} ${ayah.numberInSurah.toArabic()} ",
-                                        ),
-                                    ],
-                                  )),
-                            ],
+                                  ],
+                                )),
                           ),
                         ),
                       getSeparator(context),

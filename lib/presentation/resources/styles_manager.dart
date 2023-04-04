@@ -19,12 +19,10 @@ TextStyle _getTextStyle({
 //regular style
 TextStyle getRegularStyle({
   required double fontSize,
-  String fontFamily = FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
     fontSize: fontSize,
-    fontFamily: fontFamily,
     fontWeight: FontWeightsManager.regular,
     color: color,
   );
@@ -33,12 +31,10 @@ TextStyle getRegularStyle({
 //medium style
 TextStyle getMediumStyle({
   required double fontSize,
-  String fontFamily = FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
     fontSize: fontSize,
-    fontFamily: fontFamily,
     fontWeight: FontWeightsManager.medium,
     color: color,
   );
@@ -47,12 +43,10 @@ TextStyle getMediumStyle({
 //semi bold style
 TextStyle getSemiBoldStyle({
   required double fontSize,
-  String fontFamily = FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
     fontSize: fontSize,
-    fontFamily: fontFamily,
     fontWeight: FontWeightsManager.semiBold,
     color: color,
   );
@@ -61,12 +55,10 @@ TextStyle getSemiBoldStyle({
 //bold style
 TextStyle getBoldStyle({
   required double fontSize,
-  String fontFamily = FontConstants.elMessiriFontFamily,
   Color color = ColorManager.white,
 }) {
   return _getTextStyle(
     fontSize: fontSize,
-    fontFamily: fontFamily,
     fontWeight: FontWeightsManager.bold,
     color: color,
   );

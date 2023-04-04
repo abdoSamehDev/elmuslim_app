@@ -4,6 +4,7 @@ import 'package:islamic_app/app/utils/extensions.dart';
 import 'package:islamic_app/domain/models/hadith/hadith_model.dart';
 import 'package:islamic_app/presentation/common/components/components.dart';
 import 'package:islamic_app/presentation/resources/color_manager.dart';
+import 'package:islamic_app/presentation/resources/font_manager.dart';
 import 'package:islamic_app/presentation/resources/values.dart';
 
 class HadithBuilderView extends StatelessWidget {
@@ -49,6 +50,7 @@ class HadithBuilderView extends StatelessWidget {
                 hadithModel.description.orEmpty(),
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontFamily: FontConstants.elMessiriFontFamily,
                     height: AppSize.s1.h,
                     color: Theme.of(context).unselectedWidgetColor),
               ),
