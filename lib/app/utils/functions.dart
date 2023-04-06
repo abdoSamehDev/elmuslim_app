@@ -13,17 +13,17 @@ Future<String> fetchDataFromJson(String jsonPath) async {
 double calculateFontSize(int noOfChars) {
   double fontSize = 0.0;
   if (0 < noOfChars && noOfChars < 200) {
-    fontSize = FontSize.s24;
+    fontSize = FontSize.s23;
   } else if (200 < noOfChars && noOfChars < 400) {
-    fontSize = FontSize.s22;
+    fontSize = FontSize.s21;
   } else if (400 < noOfChars && noOfChars < 600) {
-    fontSize = FontSize.s20;
+    fontSize = FontSize.s19;
   } else if (600 < noOfChars && noOfChars < 800) {
-    fontSize = FontSize.s17;
-  } else if (800 < noOfChars && noOfChars < 1000) {
     fontSize = FontSize.s16;
+  } else if (800 < noOfChars && noOfChars < 1000) {
+    fontSize = FontSize.s15;
   } else {
-    fontSize = FontSize.s14;
+    fontSize = FontSize.s11_5;
   }
   return fontSize;
 }
@@ -48,21 +48,21 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
     } else if (noOfSurahs == 2){
       fontSize = FontSize.s22;
     } else if (noOfSurahs == 3){
-      fontSize = FontSize.s19;
+      fontSize = FontSize.s14;
     }
 
   } else if (noOfChars <= 1000) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s18_3; //K
+      fontSize = FontSize.s18; //K
     } else if (noOfSurahs == 2){
-      fontSize = FontSize.s17; //K
+      fontSize = FontSize.s14_5; //K
     } else if (noOfSurahs == 3){
-      fontSize = FontSize.s16_4; //K
+      fontSize = FontSize.s16; //K
     }
 
   } else if (noOfChars <= 1050) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s17_3;
+      fontSize = FontSize.s16;
     } else if (noOfSurahs == 2){
       fontSize = FontSize.s16;
     } else if (noOfSurahs == 3){
@@ -71,36 +71,36 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
 
   } else if (noOfChars <= 1100) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s18_5; //K
+      fontSize = FontSize.s18; //K
     } else if (noOfSurahs == 2){
-      fontSize = FontSize.s15_9; //K
+      fontSize = FontSize.s14; //K
     } else if (noOfSurahs == 3){
       fontSize = FontSize.s16_3; //K
     }
 
   } else if (noOfChars <= 1150) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s17_3; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 2){
-      fontSize = FontSize.s16_4; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 3){
       fontSize = FontSize.s16; //K
     }
 
   } else if (noOfChars <= 1200) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s17; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 2){
-      fontSize = FontSize.s16_4; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 3){
       fontSize = FontSize.s15_5; //K
     }
 
   } else if (noOfChars <= 1250) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s16_8; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 2){
-      fontSize = FontSize.s16_4; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 3){
       fontSize = FontSize.s16; //K
     }
@@ -116,7 +116,7 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
 
   } else if (noOfChars <= 1350) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s17; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 2){
       fontSize = FontSize.s16_3; //K
     } else if (noOfSurahs == 3){
@@ -125,7 +125,7 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
 
   } else if (noOfChars <= 1400) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s16_4;
+      fontSize = FontSize.s16;
     } else if (noOfSurahs == 2){
       fontSize = FontSize.s16_3;
     } else if (noOfSurahs == 3){
@@ -134,7 +134,7 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
 
   } else if (noOfChars <= 1450) {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s16_4; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 2){
       fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 3){
@@ -143,7 +143,7 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
 
   } else {
     if (noOfSurahs == 1) {
-      fontSize = FontSize.s16_4; //K
+      fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 2){
       fontSize = FontSize.s16; //K
     } else if (noOfSurahs == 3){
@@ -217,9 +217,9 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
 double calculateFontLineHeight(int noOfChars) {
   double lineHeight = 0.0;
   if (0 < noOfChars && noOfChars < 500) {
-    lineHeight = AppSize.s1_8.h;
+    lineHeight = AppSize.s1_23.h;
   } else if (500 < noOfChars && noOfChars < 1000) {
-    lineHeight = AppSize.s1_8.h;
+    lineHeight = AppSize.s1_23.h;
   } else {
     lineHeight = AppSize.s1_23.h;
   }

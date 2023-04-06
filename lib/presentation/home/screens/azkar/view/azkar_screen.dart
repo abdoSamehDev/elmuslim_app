@@ -18,36 +18,39 @@ class AzkarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-  create: (BuildContext context) => instance<AzkarCubit>()..getAzkarData(),
-  child: BlocConsumer<AzkarCubit, AzkarState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        AzkarCubit cubit = AzkarCubit.get(context);
-        if (state is AzkarGetDataLoadingState) {
-          return const Center(
-              child: CircularProgressIndicator(color: ColorManager.gold));
-        } else if (state is AzkarGetDataSuccessState) {
-          return ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return _azkarIndexItem(
-                azkarId: (index + 1).toString().tr(),
-                azkarName: cubit.getAzkarCategories(azkarList: state.azkarList)[index].orEmpty(),
-                azkarList: state.azkarList,
-                index: index,
-                context: context);
-            },
-            separatorBuilder: (context, index) => getSeparator(context),
-            itemCount: cubit.getAzkarCategories(azkarList: state.azkarList).length,
-          );
-        } else if (state is AzkarGetDataErrorState) {
-          return Container();
-        } else {
-          return Container();
-        }
-      },
-    ),
-);
+      create: (BuildContext context) => instance<AzkarCubit>()..getAzkarData()..resetCounter(),
+      child: BlocConsumer<AzkarCubit, AzkarState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          AzkarCubit cubit = AzkarCubit.get(context);
+          if (state is AzkarGetDataLoadingState) {
+            return const Center(
+                child: CircularProgressIndicator(color: ColorManager.gold));
+          } else if (state is AzkarGetDataSuccessState) {
+            return ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return _azkarIndexItem(
+                    azkarId: (index + 1).toString().tr(),
+                    azkarName: cubit
+                        .getAzkarCategories(azkarList: state.azkarList)[index]
+                        .orEmpty(),
+                    azkarList: state.azkarList,
+                    index: index,
+                    context: context);
+              },
+              separatorBuilder: (context, index) => getSeparator(context),
+              itemCount:
+                  cubit.getAzkarCategories(azkarList: state.azkarList).length,
+            );
+          } else if (state is AzkarGetDataErrorState) {
+            return Container();
+          } else {
+            return Container();
+          }
+        },
+      ),
+    );
   }
 
   Widget _azkarIndexItem(

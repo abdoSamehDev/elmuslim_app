@@ -53,4 +53,9 @@ class AzkarCubit extends Cubit<AzkarState> {
 
     emit(AzkarCounterState());
   }
+
+  void resetCounter(){
+    count = 0;
+    emit(AzkarCounterResetState());
+  }
 }

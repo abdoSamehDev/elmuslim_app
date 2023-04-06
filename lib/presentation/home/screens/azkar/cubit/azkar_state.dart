@@ -21,3 +21,5 @@ class AzkarGetDataErrorState extends AzkarState {
 }
 
 class AzkarCounterState extends AzkarState {}
+
+class AzkarCounterResetState extends AzkarState {}

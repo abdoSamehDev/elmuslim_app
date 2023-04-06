@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamic_app/app/utils/app_prefs.dart';
 import 'package:islamic_app/app/utils/di.dart';
 import 'package:islamic_app/presentation/home/cubit/home_cubit.dart';
-import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
 import 'package:islamic_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
 import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:islamic_app/presentation/resources/routes_manager.dart';
@@ -53,9 +52,6 @@ class _MyAppState extends State<MyApp> {
               BlocProvider(
                   create: (BuildContext context) =>
                       instance<HadithCubit>()..getHadithData()),
-              BlocProvider(
-                  create: (BuildContext context) =>
-                      instance<AzkarCubit>()..getAzkarData()),
             ],
             child: BlocConsumer<HomeCubit, HomeState>(
               listener: (context, state) {},
