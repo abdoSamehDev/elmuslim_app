@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:islamic_app/app/utils/functions.dart';
-import 'package:islamic_app/data/responses/azkar/azkar_response.dart';
-import 'package:islamic_app/data/responses/hadith/hadith_response.dart';
-import 'package:islamic_app/data/responses/quran/quran_response.dart';
+import 'package:elmuslim_app/app/utils/functions.dart';
+import 'package:elmuslim_app/data/responses/azkar/azkar_response.dart';
+import 'package:elmuslim_app/data/responses/hadith/hadith_response.dart';
+import 'package:elmuslim_app/data/responses/quran/quran_response.dart';
 
 const String quranPath = "assets/json/quran.json";
 const String hadithPath = "assets/json/40_hadith_nawawi.json";

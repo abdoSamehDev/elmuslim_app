@@ -1,4 +1,4 @@
-import 'package:islamic_app/app/utils/constants.dart';
+import 'package:elmuslim_app/app/utils/constants.dart';
 
 extension NonNulString on String? {
   String orEmpty() {

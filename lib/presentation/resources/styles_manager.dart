@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islamic_app/presentation/resources/color_manager.dart';
-import 'package:islamic_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/color_manager.dart';
+import 'package:elmuslim_app/presentation/resources/font_manager.dart';
 
 TextStyle _getTextStyle({
   required double fontSize,

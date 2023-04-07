@@ -2,16 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/app/utils/di.dart';
-import 'package:islamic_app/presentation/home/cubit/home_cubit.dart';
-import 'package:islamic_app/presentation/home/viewmodel/home_viewmodel.dart';
-import 'package:islamic_app/presentation/resources/assets_manager.dart';
-import 'package:islamic_app/presentation/resources/color_manager.dart';
-import 'package:islamic_app/presentation/resources/font_manager.dart';
-import 'package:islamic_app/presentation/resources/strings_manager.dart';
+import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
+import 'package:elmuslim_app/presentation/home/viewmodel/home_viewmodel.dart';
+import 'package:elmuslim_app/presentation/resources/assets_manager.dart';
+import 'package:elmuslim_app/presentation/resources/color_manager.dart';
+import 'package:elmuslim_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:islamic_app/presentation/resources/styles_manager.dart';
-import 'package:islamic_app/presentation/resources/values.dart';
+import 'package:elmuslim_app/presentation/resources/styles_manager.dart';
+import 'package:elmuslim_app/presentation/resources/values.dart';
 
 class HomeView extends StatelessWidget {
   final HomeViewModel _viewModel = instance<HomeViewModel>();

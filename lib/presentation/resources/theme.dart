@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/presentation/resources/color_manager.dart';
-import 'package:islamic_app/presentation/resources/font_manager.dart';
-import 'package:islamic_app/presentation/resources/styles_manager.dart';
-import 'package:islamic_app/presentation/resources/values.dart';
+import 'package:elmuslim_app/presentation/resources/color_manager.dart';
+import 'package:elmuslim_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/styles_manager.dart';
+import 'package:elmuslim_app/presentation/resources/values.dart';
 
 enum ThemeType {
   dark,

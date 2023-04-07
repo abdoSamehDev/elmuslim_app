@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:islamic_app/presentation/home/screens/azkar/view/azkar_screen.dart';
-import 'package:islamic_app/presentation/home/screens/hadith/view/hadith_screen.dart';
-import 'package:islamic_app/presentation/home/screens/quran/view/quran_screen.dart';
-import 'package:islamic_app/presentation/home/screens/settings/view/settings_screen.dart';
-import 'package:islamic_app/presentation/resources/strings_manager.dart';
+import 'package:elmuslim_app/presentation/home/screens/azkar/view/azkar_screen.dart';
+import 'package:elmuslim_app/presentation/home/screens/hadith/view/hadith_screen.dart';
+import 'package:elmuslim_app/presentation/home/screens/quran/view/quran_screen.dart';
+import 'package:elmuslim_app/presentation/home/screens/settings/view/settings_screen.dart';
+import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
 
 class HomeViewModel {
   HomeViewModel();

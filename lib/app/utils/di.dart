@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
-import 'package:islamic_app/app/utils/app_prefs.dart';
-import 'package:islamic_app/data/data_source/local/local_data_source.dart';
-import 'package:islamic_app/data/repository/repository_impl.dart';
-import 'package:islamic_app/domain/repository/repository.dart';
-import 'package:islamic_app/domain/usecase/azkar_usecase.dart';
-import 'package:islamic_app/domain/usecase/hadith_usecase.dart';
-import 'package:islamic_app/domain/usecase/quran_usecase.dart';
-import 'package:islamic_app/presentation/home/cubit/home_cubit.dart';
-import 'package:islamic_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
-import 'package:islamic_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
-import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
+import 'package:elmuslim_app/app/utils/app_prefs.dart';
+import 'package:elmuslim_app/data/data_source/local/local_data_source.dart';
+import 'package:elmuslim_app/data/repository/repository_impl.dart';
+import 'package:elmuslim_app/domain/repository/repository.dart';
+import 'package:elmuslim_app/domain/usecase/azkar_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/hadith_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/quran_usecase.dart';
+import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../presentation/home/viewmodel/home_viewmodel.dart';

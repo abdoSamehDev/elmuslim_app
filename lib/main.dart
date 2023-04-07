@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:islamic_app/app/app.dart';
-import 'package:islamic_app/app/utils/di.dart';
-import 'package:islamic_app/presentation/common/bloc_observer.dart';
-import 'package:islamic_app/presentation/resources/language_manager.dart';
+import 'package:elmuslim_app/app/app.dart';
+import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/presentation/common/bloc_observer.dart';
+import 'package:elmuslim_app/presentation/resources/language_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

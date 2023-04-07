@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/domain/models/quran/quran_model.dart';
-import 'package:islamic_app/presentation/common/components/components.dart';
-import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
-import 'package:islamic_app/presentation/resources/color_manager.dart';
-import 'package:islamic_app/presentation/resources/font_manager.dart';
-import 'package:islamic_app/presentation/resources/language_manager.dart';
-import 'package:islamic_app/presentation/resources/values.dart';
-import 'package:islamic_app/presentation/surah_builder/view/surah_builder_view.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/presentation/common/components/components.dart';
+import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
+import 'package:elmuslim_app/presentation/resources/color_manager.dart';
+import 'package:elmuslim_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/language_manager.dart';
+import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:elmuslim_app/presentation/surah_builder/view/surah_builder_view.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({Key? key}) : super(key: key);

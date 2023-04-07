@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/presentation/resources/values.dart';
+import 'package:elmuslim_app/presentation/resources/values.dart';
 
 Widget getSeparator(BuildContext context) {
   return Padding(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:islamic_app/app/utils/di.dart';
-import 'package:islamic_app/domain/models/azkar/azkar_model.dart';
-import 'package:islamic_app/domain/usecase/azkar_usecase.dart';
-import 'package:islamic_app/domain/usecase/base_usecase.dart';
+import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/domain/models/azkar/azkar_model.dart';
+import 'package:elmuslim_app/domain/usecase/azkar_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/base_usecase.dart';
 import '../../../../../app/utils/constants.dart';
 
 part 'azkar_state.dart';

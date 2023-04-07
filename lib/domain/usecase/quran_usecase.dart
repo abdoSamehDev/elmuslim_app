@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:islamic_app/app/error/failure.dart';
-import 'package:islamic_app/domain/models/quran/quran_model.dart';
-import 'package:islamic_app/domain/repository/repository.dart';
-import 'package:islamic_app/domain/usecase/base_usecase.dart';
+import 'package:elmuslim_app/app/error/failure.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/domain/repository/repository.dart';
+import 'package:elmuslim_app/domain/usecase/base_usecase.dart';
 
 import '../../app/utils/di.dart';
 

@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
-import 'package:islamic_app/app/error/exception.dart';
+import 'package:elmuslim_app/app/error/exception.dart';
 
-import 'package:islamic_app/app/error/failure.dart';
-import 'package:islamic_app/data/data_source/local/local_data_source.dart';
-import 'package:islamic_app/data/mapper/mapper.dart';
+import 'package:elmuslim_app/app/error/failure.dart';
+import 'package:elmuslim_app/data/data_source/local/local_data_source.dart';
+import 'package:elmuslim_app/data/mapper/mapper.dart';
 
-import 'package:islamic_app/domain/models/azkar/azkar_model.dart';
+import 'package:elmuslim_app/domain/models/azkar/azkar_model.dart';
 
-import 'package:islamic_app/domain/models/hadith/hadith_model.dart';
+import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
 
-import 'package:islamic_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
 
 import '../../domain/repository/repository.dart';
 

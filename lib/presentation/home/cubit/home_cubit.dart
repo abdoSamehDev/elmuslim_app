@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:islamic_app/app/utils/app_prefs.dart';
-import 'package:islamic_app/app/utils/di.dart';
+import 'package:elmuslim_app/app/utils/app_prefs.dart';
+import 'package:elmuslim_app/app/utils/di.dart';
 
 part 'home_state.dart';
 

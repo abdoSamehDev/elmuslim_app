@@ -2,13 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/app/utils/app_prefs.dart';
-import 'package:islamic_app/app/utils/di.dart';
-import 'package:islamic_app/presentation/home/cubit/home_cubit.dart';
-import 'package:islamic_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
-import 'package:islamic_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
-import 'package:islamic_app/presentation/resources/routes_manager.dart';
-import 'package:islamic_app/presentation/resources/theme.dart';
+import 'package:elmuslim_app/app/utils/app_prefs.dart';
+import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
+import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
+import 'package:elmuslim_app/presentation/resources/theme.dart';
 
 class MyApp extends StatefulWidget {
   // const MyApp({Key? key}) : super(key: key);

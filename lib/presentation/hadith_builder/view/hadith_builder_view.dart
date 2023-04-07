@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/app/utils/extensions.dart';
-import 'package:islamic_app/domain/models/hadith/hadith_model.dart';
-import 'package:islamic_app/presentation/common/components/components.dart';
-import 'package:islamic_app/presentation/resources/color_manager.dart';
-import 'package:islamic_app/presentation/resources/font_manager.dart';
-import 'package:islamic_app/presentation/resources/values.dart';
+import 'package:elmuslim_app/app/utils/extensions.dart';
+import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
+import 'package:elmuslim_app/presentation/common/components/components.dart';
+import 'package:elmuslim_app/presentation/resources/color_manager.dart';
+import 'package:elmuslim_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/values.dart';
 
 class HadithBuilderView extends StatelessWidget {
   final HadithModel hadithModel;

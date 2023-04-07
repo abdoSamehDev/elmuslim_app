@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islamic_app/app/utils/extensions.dart';
-import 'package:islamic_app/domain/models/hadith/hadith_model.dart';
-import 'package:islamic_app/presentation/common/components/components.dart';
-import 'package:islamic_app/presentation/hadith_builder/view/hadith_builder_view.dart';
-import 'package:islamic_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
-import 'package:islamic_app/presentation/resources/color_manager.dart';
-import 'package:islamic_app/presentation/resources/font_manager.dart';
-import 'package:islamic_app/presentation/resources/values.dart';
+import 'package:elmuslim_app/app/utils/extensions.dart';
+import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
+import 'package:elmuslim_app/presentation/common/components/components.dart';
+import 'package:elmuslim_app/presentation/hadith_builder/view/hadith_builder_view.dart';
+import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
+import 'package:elmuslim_app/presentation/resources/color_manager.dart';
+import 'package:elmuslim_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/values.dart';
 
 class HadithScreen extends StatelessWidget {
   const HadithScreen({Key? key}) : super(key: key);
