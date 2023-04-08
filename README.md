@@ -4,6 +4,8 @@
   <img src="/assets/images/splash.png" width="300" height="auto" alt="App Logo">
 </p>
 
+Test
+
 
 
 El Muslim is your daily guide to Islamic practices and beliefs, providing a comprehensive resource for reading the Holy Quran, the Forty Hadiths an-Nawawi, and daily supplications. With a user-friendly interface and night mode option, the app is optimized for a variety of screen sizes for easy reading on your phone or tablet.
