@@ -36,17 +36,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.4
-  json_serializable: ^6.6.1
-  json_annotation: ^4.8.0
-  analyzer: ^5.8.0
   build_runner: ^2.3.3
   dartz: ^0.10.1
   shared_preferences: ^2.0.18
-  internet_connection_checker: ^1.0.0+1
-  freezed: ^2.3.2
-  freezed_annotation: ^2.2.0
   get_it: ^7.2.0
-  lottie: ^2.3.0
   easy_localization: ^3.0.1
   flutter_phoenix: ^1.1.0
   flutter_native_splash: ^2.2.19
