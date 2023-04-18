@@ -1,4 +1,4 @@
-package com.abdoSamehDev.islamic_app
+package com.abdoSamehDev.elMuslim_app
 
 import io.flutter.embedding.android.FlutterActivity
 
