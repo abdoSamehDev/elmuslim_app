@@ -20,8 +20,8 @@ class HomeViewModel {
 
   List<String> titles = [
     AppStrings.quran.tr(),
-    AppStrings.hadith.tr(),
-    AppStrings.azkar.tr(),
+    AppStrings.nawawi.tr(),
+    AppStrings.azkarDoaa.tr(),
     AppStrings.settings.tr(),
   ];
 }

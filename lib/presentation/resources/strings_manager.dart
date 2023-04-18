@@ -10,7 +10,9 @@ class AppStrings {
   static const String hizb = "hizb";
   static const String basmalah = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيم";
   static const String hadith = "hadith";
+  static const String nawawi = "40_nawawi";
   static const String azkar = "azkar";
+  static const String azkarDoaa = "azkar_doaa";
   static const String azkarReference = "azkar_reference";
   static const String azkarReward = "azkar_reward";
   static const String settings = "settings";
