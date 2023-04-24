@@ -41,7 +41,7 @@ El Muslim is your daily guide to Islamic practices and beliefs, providing a comp
 
 To install El Muslim App, follow these steps:
 
-1. Download the APK file from the [releases page](https://github.com/abdosamehdev/el-muslim-app/releases).
+1. Download the APK file from [Google Play](https://play.google.com/store/apps/details?id=com.abdoSamehDev.elmuslim_app).
 2. Enable installation from unknown sources on your device.
 3. Open the APK file and follow the installation prompts.
 ***
