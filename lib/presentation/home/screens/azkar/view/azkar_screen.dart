@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +11,6 @@ import 'package:elmuslim_app/presentation/home/screens/azkar/cubit/azkar_cubit.d
 import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
-import 'package:elmuslim_app/presentation/zekr_builder/view/zekr_builder_view.dart';
 
 class AzkarScreen extends StatelessWidget {
   const AzkarScreen({Key? key}) : super(key: key);
@@ -18,7 +18,9 @@ class AzkarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => instance<AzkarCubit>()..getAzkarData()..resetCounter(),
+      create: (BuildContext context) => instance<AzkarCubit>()
+        ..getAzkarData()
+        ..resetCounter(),
       child: BlocConsumer<AzkarCubit, AzkarState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -83,13 +85,14 @@ class AzkarScreen extends StatelessWidget {
               ),
         ),
         onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ZekrBuilderView(
-                        azkarList: azkarList,
-                        category: azkarName,
-                      )));
+          Navigator.pushNamed(
+            context,
+            Routes.azkarRoute,
+            arguments: {
+              'azkarList': azkarList,
+              'category': azkarName,
+            },
+          );
         },
       ),
     );

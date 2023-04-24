@@ -1,4 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elmuslim_app/presentation/hadith_builder/view/hadith_builder_view.dart';
+import 'package:elmuslim_app/presentation/surah_builder/view/surah_builder_view.dart';
+import 'package:elmuslim_app/presentation/zekr_builder/view/zekr_builder_view.dart';
 import 'package:flutter/material.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
 import 'package:elmuslim_app/presentation/home/view/home_view.dart';
@@ -20,6 +23,21 @@ class RoutesGenerator {
         initHadithModule();
         initAzkarModule();
         return MaterialPageRoute(builder: (_) => HomeView());
+      case Routes.quranRoute:
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (_) => SurahBuilderView(
+                quranList: args["quranList"], pageNo: args["pageNo"]));
+      case Routes.hadithRoute:
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (_) =>
+                HadithBuilderView(hadithModel: args["hadithModel"]));
+      case Routes.azkarRoute:
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (_) => ZekrBuilderView(
+                azkarList: args["azkarList"], category: args["category"]));
       default:
         return unDefinedRoute();
     }

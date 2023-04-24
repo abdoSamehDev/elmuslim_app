@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,6 @@ import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
 import 'package:elmuslim_app/presentation/resources/language_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
-import 'package:elmuslim_app/presentation/surah_builder/view/surah_builder_view.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({Key? key}) : super(key: key);
@@ -103,12 +103,14 @@ class QuranScreen extends StatelessWidget {
               ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
         ),
         onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    SurahBuilderView(quranList: quranList, pageNo: pageNo),
-              ));
+          Navigator.pushNamed(
+            context,
+            Routes.quranRoute,
+            arguments: {
+              'quranList': quranList,
+              'pageNo': pageNo,
+            },
+          );
         },
       ),
     );
