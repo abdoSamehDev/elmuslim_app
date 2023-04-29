@@ -8,6 +8,7 @@ class AppStrings {
   static const String quran = "quran";
   static const String juz = "juz";
   static const String hizb = "hizb";
+  static const String firstOfSurahBasmalah = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
   static const String basmalah = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيم";
   static const String hadith = "hadith";
   static const String nawawi = "40_nawawi";

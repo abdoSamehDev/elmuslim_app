@@ -1,4 +1,9 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elmuslim_app/app/utils/constants.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
+import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,12 +25,44 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
+    return BlocProvider(
+  create: (context) => instance<HomeCubit>()..isThereABookMarked(),
+  child: BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
+        var quranCubit = QuranCubit.get(context);
+        List<QuranModel> quranList = quranCubit.quranData;
+        // cubit.isThereABookMarked();
         int currentIndex = cubit.currentIndex;
         return Scaffold(
+          floatingActionButton: ConditionalBuilder(
+            condition: isThereABookMarkedPage == true && currentIndex == 0,
+            builder: (BuildContext context) {
+              return FloatingActionButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    Routes.testRoute,
+                    arguments: {
+                      'quranList': quranList,
+                      'pageNo': cubit.getBookMarkPage(),
+                    },
+                  );
+                },
+                backgroundColor:
+                // ColorManager.lightPrimary,
+                ColorManager.darkSecondary,
+                child: const Icon(
+                  Icons.bookmark,
+                  color: ColorManager.gold,
+                ),
+              );
+            },
+            fallback: (BuildContext context) {
+              return Container();
+            },
+          ),
           appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
             title: Text(
@@ -100,6 +137,7 @@ class HomeView extends StatelessWidget {
           ),
         );
       },
-    );
+    ),
+);
   }
 }

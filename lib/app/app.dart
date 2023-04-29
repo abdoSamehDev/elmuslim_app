@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void didChangeDependencies() {
     _preferences.getAppLocale().then((locale) => context.setLocale(locale));
+    // _preferences.isThereABookMarked().then((value) => isThereABookMark = value.orFalse());
     super.didChangeDependencies();
   }
 

@@ -39,4 +39,43 @@ class HomeCubit extends Cubit<HomeState> {
     Phoenix.rebirth(context);
     emit(HomeChangeAppLanguageState());
   }
+
+
+  bool isPageBookMarked(int quranPageNumber) {
+    return _preferences.isPageBookMarked(quranPageNumber);
+  }
+
+  // bool isThereABookMarkedPage = false;
+
+  Future<bool> isThereABookMarked()async  {
+    bool isThereABookMarkedPage = false;
+
+    await _preferences.isThereABookMarked().then((value) => isThereABookMarkedPage = value);
+
+    // await getQuranData();
+    print(isThereABookMarkedPage);
+    emit(CheckQuranBookMarkPageState());
+    return isThereABookMarkedPage;
+  }
+
+  Future<void> bookMarkPage(int quranPageNumber) async {
+    // isPageBookMarked = !isPageBookMarked;
+    if (!isPageBookMarked(quranPageNumber)) {
+      _preferences.bookMarkPage(quranPageNumber);
+    } else {
+      _preferences.removeBookMarkPage();
+    }
+    await isThereABookMarked();
+    emit(QuranBookMarkPageState());
+
+  }
+
+  int? bookMarkedPage;
+
+  int? getBookMarkPage() {
+    // isPageBookMarked = !isPageBookMarked;
+    bookMarkedPage = _preferences.getBookMarkedPage();
+    emit(GetQuranBookMarkPageState());
+    return bookMarkedPage;
+  }
 }

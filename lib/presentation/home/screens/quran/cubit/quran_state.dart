@@ -19,3 +19,4 @@ class QuranGetDataErrorState extends QuranState {
 
   const QuranGetDataErrorState(this.error);
 }
+

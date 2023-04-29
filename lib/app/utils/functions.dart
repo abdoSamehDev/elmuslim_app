@@ -237,3 +237,7 @@ int sum(List<int> numbers) {
   }
   return total;
 }
+
+String getQuranImageNumberFromPageNumber (int quranPageNumber){
+  return quranPageNumber.toString().padLeft(3, "0");
+}
