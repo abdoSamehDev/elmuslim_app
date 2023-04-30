@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
@@ -19,24 +20,26 @@ class HadithScreen extends StatelessWidget {
     return BlocConsumer<HadithCubit, HadithState>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is HadithGetDataLoadingState) {
-          return const Center(
-              child: CircularProgressIndicator(color: ColorManager.gold));
-        } else if (state is HadithGetDataSuccessState) {
-          return ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) => _hadithsIndexItem(
-                hadithModel: state.hadithList[index],
-                index: index,
-                context: context),
-            separatorBuilder: (context, index) => getSeparator(context),
-            itemCount: state.hadithList.length,
-          );
-        } else if (state is HadithGetDataErrorState) {
-          return Container();
-        } else {
-          return Container();
-        }
+        HadithCubit cubit = HadithCubit.get(context);
+        List<HadithModel> hadithList = cubit.hadithList;
+        return ConditionalBuilder(
+          condition: hadithList.isNotEmpty,
+          builder: (BuildContext context) {
+            return ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) => _hadithsIndexItem(
+                  hadithModel: hadithList[index],
+                  index: index,
+                  context: context),
+              separatorBuilder: (context, index) => getSeparator(context),
+              itemCount: hadithList.length,
+            );
+          },
+          fallback: (BuildContext context) {
+            return const Center(
+                child: CircularProgressIndicator(color: ColorManager.gold));
+          },
+        );
       },
     );
   }

@@ -41,6 +41,9 @@ Future initAppModule() async {
 
   //Page Controller
   instance.registerFactory<PageController>(() => PageController());
+
+  //Text Editing Controller
+  instance.registerFactory<TextEditingController>(() => TextEditingController());
 }
 
 void initQuranModule() {

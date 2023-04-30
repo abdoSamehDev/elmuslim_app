@@ -15,11 +15,16 @@ class AzkarCubit extends Cubit<AzkarState> {
 
   static AzkarCubit get(context) => BlocProvider.of(context);
 
+  List<AzkarModel> azkarList = [];
+
   Future getAzkarData() async {
     emit(AzkarGetDataLoadingState());
     final result = await _azkarUseCase(const NoParameters());
     result.fold((l) => emit(AzkarGetDataErrorState(l.message)),
-        (r) => emit(AzkarGetDataSuccessState(r)));
+        (r) {
+      azkarList = r;
+          emit(AzkarGetDataSuccessState(r));
+        });
   }
 
   List<AzkarModel> getAzkarFromCategory(

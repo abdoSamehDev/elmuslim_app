@@ -26,167 +26,177 @@ class ZekrBuilderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-  create: (context) => AzkarCubit(),
-  child: BlocConsumer<AzkarCubit, AzkarState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        AzkarCubit cubit = AzkarCubit.get(context);
+    return WillPopScope(
+      onWillPop: () async {
+        AzkarCubit.get(context).resetCounter();
+        return true;
+      },
+      child: BlocConsumer<AzkarCubit, AzkarState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          AzkarCubit cubit = AzkarCubit.get(context);
 
-        final List<AzkarModel> azkarFromCategory = cubit.getAzkarFromCategory(
-            azkarList: azkarList, category: category);
-        //Get Current App Locale
-        final currentLocale = context.locale;
+          final List<AzkarModel> azkarFromCategory = cubit.getAzkarFromCategory(
+              azkarList: azkarList, category: category);
+          //Get Current App Locale
+          final currentLocale = context.locale;
 
-        //Check if current app language is English
-        bool isEnglish =
-            currentLocale.languageCode == LanguageType.english.getValue();
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              azkarFromCategory[0].category,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(color: ColorManager.gold),
+          //Check if current app language is English
+          bool isEnglish =
+              currentLocale.languageCode == LanguageType.english.getValue();
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                azkarFromCategory[0].category,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(color: ColorManager.gold),
+              ),
             ),
-          ),
-          body: Padding(
-            padding: EdgeInsets.all(AppPadding.p8.r),
-            child: PageView.builder(
-              reverse: isEnglish,
-              controller: _pageController,
-              itemCount: azkarFromCategory.length,
-              itemBuilder: (BuildContext context, int index) {
-                int count = cubit.count;
-                return Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: AppPadding.p8.h),
-                      child: Text(
-                        "${(index + 1).toString().tr()} / ${azkarFromCategory.length.toString().tr()}",
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            fontFamily: FontConstants.uthmanTNFontFamily,
-                            height: AppSize.s1.h,
-                            color: Theme.of(context).unselectedWidgetColor),
+            body: Padding(
+              padding: EdgeInsets.all(AppPadding.p8.r),
+              child: PageView.builder(
+                reverse: isEnglish,
+                controller: _pageController,
+                itemCount: azkarFromCategory.length,
+                itemBuilder: (BuildContext context, int index) {
+                  int count = cubit.count;
+                  return Column(
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: AppPadding.p8.h),
+                        child: Text(
+                          "${(index + 1).toString().tr()} / ${azkarFromCategory.length.toString().tr()}",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
+                                  fontFamily: FontConstants.uthmanTNFontFamily,
+                                  height: AppSize.s1.h,
+                                  color:
+                                      Theme.of(context).unselectedWidgetColor),
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                            azkarFromCategory[index]
-                                .zekr
-                                .replaceAll("(", "")
-                                .replaceAll(")", "")
-                                .replaceAll(".", "")
-                                .replaceAll("﴿", "")
-                                .replaceAll("﴾", ""),
-                            textAlign: TextAlign.center,
-                            style:
-                                Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      height: AppSize.s1_23.h,
-                                      fontSize: calculateFontSize(
-                                          azkarFromCategory[index]
-                                              .zekr
-                                              .replaceAll("(", "")
-                                              .replaceAll(")", "")
-                                              .replaceAll(".", "")
-                                              .length),
-                                    ),
-                          ),
-                          Text(
-                            azkarFromCategory[index].reference.isNotEmpty
-                                ? "${AppStrings.azkarReference.tr()}: ${azkarFromCategory[index].reference}"
-                                : Constants.empty,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(
-                                    height: AppSize.s1.h,
-                                    color: Theme.of(context)
-                                        .unselectedWidgetColor),
-                          ),
-                          SizedBox(
-                            height: AppSize.s8.h,
-                          ),
-                          Text(
-                            azkarFromCategory[index].description.isNotEmpty
-                                ? "${AppStrings.azkarReward.tr()}: ${azkarFromCategory[index].description}"
-                                : Constants.empty,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(
-                                    height: AppSize.s1.h,
-                                    color: Theme.of(context)
-                                        .unselectedWidgetColor),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(AppPadding.p12.h),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          getSeparator(context),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: AppPadding.p8.h),
-                            child: Text(
-                              "${count.toString().tr()} / ${azkarFromCategory[index].count.isEmpty ? 1.toString().tr() : azkarFromCategory[index].count.tr()}",
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              azkarFromCategory[index]
+                                  .zekr
+                                  .replaceAll("(", "")
+                                  .replaceAll(")", "")
+                                  .replaceAll(".", "")
+                                  .replaceAll("﴿", "")
+                                  .replaceAll("﴾", ""),
                               textAlign: TextAlign.center,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyLarge
+                                  .bodySmall
                                   ?.copyWith(
-                                    height: AppSize.s1.h,
-                                    fontFamily:
-                                        FontConstants.uthmanTNFontFamily,
+                                    height: AppSize.s1_23.h,
+                                    fontSize: calculateFontSize(
+                                        azkarFromCategory[index]
+                                            .zekr
+                                            .replaceAll("(", "")
+                                            .replaceAll(")", "")
+                                            .replaceAll(".", "")
+                                            .length),
                                   ),
                             ),
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  Theme.of(context).secondaryHeaderColor,
-                              enableFeedback: true,
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(AppSize.s8.r),
+                            Text(
+                              azkarFromCategory[index].reference.isNotEmpty
+                                  ? "${AppStrings.azkarReference.tr()}: ${azkarFromCategory[index].reference}"
+                                  : Constants.empty,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                      height: AppSize.s1.h,
+                                      color: Theme.of(context)
+                                          .unselectedWidgetColor),
+                            ),
+                            SizedBox(
+                              height: AppSize.s8.h,
+                            ),
+                            Text(
+                              azkarFromCategory[index].description.isNotEmpty
+                                  ? "${AppStrings.azkarReward.tr()}: ${azkarFromCategory[index].description}"
+                                  : Constants.empty,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                      height: AppSize.s1.h,
+                                      color: Theme.of(context)
+                                          .unselectedWidgetColor),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(AppPadding.p12.h),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            getSeparator(context),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: AppPadding.p8.h),
+                              child: Text(
+                                "${count.toString().tr()} / ${azkarFromCategory[index].count.isEmpty ? 1.toString().tr() : azkarFromCategory[index].count.tr()}",
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(
+                                      height: AppSize.s1.h,
+                                      fontFamily:
+                                          FontConstants.uthmanTNFontFamily,
+                                    ),
                               ),
                             ),
-                            onPressed: () {
-                              cubit.zekrCounter(
-                                  int.parse(
-                                      azkarFromCategory[index].count.isEmpty
-                                          ? "1"
-                                          : azkarFromCategory[index].count),
-                                  _pageController,
-                                  index);
-                            },
-                            child: SvgPicture.asset(
-                              ImageAsset.azkarIcon,
-                              width: AppSize.s50.h,
-                              height: AppSize.s50.h,
-                              color: ColorManager.gold,
-                              // Theme.of(context).primaryColor,
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Theme.of(context).secondaryHeaderColor,
+                                enableFeedback: true,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(AppSize.s8.r),
+                                ),
+                              ),
+                              onPressed: () {
+                                cubit.zekrCounter(
+                                    int.parse(
+                                        azkarFromCategory[index].count.isEmpty
+                                            ? "1"
+                                            : azkarFromCategory[index].count),
+                                    _pageController,
+                                    index);
+                              },
+                              child: SvgPicture.asset(
+                                ImageAsset.azkarIcon,
+                                width: AppSize.s50.h,
+                                height: AppSize.s50.h,
+                                color: ColorManager.gold,
+                                // Theme.of(context).primaryColor,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-        );
-      },
-    ),
-);
+          );
+        },
+      ),
+    );
   }
 }

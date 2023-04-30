@@ -1,6 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elmuslim_app/app/utils/di.dart';
 import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,146 +18,125 @@ class QuranScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // bool isThereABookMarkedPage = QuranCubit.get(context).isThereABookMarkedPage;
-    return BlocProvider(
-      create: (context) => instance<QuranCubit>()
-
-        ..getQuranData(),
-      child: BlocConsumer<QuranCubit, QuranState>(
-        listener: (context, state) {
-          // if(state is QuranGetDataSuccessState){
-          //   quranList = state.quranList;
-          // }
-          // if(QuranCubit.get(context).isThereABookMarkedPage == true) {
-          //   isThereABookMarkedPage = true;
-          // } else {
-          //   isThereABookMarkedPage = false;
-          // }
-          // if (state is CheckQuranBookMarkPageState){
-
-            // isThereABookMarkedPage = QuranCubit.get(context).isThereABookMarkedPage;
-          // }
-        },
-        builder: (context, state) {
-          QuranCubit cubit = QuranCubit.get(context);
-          List<QuranModel> quranList = cubit.quranData;
-          // bool isThereABookMarked = isThereABookMarkedPage;
-          // homeCubit.isThereABookMarked().then((value) => isThereABookMarkedPage = value);
-          // print("Book Mark: $isThereABookMarked");
+    return BlocConsumer<QuranCubit, QuranState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        QuranCubit cubit = QuranCubit.get(context);
+        List<QuranModel> quranList = cubit.quranData;
 
 
-          //Get Current App Locale
-          final currentLocale = context.locale;
+        //Get Current App Locale
+        final currentLocale = context.locale;
 
-          //Check if current app language is English
-          bool isEnglish =
-              currentLocale.languageCode == LanguageType.english.getValue();
+        //Check if current app language is English
+        bool isEnglish =
+            currentLocale.languageCode == LanguageType.english.getValue();
 
-          // if (state is QuranGetDataLoadingState) {
-          //   return const Center(
-          //       child: CircularProgressIndicator(color: ColorManager.gold));
-          // } else {
-          return ConditionalBuilder(
-            condition: quranList.isNotEmpty,
-            builder: (BuildContext context) {
-              return ListView.separated(
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => _surahsIndexItem(
-                      surahId: (index + 1).toString().tr(),
-                      surahName: quranList[index].name,
-                      englishSurahName: quranList[index].englishName,
-                      pageNo: quranList[index].ayahs[0].page,
-                      quranList: quranList,
-                      isEnglish: isEnglish,
-                      context: context),
-                  separatorBuilder: (context, index) => getSeparator(context),
-                  itemCount: quranList.length,
-                );
-            },
-            fallback: (BuildContext context) {
-              return const Center(
-                  child: CircularProgressIndicator(color: ColorManager.gold));
-            },
-          );
+        // if (state is QuranGetDataLoadingState) {
+        //   return const Center(
+        //       child: CircularProgressIndicator(color: ColorManager.gold));
+        // } else {
+        return ConditionalBuilder(
+          condition: quranList.isNotEmpty,
+          builder: (BuildContext context) {
+            return ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) => _surahsIndexItem(
+                    surahId: (index + 1).toString().tr(),
+                    surahName: quranList[index].name,
+                    englishSurahName: quranList[index].englishName,
+                    pageNo: quranList[index].ayahs[0].page,
+                    quranList: quranList,
+                    isEnglish: isEnglish,
+                    context: context),
+                separatorBuilder: (context, index) => getSeparator(context),
+                itemCount: quranList.length,
+              );
+          },
+          fallback: (BuildContext context) {
+            return const Center(
+                child: CircularProgressIndicator(color: ColorManager.gold));
+          },
+        );
 
-          // if (cubit.isThereABookMarkedPage)
-          //   return Scaffold(
-          //   // if (cubit.isThereABookMarkedPage)
-          //     floatingActionButton: isThereABookMarkedPage ?
-          //   FloatingActionButton(
-          //       onPressed: () {
-          //         Navigator.pushNamed(
-          //           context,
-          //           Routes.testRoute,
-          //           arguments: {
-          //             'quranList': quranList,
-          //             'pageNo': cubit.getBookMarkPage(),
-          //           },
-          //         );
-          //       },
-          //       backgroundColor:
-          //           // ColorManager.lightPrimary,
-          //           ColorManager.darkSecondary,
-          //       child: const Icon(
-          //         Icons.bookmark,
-          //         color: ColorManager.gold,
-          //       ),
-          //   ) : Container(),
-          //     // ),
-          //   // ),
-          //     // appBar: AppBar(
-          //     //   elevation: Constants.zero.toDouble(),
-          //     //   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          //     //   leading: FloatingActionButton(
-          //     //     onPressed: () {
-          //     //       Navigator.pushNamed(
-          //     //         context,
-          //     //         Routes.testRoute,
-          //     //         arguments: {
-          //     //           'quranList': state.quranList,
-          //     //           'pageNo': cubit.getBookMarkPage(),
-          //     //         },
-          //     //       );
-          //     //     },
-          //     //     backgroundColor:
-          //     //         // ColorManager.lightPrimary,
-          //     //         ColorManager.darkSecondary,
-          //     //     child: const Icon(
-          //     //       Icons.bookmark,
-          //     //       color: ColorManager.gold,
-          //     //     ),
-          //     //   ),
-          //     // ),
-          //     body: ListView.separated(
-          //       physics: const BouncingScrollPhysics(),
-          //       itemBuilder: (context, index) => _surahsIndexItem(
-          //           surahId: (index + 1).toString().tr(),
-          //           surahName: quranList[index].name,
-          //           englishSurahName: quranList[index].englishName,
-          //           pageNo: quranList[index].ayahs[0].page,
-          //           quranList: quranList,
-          //           isEnglish: isEnglish,
-          //           context: context),
-          //       separatorBuilder: (context, index) => getSeparator(context),
-          //       itemCount: quranList.length,
-          //     ),
-          //   );
+        // if (cubit.isThereABookMarkedPage)
+        //   return Scaffold(
+        //   // if (cubit.isThereABookMarkedPage)
+        //     floatingActionButton: isThereABookMarkedPage ?
+        //   FloatingActionButton(
+        //       onPressed: () {
+        //         Navigator.pushNamed(
+        //           context,
+        //           Routes.testRoute,
+        //           arguments: {
+        //             'quranList': quranList,
+        //             'pageNo': cubit.getBookMarkPage(),
+        //           },
+        //         );
+        //       },
+        //       backgroundColor:
+        //           // ColorManager.lightPrimary,
+        //           ColorManager.darkSecondary,
+        //       child: const Icon(
+        //         Icons.bookmark,
+        //         color: ColorManager.gold,
+        //       ),
+        //   ) : Container(),
+        //     // ),
+        //   // ),
+        //     // appBar: AppBar(
+        //     //   elevation: Constants.zero.toDouble(),
+        //     //   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        //     //   leading: FloatingActionButton(
+        //     //     onPressed: () {
+        //     //       Navigator.pushNamed(
+        //     //         context,
+        //     //         Routes.testRoute,
+        //     //         arguments: {
+        //     //           'quranList': state.quranList,
+        //     //           'pageNo': cubit.getBookMarkPage(),
+        //     //         },
+        //     //       );
+        //     //     },
+        //     //     backgroundColor:
+        //     //         // ColorManager.lightPrimary,
+        //     //         ColorManager.darkSecondary,
+        //     //     child: const Icon(
+        //     //       Icons.bookmark,
+        //     //       color: ColorManager.gold,
+        //     //     ),
+        //     //   ),
+        //     // ),
+        //     body: ListView.separated(
+        //       physics: const BouncingScrollPhysics(),
+        //       itemBuilder: (context, index) => _surahsIndexItem(
+        //           surahId: (index + 1).toString().tr(),
+        //           surahName: quranList[index].name,
+        //           englishSurahName: quranList[index].englishName,
+        //           pageNo: quranList[index].ayahs[0].page,
+        //           quranList: quranList,
+        //           isEnglish: isEnglish,
+        //           context: context),
+        //       separatorBuilder: (context, index) => getSeparator(context),
+        //       itemCount: quranList.length,
+        //     ),
+        //   );
 
-          // return ListView.separated(
-          //   physics: const BouncingScrollPhysics(),
-          //   itemBuilder: (context, index) => _surahsIndexItem(
-          //       surahId: (index + 1).toString().tr(),
-          //       surahName: state.quranList[index].name,
-          //       englishSurahName: state.quranList[index].englishName,
-          //       pageNo: state.quranList[index].ayahs[0].page,
-          //       quranList: state.quranList,
-          //       isEnglish: isEnglish,
-          //       context: context),
-          //   separatorBuilder: (context, index) => getSeparator(context),
-          //   itemCount: state.quranList.length,
-          // );
-          // }
-        },
-      ),
+        // return ListView.separated(
+        //   physics: const BouncingScrollPhysics(),
+        //   itemBuilder: (context, index) => _surahsIndexItem(
+        //       surahId: (index + 1).toString().tr(),
+        //       surahName: state.quranList[index].name,
+        //       englishSurahName: state.quranList[index].englishName,
+        //       pageNo: state.quranList[index].ayahs[0].page,
+        //       quranList: state.quranList,
+        //       isEnglish: isEnglish,
+        //       context: context),
+        //   separatorBuilder: (context, index) => getSeparator(context),
+        //   itemCount: state.quranList.length,
+        // );
+        // }
+      },
     );
   }
 
