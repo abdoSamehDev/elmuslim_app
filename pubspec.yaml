@@ -49,6 +49,8 @@ dependencies:
   conditional_builder_null_safety: ^0.0.6
   json_serializable: ^6.6.1
   json_annotation: ^4.8.0
+  floor: ^1.4.2
+  floor_generator: ^1.4.2
 
 
 flutter_native_splash:

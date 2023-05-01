@@ -12,7 +12,7 @@ import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:elmuslim_app/data/database/database.dart';
 import '../../presentation/home/viewmodel/home_viewmodel.dart';
 
 final instance = GetIt.instance;
@@ -26,6 +26,10 @@ Future initAppModule() async {
   //app prefs instance
   instance.registerLazySingleton<AppPreferences>(() => AppPreferences());
 
+  //Database instance
+  final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+  instance.registerLazySingleton<AppDatabase>(() => database);
+
   //BLoC
   instance.registerFactory<HomeCubit>(() => HomeCubit());
   instance.registerFactory<QuranCubit>(() => QuranCubit());
@@ -34,7 +38,7 @@ Future initAppModule() async {
 
   //Repository
   instance.registerLazySingleton<Repository>(
-      () => RepositoryImpl(instance<LocalDataSource>()));
+      () => RepositoryImpl());
 
   //Data Source
   instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
@@ -47,6 +51,9 @@ Future initAppModule() async {
 
   //Form Key
   instance.registerFactory<GlobalKey<FormState>>(() => GlobalKey<FormState>());
+
+
+
 }
 
 void initQuranModule() {
