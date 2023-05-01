@@ -4,8 +4,7 @@ import 'package:elmuslim_app/app/error/exception.dart';
 import 'package:elmuslim_app/app/error/failure.dart';
 import 'package:elmuslim_app/data/data_source/local/local_data_source.dart';
 import 'package:elmuslim_app/data/mapper/mapper.dart';
-
-import 'package:elmuslim_app/domain/models/azkar/azkar_model.dart';
+import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
 
 import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
 
@@ -19,8 +18,8 @@ class RepositoryImpl implements Repository {
   RepositoryImpl(this._localDataSource);
 
   @override
-  Future<Either<Failure, List<AzkarModel>>> getAzkarData() async {
-    final data = await _localDataSource.getAzkarData();
+  Future<Either<Failure, List<AdhkarModel>>> getAdhkarData() async {
+    final data = await _localDataSource.getAdhkarData();
     try {
       return Right(data.map((e) => e.toDomain()).toList());
     } on LocalException catch (failure) {

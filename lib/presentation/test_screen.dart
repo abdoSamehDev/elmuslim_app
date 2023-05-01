@@ -35,6 +35,7 @@ class TestScreen extends StatelessWidget {
         builder: (context, state) {
           QuranCubit cubit = QuranCubit.get(context);
           HomeCubit homeCubit = HomeCubit.get(context);
+          bool darkMode = homeCubit.darkModeOn(context);
           final PageController pageController =
               PageController(initialPage: pageNo - 1);
 
@@ -102,7 +103,7 @@ class TestScreen extends StatelessWidget {
                           child: Center(
                             child: Image.asset(
                               "assets/images/quran/page${getQuranImageNumberFromPageNumber(quranPageNumber)}.png",
-                              color: Colors.white,
+                              color: darkMode ? Colors.white : null,
                               colorBlendMode: BlendMode.srcIn,
                               fit: BoxFit.fitWidth,
                             ),
@@ -114,8 +115,9 @@ class TestScreen extends StatelessWidget {
                             homeCubit.bookMarkPage(quranPageNumber);
                           },
                           backgroundColor:
-                          // ColorManager.lightPrimary,
-                          ColorManager.darkSecondary,
+                          darkMode
+                              ? ColorManager.darkSecondary
+                              : ColorManager.lightPrimary,
                           child: Icon(
                             homeCubit.isPageBookMarked(quranPageNumber) ?
                             Icons.bookmark :

@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elmuslim_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                       instance<HadithCubit>()..getHadithData()),
               BlocProvider(
                   create: (BuildContext context) =>
-                  instance<AzkarCubit>()..getAzkarData()),
+                  instance<AdhkarCubit>()..getAdhkarData()),
             ],
             child: BlocConsumer<HomeCubit, HomeState>(
               listener: (context, state) {},

@@ -1,14 +1,14 @@
+import 'package:elmuslim_app/domain/usecase/adhkar_usecase.dart';
+import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:elmuslim_app/app/utils/app_prefs.dart';
 import 'package:elmuslim_app/data/data_source/local/local_data_source.dart';
 import 'package:elmuslim_app/data/repository/repository_impl.dart';
 import 'package:elmuslim_app/domain/repository/repository.dart';
-import 'package:elmuslim_app/domain/usecase/azkar_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/hadith_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/quran_usecase.dart';
 import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
-import 'package:elmuslim_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +30,7 @@ Future initAppModule() async {
   instance.registerFactory<HomeCubit>(() => HomeCubit());
   instance.registerFactory<QuranCubit>(() => QuranCubit());
   instance.registerFactory<HadithCubit>(() => HadithCubit());
-  instance.registerFactory<AzkarCubit>(() => AzkarCubit());
+  instance.registerFactory<AdhkarCubit>(() => AdhkarCubit());
 
   //Repository
   instance.registerLazySingleton<Repository>(
@@ -44,6 +44,9 @@ Future initAppModule() async {
 
   //Text Editing Controller
   instance.registerFactory<TextEditingController>(() => TextEditingController());
+
+  //Form Key
+  instance.registerFactory<GlobalKey<FormState>>(() => GlobalKey<FormState>());
 }
 
 void initQuranModule() {
@@ -59,8 +62,8 @@ void initHadithModule() {
   }
 }
 
-void initAzkarModule() {
-  if (!GetIt.I.isRegistered<AzkarUseCase>()) {
-    instance.registerFactory<AzkarUseCase>(() => AzkarUseCase());
+void initAdhkarModule() {
+  if (!GetIt.I.isRegistered<AdhkarUseCase>()) {
+    instance.registerFactory<AdhkarUseCase>(() => AdhkarUseCase());
   }
 }

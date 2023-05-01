@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,9 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:elmuslim_app/app/utils/constants.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
 import 'package:elmuslim_app/app/utils/functions.dart';
-import 'package:elmuslim_app/domain/models/azkar/azkar_model.dart';
 import 'package:elmuslim_app/presentation/common/components/components.dart';
-import 'package:elmuslim_app/presentation/home/screens/azkar/cubit/azkar_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:elmuslim_app/presentation/resources/assets_manager.dart';
 import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
@@ -16,28 +16,28 @@ import 'package:elmuslim_app/presentation/resources/language_manager.dart';
 import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
 
-class ZekrBuilderView extends StatelessWidget {
-  final List<AzkarModel> azkarList;
+class DhikrBuilderView extends StatelessWidget {
+  final List<AdhkarModel> adhkarList;
   final String category;
   final PageController _pageController = instance<PageController>();
 
-  ZekrBuilderView({Key? key, required this.azkarList, required this.category})
+  DhikrBuilderView({Key? key, required this.adhkarList, required this.category})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        AzkarCubit.get(context).resetCounter();
+        AdhkarCubit.get(context).resetCounter();
         return true;
       },
-      child: BlocConsumer<AzkarCubit, AzkarState>(
+      child: BlocConsumer<AdhkarCubit, AdhkarState>(
         listener: (context, state) {},
         builder: (context, state) {
-          AzkarCubit cubit = AzkarCubit.get(context);
+          AdhkarCubit cubit = AdhkarCubit.get(context);
 
-          final List<AzkarModel> azkarFromCategory = cubit.getAzkarFromCategory(
-              azkarList: azkarList, category: category);
+          final List<AdhkarModel> adhkarFromCategory = cubit.getAdhkarFromCategory(
+              adhkarList: adhkarList, category: category);
           //Get Current App Locale
           final currentLocale = context.locale;
 
@@ -47,7 +47,7 @@ class ZekrBuilderView extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text(
-                azkarFromCategory[0].category,
+                adhkarFromCategory[0].category,
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge
@@ -59,7 +59,7 @@ class ZekrBuilderView extends StatelessWidget {
               child: PageView.builder(
                 reverse: isEnglish,
                 controller: _pageController,
-                itemCount: azkarFromCategory.length,
+                itemCount: adhkarFromCategory.length,
                 itemBuilder: (BuildContext context, int index) {
                   int count = cubit.count;
                   return Column(
@@ -68,7 +68,7 @@ class ZekrBuilderView extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(vertical: AppPadding.p8.h),
                         child: Text(
-                          "${(index + 1).toString().tr()} / ${azkarFromCategory.length.toString().tr()}",
+                          "${(index + 1).toString().tr()} / ${adhkarFromCategory.length.toString().tr()}",
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
@@ -83,8 +83,8 @@ class ZekrBuilderView extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              azkarFromCategory[index]
-                                  .zekr
+                              adhkarFromCategory[index]
+                                  .dhikr
                                   .replaceAll("(", "")
                                   .replaceAll(")", "")
                                   .replaceAll(".", "")
@@ -97,8 +97,8 @@ class ZekrBuilderView extends StatelessWidget {
                                   ?.copyWith(
                                     height: AppSize.s1_23.h,
                                     fontSize: calculateFontSize(
-                                        azkarFromCategory[index]
-                                            .zekr
+                                        adhkarFromCategory[index]
+                                            .dhikr
                                             .replaceAll("(", "")
                                             .replaceAll(")", "")
                                             .replaceAll(".", "")
@@ -106,8 +106,8 @@ class ZekrBuilderView extends StatelessWidget {
                                   ),
                             ),
                             Text(
-                              azkarFromCategory[index].reference.isNotEmpty
-                                  ? "${AppStrings.azkarReference.tr()}: ${azkarFromCategory[index].reference}"
+                              adhkarFromCategory[index].reference.isNotEmpty
+                                  ? "${AppStrings.adhkarReference.tr()}: ${adhkarFromCategory[index].reference}"
                                   : Constants.empty,
                               textAlign: TextAlign.center,
                               style: Theme.of(context)
@@ -122,8 +122,8 @@ class ZekrBuilderView extends StatelessWidget {
                               height: AppSize.s8.h,
                             ),
                             Text(
-                              azkarFromCategory[index].description.isNotEmpty
-                                  ? "${AppStrings.azkarReward.tr()}: ${azkarFromCategory[index].description}"
+                              adhkarFromCategory[index].description.isNotEmpty
+                                  ? "${AppStrings.adhkarReward.tr()}: ${adhkarFromCategory[index].description}"
                                   : Constants.empty,
                               textAlign: TextAlign.center,
                               style: Theme.of(context)
@@ -147,7 +147,7 @@ class ZekrBuilderView extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(bottom: AppPadding.p8.h),
                               child: Text(
-                                "${count.toString().tr()} / ${azkarFromCategory[index].count.isEmpty ? 1.toString().tr() : azkarFromCategory[index].count.tr()}",
+                                "${count.toString().tr()} / ${adhkarFromCategory[index].count.isEmpty ? 1.toString().tr() : adhkarFromCategory[index].count.tr()}",
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .textTheme
@@ -170,16 +170,16 @@ class ZekrBuilderView extends StatelessWidget {
                                 ),
                               ),
                               onPressed: () {
-                                cubit.zekrCounter(
+                                cubit.dhikrCounter(
                                     int.parse(
-                                        azkarFromCategory[index].count.isEmpty
+                                        adhkarFromCategory[index].count.isEmpty
                                             ? "1"
-                                            : azkarFromCategory[index].count),
+                                            : adhkarFromCategory[index].count),
                                     _pageController,
                                     index);
                               },
                               child: SvgPicture.asset(
-                                ImageAsset.azkarIcon,
+                                ImageAsset.adhkarIcon,
                                 width: AppSize.s50.h,
                                 height: AppSize.s50.h,
                                 color: ColorManager.gold,

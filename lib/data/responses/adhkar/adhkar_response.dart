@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'azkar_response.g.dart';
+part 'adhkar_response.g.dart';
 
 @JsonSerializable()
-class AzkarResponse {
+class AdhkarResponse {
   @JsonKey(name: "category")
   String category;
   @JsonKey(name: "count")
@@ -12,21 +12,21 @@ class AzkarResponse {
   String description;
   @JsonKey(name: "reference")
   String reference;
-  @JsonKey(name: "zekr")
-  String zekr;
+  @JsonKey(name: "dhikr")
+  String dhikr;
 
-  AzkarResponse(
+  AdhkarResponse(
     this.category,
     this.count,
     this.description,
     this.reference,
-    this.zekr,
+    this.dhikr,
   );
 
   //from Json
-  factory AzkarResponse.fromJson(Map<String, dynamic> json) =>
-      _$AzkarResponseFromJson(json);
+  factory AdhkarResponse.fromJson(Map<String, dynamic> json) =>
+      _$AdhkarResponseFromJson(json);
 
 //to Json
-  Map<String, dynamic> toJson() => _$AzkarResponseToJson(this);
+  Map<String, dynamic> toJson() => _$AdhkarResponseToJson(this);
 }

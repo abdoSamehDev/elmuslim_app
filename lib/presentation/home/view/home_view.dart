@@ -19,8 +19,9 @@ import 'package:elmuslim_app/presentation/resources/values.dart';
 
 class HomeView extends StatelessWidget {
   final HomeViewModel _viewModel = instance<HomeViewModel>();
-  TextEditingController newDhekrController = instance<TextEditingController>();
-  TextEditingController newDhekrTimesController = instance<TextEditingController>();
+  TextEditingController newDhikrController = instance<TextEditingController>();
+  TextEditingController newDhikrTimesController =
+      instance<TextEditingController>();
 
   HomeView({Key? key}) : super(key: key);
 
@@ -63,7 +64,7 @@ class HomeView extends StatelessWidget {
                     : currentIndex == 2
                         ? FloatingActionButton(
                             onPressed: () {
-                              _showBotSheet(context);
+                              _showBotSheet(context, darkMode);
                               // Navigator.pushNamed(
                               //   context,
                               //   Routes.testRoute,
@@ -135,14 +136,14 @@ class HomeView extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
-                    ImageAsset.azkarIcon,
+                    ImageAsset.adhkarIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
                     color: currentIndex == 2
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
                   ),
-                  label: AppStrings.azkar.tr(),
+                  label: AppStrings.adhkar.tr(),
                 ),
                 BottomNavigationBarItem(
                   icon: const Icon(Icons.settings_outlined),
@@ -160,28 +161,60 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  void _showBotSheet(BuildContext context) {
+  void _showBotSheet(BuildContext context, bool darkMode) {
+    final formKey = instance<GlobalKey<FormState>>();
     showModalBottomSheet(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         context: context,
         elevation: AppSize.s4.r,
-        isScrollControlled: true,
+        // isScrollControlled: true,
         // isDismissible: true,
         builder: (BuildContext context) {
-          return Padding(
-            padding: EdgeInsets.all(AppPadding.p8.r),
-            child: Column(
-              children: [
-                TextField(
-                  controller: newDhekrController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(label: Text("Dhekr")),
-                ),
-                TextField(
-                  controller: newDhekrTimesController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(label: Text("Dhekr")),
-                ),
-              ],
+          return Form(
+            key: formKey,
+            child: Padding(
+              padding: EdgeInsets.all(AppPadding.p16.r),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    AppStrings.addNewDhikr.tr(),
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  SizedBox(
+                    height: AppSize.s20.h,
+                  ),
+                  TextField(
+                    cursorColor: darkMode
+                        ? ColorManager.darkSecondary
+                        : ColorManager.lightPrimary,
+                    controller: newDhikrController,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(label: Text(AppStrings.newDhikr.tr())),
+                  ),
+                  SizedBox(
+                    height: AppSize.s10.h,
+                  ),
+                  TextField(
+                    cursorColor: darkMode
+            ? ColorManager.darkSecondary
+                : ColorManager.lightPrimary,
+                    controller: newDhikrTimesController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(label: Text(AppStrings.newDhikrNumberOfRepetitions.tr())),
+                  ),
+                  SizedBox(
+                    height: AppSize.s20.h,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text(AppStrings.add.tr()),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         });

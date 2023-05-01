@@ -1,9 +1,9 @@
 import 'package:elmuslim_app/app/utils/extensions.dart';
 import 'package:elmuslim_app/data/responses/quran/quran_response.dart';
-import 'package:elmuslim_app/domain/models/azkar/azkar_model.dart';
+import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
 import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
 import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
-import '../responses/azkar/azkar_response.dart';
+import '../responses/adhkar/adhkar_response.dart';
 import '../responses/hadith/hadith_response.dart';
 
 extension AyahResponseMapper on AyahResponse {
@@ -43,14 +43,14 @@ extension HadithResponseMapper on HadithResponse {
   }
 }
 
-extension AzkarResponseMapper on AzkarResponse {
-  AzkarModel toDomain() {
-    return AzkarModel(
+extension AdhkarResponseMapper on AdhkarResponse {
+  AdhkarModel toDomain() {
+    return AdhkarModel(
       category: category.orEmpty(),
       count: count.orEmpty(),
       description: description.orEmpty(),
       reference: reference.orEmpty(),
-      zekr: zekr.orEmpty(),
+      dhikr: dhikr.orEmpty(),
     );
   }
 }

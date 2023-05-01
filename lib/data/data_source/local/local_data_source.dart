@@ -1,30 +1,30 @@
 import 'dart:convert';
 
 import 'package:elmuslim_app/app/utils/functions.dart';
-import 'package:elmuslim_app/data/responses/azkar/azkar_response.dart';
+import 'package:elmuslim_app/data/responses/adhkar/adhkar_response.dart';
 import 'package:elmuslim_app/data/responses/hadith/hadith_response.dart';
 import 'package:elmuslim_app/data/responses/quran/quran_response.dart';
 
 const String quranPath = "assets/json/quran.json";
 const String hadithPath = "assets/json/40_hadith_nawawi.json";
-const String azkarPath = "assets/json/azkar.json";
+const String adhkarPath = "assets/json/adhkar.json";
 
 abstract class LocalDataSource {
   Future<List<QuranResponse>> getQuranData();
 
   Future<List<HadithResponse>> getHadithData();
 
-  Future<List<AzkarResponse>> getAzkarData();
+  Future<List<AdhkarResponse>> getAdhkarData();
 }
 
 class LocalDataSourceImpl implements LocalDataSource {
   @override
-  Future<List<AzkarResponse>> getAzkarData() async {
-    final jsonString = await fetchDataFromJson(azkarPath);
+  Future<List<AdhkarResponse>> getAdhkarData() async {
+    final jsonString = await fetchDataFromJson(adhkarPath);
     final data = jsonDecode(jsonString);
     // return data;
-    return List<AzkarResponse>.from(
-        (data as List).map((e) => AzkarResponse.fromJson(e)));
+    return List<AdhkarResponse>.from(
+        (data as List).map((e) => AdhkarResponse.fromJson(e)));
   }
 
   @override

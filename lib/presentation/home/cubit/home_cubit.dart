@@ -29,9 +29,9 @@ class HomeCubit extends Cubit<HomeState> {
     return currentThemeMode == ThemeMode.dark;
   }
 
-  void changeAppTheme() {
+  void changeAppTheme(BuildContext context) {
     _preferences.changeAppTheme();
-
+    Phoenix.rebirth(context);
     emit(HomeChangeAppThemeState());
   }
 

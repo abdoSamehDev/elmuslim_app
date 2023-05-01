@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
 
-class AzkarModel extends Equatable {
+class AdhkarModel extends Equatable {
   final String category;
   final String count;
   final String description;
   final String reference;
-  final String zekr;
+  final String dhikr;
 
-  const AzkarModel({
+  const AdhkarModel({
     required this.category,
     required this.count,
     required this.description,
     required this.reference,
-    required this.zekr,
+    required this.dhikr,
   });
 
   @override
@@ -21,6 +21,6 @@ class AzkarModel extends Equatable {
         count,
         description,
         reference,
-        zekr,
+        dhikr,
       ];
 }

@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'azkar_response.dart';
+part of 'adhkar_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AzkarResponse _$AzkarResponseFromJson(Map<String, dynamic> json) =>
-    AzkarResponse(
+AdhkarResponse _$AdhkarResponseFromJson(Map<String, dynamic> json) =>
+    AdhkarResponse(
       json['category'] as String,
       json['count'] as String,
       json['description'] as String,
       json['reference'] as String,
-      json['zekr'] as String,
+      json['dhikr'] as String,
     );
 
-Map<String, dynamic> _$AzkarResponseToJson(AzkarResponse instance) =>
+Map<String, dynamic> _$AdhkarResponseToJson(AdhkarResponse instance) =>
     <String, dynamic>{
       'category': instance.category,
       'count': instance.count,
       'description': instance.description,
       'reference': instance.reference,
-      'zekr': instance.zekr,
+      'dhikr': instance.dhikr,
     };
