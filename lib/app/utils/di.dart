@@ -1,4 +1,11 @@
 import 'package:elmuslim_app/domain/usecase/adhkar_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/del_all_custom_adhkar_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/del_custom_dhikr_by_id_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/get_all_custom_adhkar_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/get_custom_dhikr_by_id_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/insert_new_dhikr_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/update_custom_dhikr.dart';
+import 'package:elmuslim_app/presentation/custom_adhkar/cubit/custom_adhkar_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
@@ -35,6 +42,7 @@ Future initAppModule() async {
   instance.registerFactory<QuranCubit>(() => QuranCubit());
   instance.registerFactory<HadithCubit>(() => HadithCubit());
   instance.registerFactory<AdhkarCubit>(() => AdhkarCubit());
+  instance.registerFactory<CustomAdhkarCubit>(() => CustomAdhkarCubit());
 
   //Repository
   instance.registerLazySingleton<Repository>(
@@ -72,5 +80,26 @@ void initHadithModule() {
 void initAdhkarModule() {
   if (!GetIt.I.isRegistered<AdhkarUseCase>()) {
     instance.registerFactory<AdhkarUseCase>(() => AdhkarUseCase());
+  }
+}
+
+void initCustomAdhkarModule() {
+  if (!GetIt.I.isRegistered<GetAllCustomAdhkarUseCase>()) {
+    instance.registerFactory<GetAllCustomAdhkarUseCase>(() => GetAllCustomAdhkarUseCase());
+  }
+  if (!GetIt.I.isRegistered<GetCustomDhikrByIdUseCase>()) {
+    instance.registerFactory<GetCustomDhikrByIdUseCase>(() => GetCustomDhikrByIdUseCase());
+  }
+  if (!GetIt.I.isRegistered<InsertNewDhikrUseCase>()) {
+    instance.registerFactory<InsertNewDhikrUseCase>(() => InsertNewDhikrUseCase());
+  }
+  if (!GetIt.I.isRegistered<UpdateCustomDhikrUseCase>()) {
+    instance.registerFactory<UpdateCustomDhikrUseCase>(() => UpdateCustomDhikrUseCase());
+  }
+  if (!GetIt.I.isRegistered<DelCustomDhikrByDhikrTextUseCase>()) {
+    instance.registerFactory<DelCustomDhikrByDhikrTextUseCase>(() => DelCustomDhikrByDhikrTextUseCase());
+  }
+  if (!GetIt.I.isRegistered<DelAllCustomAdhkarUseCase>()) {
+    instance.registerFactory<DelAllCustomAdhkarUseCase>(() => DelAllCustomAdhkarUseCase());
   }
 }

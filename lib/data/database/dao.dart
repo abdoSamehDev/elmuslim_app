@@ -6,8 +6,8 @@ abstract class CustomAdhkarDao {
   @Query("SELECT * FROM CustomAdhkarEntity")
   Future<List<CustomAdhkarEntity>> getAllCustomAdhkar();
 
-  @Query("SELECT * FROM CustomAdhkarEntity WHERE id = :id")
-  Future<CustomAdhkarEntity?> getDhikrById(int id);
+  @Query("SELECT * FROM CustomAdhkarEntity WHERE dhikr = :dhikr")
+  Future<CustomAdhkarEntity?> getDhikrByDhikrText(String dhikr);
 
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertDhikr(CustomAdhkarEntity dhikr);
@@ -15,8 +15,8 @@ abstract class CustomAdhkarDao {
   @Update(onConflict: OnConflictStrategy.replace)
   Future<void> updateDhikr(CustomAdhkarEntity dhikr);
 
-  @Query("DELETE FROM CustomAdhkarEntity WHERE id = :id")
-  Future<void> delDhikrById(int id);
+  @Query("DELETE FROM CustomAdhkarEntity WHERE dhikr = :dhikr")
+  Future<void> delDhikrByDhikrText(String dhikr);
 
   @delete
   Future<void> deleteAll(List<CustomAdhkarEntity> list);

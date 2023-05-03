@@ -15,13 +15,13 @@ abstract class Repository {
   //Database
   Future<Either<Failure, List<CustomAdhkarEntity>>> getAllCustomAdhkar();
 
-  Future<Either<Failure, CustomAdhkarEntity?>> getDhikrById(int id);
+  Future<Either<Failure, CustomAdhkarEntity?>> getDhikrByDhikrText(String dhikr);
 
   Future<Either<Failure, void>> insertDhikr(CustomAdhkarEntity dhikr);
 
   Future<Either<Failure, void>> updateDhikr(CustomAdhkarEntity dhikr);
 
-  Future<Either<Failure, void>> delDhikrById(int id);
+  Future<Either<Failure, void>> delDhikrByDhikrText(String dhikr);
 
   Future<Either<Failure, void>> deleteAll(List<CustomAdhkarEntity> list);
 }

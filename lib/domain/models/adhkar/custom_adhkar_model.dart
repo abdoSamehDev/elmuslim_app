@@ -3,20 +3,18 @@ import 'package:floor/floor.dart';
 
 @entity
 class CustomAdhkarEntity extends Equatable {
-  @PrimaryKey(autoGenerate: true)
-  final int id;
-  final String count;
+  @primaryKey
   final String dhikr;
+  final int count;
 
   const CustomAdhkarEntity({
-    required this.id,
-    required this.count,
     required this.dhikr,
+    required this.count,
   });
 
   @override
   List<Object> get props => [
-    count,
     dhikr,
+    count,
   ];
 }

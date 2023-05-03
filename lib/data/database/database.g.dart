@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `CustomAdhkarEntity` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `count` TEXT NOT NULL, `dhikr` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `CustomAdhkarEntity` (`dhikr` TEXT NOT NULL, `count` INTEGER NOT NULL, PRIMARY KEY (`dhikr`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -108,29 +108,20 @@ class _$CustomAdhkarDao extends CustomAdhkarDao {
         _customAdhkarEntityInsertionAdapter = InsertionAdapter(
             database,
             'CustomAdhkarEntity',
-            (CustomAdhkarEntity item) => <String, Object?>{
-                  'id': item.id,
-                  'count': item.count,
-                  'dhikr': item.dhikr
-                }),
+            (CustomAdhkarEntity item) =>
+                <String, Object?>{'dhikr': item.dhikr, 'count': item.count}),
         _customAdhkarEntityUpdateAdapter = UpdateAdapter(
             database,
             'CustomAdhkarEntity',
-            ['id'],
-            (CustomAdhkarEntity item) => <String, Object?>{
-                  'id': item.id,
-                  'count': item.count,
-                  'dhikr': item.dhikr
-                }),
+            ['dhikr'],
+            (CustomAdhkarEntity item) =>
+                <String, Object?>{'dhikr': item.dhikr, 'count': item.count}),
         _customAdhkarEntityDeletionAdapter = DeletionAdapter(
             database,
             'CustomAdhkarEntity',
-            ['id'],
-            (CustomAdhkarEntity item) => <String, Object?>{
-                  'id': item.id,
-                  'count': item.count,
-                  'dhikr': item.dhikr
-                });
+            ['dhikr'],
+            (CustomAdhkarEntity item) =>
+                <String, Object?>{'dhikr': item.dhikr, 'count': item.count});
 
   final sqflite.DatabaseExecutor database;
 
@@ -149,26 +140,23 @@ class _$CustomAdhkarDao extends CustomAdhkarDao {
   Future<List<CustomAdhkarEntity>> getAllCustomAdhkar() async {
     return _queryAdapter.queryList('SELECT * FROM CustomAdhkarEntity',
         mapper: (Map<String, Object?> row) => CustomAdhkarEntity(
-            id: row['id'] as int,
-            count: row['count'] as String,
-            dhikr: row['dhikr'] as String));
+            dhikr: row['dhikr'] as String, count: row['count'] as int));
   }
 
   @override
-  Future<CustomAdhkarEntity?> getDhikrById(int id) async {
-    return _queryAdapter.query('SELECT * FROM CustomAdhkarEntity WHERE id = ?1',
+  Future<CustomAdhkarEntity?> getDhikrByDhikrText(String dhikr) async {
+    return _queryAdapter.query(
+        'SELECT * FROM CustomAdhkarEntity WHERE dhikr = ?1',
         mapper: (Map<String, Object?> row) => CustomAdhkarEntity(
-            id: row['id'] as int,
-            count: row['count'] as String,
-            dhikr: row['dhikr'] as String),
-        arguments: [id]);
+            dhikr: row['dhikr'] as String, count: row['count'] as int),
+        arguments: [dhikr]);
   }
 
   @override
-  Future<void> delDhikrById(int id) async {
+  Future<void> delDhikrByDhikrText(String dhikr) async {
     await _queryAdapter.queryNoReturn(
-        'DELETE FROM CustomAdhkarEntity WHERE id = ?1',
-        arguments: [id]);
+        'DELETE FROM CustomAdhkarEntity WHERE dhikr = ?1',
+        arguments: [dhikr]);
   }
 
   @override

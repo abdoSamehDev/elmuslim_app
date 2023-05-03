@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elmuslim_app/presentation/custom_adhkar/view/custom_adhkar_view.dart';
 import 'package:elmuslim_app/presentation/dhikr_builder/view/dhikr_builder_view.dart';
 import 'package:elmuslim_app/presentation/hadith_builder/view/hadith_builder_view.dart';
 import 'package:elmuslim_app/presentation/surah_builder/view/surah_builder_view.dart';
@@ -14,6 +15,7 @@ class Routes {
   static const String quranRoute = "/quran";
   static const String hadithRoute = "/hadith";
   static const String adhkarRoute = "/adhkar";
+  static const String customAdhkarRoute = "/customAdhkar";
 }
 
 class RoutesGenerator {
@@ -46,6 +48,9 @@ class RoutesGenerator {
             builder: (_) => TestScreen(
                 quranList: args["quranList"], pageNo: args["pageNo"]
             ));
+      case Routes.customAdhkarRoute:
+        initCustomAdhkarModule();
+        return MaterialPageRoute(builder: (_) => CustomAdhkarView());
       default:
         return unDefinedRoute();
     }

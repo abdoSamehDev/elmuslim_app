@@ -51,8 +51,8 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future<Either<Failure, void>> delDhikrById(int id) async {
-    await _customAdhkarDao.delDhikrById(id);
+  Future<Either<Failure, void>> delDhikrByDhikrText(String dhikr) async {
+    await _customAdhkarDao.delDhikrByDhikrText(dhikr);
     try {
       return const Right(null);
     } on LocalException catch (failure) {
@@ -81,10 +81,10 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future<Either<Failure, CustomAdhkarEntity?>> getDhikrById(int id) async {
-    CustomAdhkarEntity? dhikr = await _customAdhkarDao.getDhikrById(id);
+  Future<Either<Failure, CustomAdhkarEntity?>> getDhikrByDhikrText(String dhikr) async {
+    CustomAdhkarEntity? resultDhikr = await _customAdhkarDao.getDhikrByDhikrText(dhikr);
     try {
-      return Right(dhikr);
+      return Right(resultDhikr);
     } on LocalException catch (failure) {
       return Left(LocalFailure(failure.message));
     }
