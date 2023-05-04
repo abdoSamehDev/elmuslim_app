@@ -141,15 +141,15 @@ ThemeData getApplicationLightTheme() {
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: EdgeInsets.all(AppPadding.p8.w),
       hintStyle: getRegularStyle(
-        fontSize: FontSize.s14,
+        fontSize: FontSize.s12,
         color: ColorManager.lightGrey,
       ),
       labelStyle: getMediumStyle(
-        fontSize: FontSize.s14,
+        fontSize: FontSize.s12,
         color: ColorManager.lightGrey,
       ),
       errorStyle: getRegularStyle(
-        fontSize: FontSize.s12,
+        fontSize: FontSize.s10,
         color: ColorManager.error,
       ),
 

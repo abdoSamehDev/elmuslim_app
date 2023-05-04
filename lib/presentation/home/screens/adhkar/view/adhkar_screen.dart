@@ -30,7 +30,7 @@ class AdhkarScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return _adhkarIndexItem(
                     adhkarId: (index + 1).toString().tr(),
-                    adhkarName: cubit
+                    adhkarCategory: cubit
                         .getAdhkarCategories(adhkarList: adhkarList)[index]
                         .orEmpty(),
                     adhkarList: adhkarList,
@@ -53,7 +53,7 @@ class AdhkarScreen extends StatelessWidget {
 
   Widget _adhkarIndexItem(
       {required String adhkarId,
-      required String adhkarName,
+      required String adhkarCategory,
       required List<AdhkarModel> adhkarList,
       required int index,
       // required String pageNo,
@@ -73,7 +73,7 @@ class AdhkarScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          adhkarName,
+          adhkarCategory,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontFamily: FontConstants.meQuranFontFamily,
                 wordSpacing: AppSize.s3.w,
@@ -86,7 +86,7 @@ class AdhkarScreen extends StatelessWidget {
             Routes.adhkarRoute,
             arguments: {
               'adhkarList': adhkarList,
-              'category': adhkarName,
+              'category': adhkarCategory,
             },
           );
         },

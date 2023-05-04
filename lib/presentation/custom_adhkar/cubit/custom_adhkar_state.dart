@@ -6,6 +6,8 @@ abstract class CustomAdhkarState {
 
 class CustomAdhkarInitial extends CustomAdhkarState {}
 
+class ChangeBotSheetState extends CustomAdhkarState{}
+
 class GetAllCustomAdhkarLoadingState extends CustomAdhkarState{}
 
 class GetAllCustomAdhkarSuccessState extends CustomAdhkarState{}

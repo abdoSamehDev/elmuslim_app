@@ -43,7 +43,7 @@ class AdhkarCubit extends Cubit<AdhkarState> {
 
   int count = 0;
 
-  void dhikrCounter(int maxCounts, PageController controller, int index) {
+  void dhikrCounter(int maxCounts, PageController controller) {
     if (count < maxCounts) {
       count++;
     }
@@ -55,6 +55,14 @@ class AdhkarCubit extends Cubit<AdhkarState> {
     controller.addListener(() {
       count = 0;
     });
+
+    emit(AdhkarCounterState());
+  }
+
+  void customDhikrCounter(int maxCounts) {
+    if (count < maxCounts) {
+      count++;
+    }
 
     emit(AdhkarCounterState());
   }

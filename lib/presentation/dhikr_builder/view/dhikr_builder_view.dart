@@ -176,7 +176,7 @@ class DhikrBuilderView extends StatelessWidget {
                                             ? "1"
                                             : adhkarFromCategory[index].count),
                                     _pageController,
-                                    index);
+                                    );
                               },
                               child: SvgPicture.asset(
                                 ImageAsset.adhkarIcon,

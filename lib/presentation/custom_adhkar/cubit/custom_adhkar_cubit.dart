@@ -7,6 +7,7 @@ import 'package:elmuslim_app/domain/usecase/del_custom_dhikr_by_id_usecase.dart'
 import 'package:elmuslim_app/domain/usecase/get_all_custom_adhkar_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/insert_new_dhikr_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/update_custom_dhikr.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'custom_adhkar_state.dart';
@@ -26,6 +27,24 @@ class CustomAdhkarCubit extends Cubit<CustomAdhkarState> {
   CustomAdhkarCubit() : super(CustomAdhkarInitial());
 
   static CustomAdhkarCubit get(context) => BlocProvider.of(context);
+
+  bool isBotSheetShown = false;
+  IconData fabIcon = Icons.add;
+
+  void changeBotSheetState(
+      {
+    required bool isShown,
+    // required IconData icon
+  }
+  ) {
+    // isBotSheetShown = !isBotSheetShown;
+    print(isBotSheetShown);
+    isBotSheetShown = isShown;
+    // fabIcon = icon;
+
+    emit(ChangeBotSheetState());
+  }
+
 
   List<CustomAdhkarEntity> customAdhkar = [];
 
@@ -67,7 +86,7 @@ class CustomAdhkarCubit extends Cubit<CustomAdhkarState> {
   }
 
   Future<void> delCustomDhikrByDhikrText(String dhikr) async {
-    emit(DelCustomDhikrByDhikrTextLoadingState());
+    // emit(DelCustomDhikrByDhikrTextLoadingState());
     await _delCustomDhikrByDhikrTextUseCase(dhikr).then((value) => value.fold((l) {
       emit(DelCustomDhikrByDhikrTextErrorState(l.message));
     }, (r) {

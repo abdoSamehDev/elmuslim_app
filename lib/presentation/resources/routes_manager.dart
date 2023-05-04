@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elmuslim_app/presentation/custom_adhkar/view/custom_adhkar_view.dart';
+import 'package:elmuslim_app/presentation/custom_adhkar/view/custom_dhikr_view.dart';
 import 'package:elmuslim_app/presentation/dhikr_builder/view/dhikr_builder_view.dart';
 import 'package:elmuslim_app/presentation/hadith_builder/view/hadith_builder_view.dart';
 import 'package:elmuslim_app/presentation/surah_builder/view/surah_builder_view.dart';
@@ -16,6 +17,7 @@ class Routes {
   static const String hadithRoute = "/hadith";
   static const String adhkarRoute = "/adhkar";
   static const String customAdhkarRoute = "/customAdhkar";
+  static const String customDhikrRoute = "/customDhikr";
 }
 
 class RoutesGenerator {
@@ -44,13 +46,18 @@ class RoutesGenerator {
       case Routes.testRoute:
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-
             builder: (_) => TestScreen(
-                quranList: args["quranList"], pageNo: args["pageNo"]
-            ));
+                quranList: args["quranList"], pageNo: args["pageNo"]));
       case Routes.customAdhkarRoute:
         initCustomAdhkarModule();
         return MaterialPageRoute(builder: (_) => CustomAdhkarView());
+      case Routes.customDhikrRoute:
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (_) => CustomDhikrView(
+                  customDhikrText: args["customDhikrText"],
+                  noOfRepetitions: args["noOfRepetitions"],
+                ));
       default:
         return unDefinedRoute();
     }

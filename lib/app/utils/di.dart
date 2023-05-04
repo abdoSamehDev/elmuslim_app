@@ -8,6 +8,7 @@ import 'package:elmuslim_app/domain/usecase/update_custom_dhikr.dart';
 import 'package:elmuslim_app/presentation/custom_adhkar/cubit/custom_adhkar_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:elmuslim_app/app/utils/app_prefs.dart';
 import 'package:elmuslim_app/data/data_source/local/local_data_source.dart';
@@ -59,6 +60,9 @@ Future initAppModule() async {
 
   //Form Key
   instance.registerFactory<GlobalKey<FormState>>(() => GlobalKey<FormState>());
+
+  //Scaffold Key
+  instance.registerFactory<GlobalKey<ScaffoldState>>(() => GlobalKey<ScaffoldState>());
 
 
 
