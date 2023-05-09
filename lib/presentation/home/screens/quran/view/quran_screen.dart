@@ -227,17 +227,9 @@ class QuranScreen extends StatelessWidget {
               ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
         ),
         onTap: () {
-          // Navigator.pushNamed(
-          //   context,
-          //   Routes.quranRoute,
-          //   arguments: {
-          //     'quranList': quranList,
-          //     'pageNo': pageNo,
-          //   },
-          // );
           Navigator.pushNamed(
             context,
-            Routes.testRoute,
+            Routes.quranRoute,
             arguments: {
               'quranList': quranList,
               'pageNo': pageNo,

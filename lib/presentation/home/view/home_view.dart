@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(
                             context,
-                            Routes.testRoute,
+                            Routes.quranRoute,
                             arguments: {
                               'quranList': quranList,
                               'pageNo': cubit.getBookMarkPage(),

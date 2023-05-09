@@ -95,7 +95,13 @@ class DhikrBuilderView extends StatelessWidget {
                                   .textTheme
                                   .bodySmall
                                   ?.copyWith(
-                                    height: AppSize.s1_23.h,
+                                    height: calculateFontLineHeight(
+                                    adhkarFromCategory[index]
+                                        .dhikr
+                      .replaceAll("(", "")
+                      .replaceAll(")", "")
+                      .replaceAll(".", "")
+                      .length),
                                     fontSize: calculateFontSize(
                                         adhkarFromCategory[index]
                                             .dhikr

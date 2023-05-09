@@ -45,7 +45,7 @@ class CustomDhikrView extends StatelessWidget {
                           customDhikrText,
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                height: AppSize.s1_23.h,
+                                height: AppSize.s1_25.h,
                                 fontSize: calculateFontSize(customDhikrText.length),
                               ),
                         ),
