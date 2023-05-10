@@ -74,11 +74,12 @@ class SettingsScreen extends StatelessWidget {
                 value: darkMode,
                 onChanged: (value) {
                   cubit.changeAppTheme(context);
+                  print(darkMode);
                 },
               ),
               onTap: () {
-                // darkMode =!darkMode;
                 cubit.changeAppTheme(context);
+                print(darkMode);
               },
               context: context,
             ),
