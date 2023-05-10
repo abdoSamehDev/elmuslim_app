@@ -15,13 +15,15 @@ double calculateFontSize(int noOfChars) {
   if (0 < noOfChars && noOfChars < 200) {
     fontSize = FontSize.s23;
   } else if (200 < noOfChars && noOfChars < 400) {
-    fontSize = FontSize.s21;
+    fontSize = FontSize.s22;
   } else if (400 < noOfChars && noOfChars < 600) {
-    fontSize = FontSize.s19;
+    fontSize = FontSize.s20;
   } else if (600 < noOfChars && noOfChars < 800) {
-    fontSize = FontSize.s16;
+    fontSize = FontSize.s17;
   } else if (800 < noOfChars && noOfChars < 1000) {
-    fontSize = FontSize.s15;
+    fontSize = FontSize.s16;
+  } else if (1000 < noOfChars && noOfChars < 1200) {
+    fontSize = FontSize.s14_5;
   } else {
     fontSize = FontSize.s11_5;
   }
@@ -155,73 +157,14 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
   return fontSize;
 }
 
-// double calculateAyahFontSize(List<AyahModel> ayahs) {
-//   //{7, 5, 11, 8, 9, 4, 10, 6, 3, 1, 16, 15, 20, 19, 12, 13, 14, 25, 17, 21, 23, 28, 24, 27, 26, 29, 22, 18, 34, 30, 31, 42, 32} //33
-//   //{1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ,16 , 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 42} //33
-//   //{1}
-//   //{3: 7}
-//   //{7: 11}
-//   //{11: 15}
-//   //{15: 20}
-//   //{20: 24}
-//   //{24: 28}
-//   //{28: 31}
-//   //{31: 34}
-//   //{42}
-//
-//   int noOfAyahs = ayahs.length;
-//   double fontSize = 0.0;
-//   int noOfChars = 0;
-//   List<int> noOfAyahCharsList = [];
-//   for (var ayah in ayahs) {
-//     noOfAyahCharsList.add(ayah.text.length);
-//   }
-//   noOfChars = sum(noOfAyahCharsList);
-//   print("NO.: $noOfChars");
-//   if (noOfAyahs == 1) {
-//     fontSize = FontSize.s19_5;
-//   }
-//   if (1 < noOfAyahs && noOfAyahs <= 5) {
-//     fontSize = FontSize.s20;
-//   } else if (5 < noOfAyahs && noOfAyahs <= 7) {
-//     fontSize = FontSize.s18_5;
-//   } else if (7 < noOfAyahs && noOfAyahs <= 12) {
-//     fontSize = FontSize.s18; //start of surah
-//   } else if (12 < noOfAyahs && noOfAyahs <= 15) {
-//     fontSize = FontSize.s17_5;
-//   } else if (15 < noOfAyahs && noOfAyahs <= 18) {
-//     fontSize = FontSize.s17;
-//   } else if (18 < noOfAyahs && noOfAyahs <= 22) {
-//     fontSize = FontSize.s17;
-//   } else if (22 < noOfAyahs && noOfAyahs <= 26) {
-//     fontSize = FontSize.s17; //start of surah
-//   } else if (26 < noOfAyahs && noOfAyahs <= 29) {
-//     fontSize = FontSize.s18;
-//   } else if (29 < noOfAyahs && noOfAyahs <= 33) {
-//     fontSize = FontSize.s25_5;
-//   } else if (33 < noOfAyahs && noOfAyahs <= 37) {
-//     fontSize = FontSize.s17;
-//   } else if (37 < noOfAyahs) {
-//     fontSize = FontSize.s16;
-//   }
-//   // else if(600< noOfAyahs && noOfAyahs < 800){
-//   //   fontSize = FontSize.s26;
-//   // }
-//   // else if(800< noOfAyahs && noOfAyahs < 1000){
-//   //   fontSize = FontSize.s24;
-//   // }
-//
-//   return fontSize;
-// }
-
 double calculateFontLineHeight(int noOfChars) {
   double lineHeight = 0.0;
   if (0 < noOfChars && noOfChars < 500) {
-    lineHeight = AppSize.s1_23.h;
-  } else if (500 < noOfChars && noOfChars < 1000) {
-    lineHeight = AppSize.s1_23.h;
+    lineHeight = AppSize.s1_5.h;
+  } else if (500 < noOfChars && noOfChars < 1200) {
+    lineHeight = AppSize.s1_27.h;
   } else {
-    lineHeight = AppSize.s1_23.h;
+    lineHeight = AppSize.s1_25.h;
   }
   return lineHeight;
 }
@@ -236,4 +179,8 @@ int sum(List<int> numbers) {
     total += number;
   }
   return total;
+}
+
+String getQuranImageNumberFromPageNumber (int quranPageNumber){
+  return quranPageNumber.toString().padLeft(3, "0");
 }

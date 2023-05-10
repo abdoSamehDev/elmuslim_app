@@ -13,11 +13,16 @@ class QuranCubit extends Cubit<QuranState> {
 
   static QuranCubit get(context) => BlocProvider.of(context);
 
+  List<QuranModel> quranData = [];
+
   Future getQuranData() async {
     emit(QuranGetDataLoadingState());
     final result = await _quranUseCase(const NoParameters());
     result.fold((l) => emit(QuranGetDataErrorState(l.message)),
-        (r) => emit(QuranGetDataSuccessState(r)));
+        (r) {
+      quranData = r;
+          emit(QuranGetDataSuccessState(r));
+        });
   }
 
   List<AyahModel> getAyahsFromPageNo({
@@ -45,4 +50,5 @@ class QuranCubit extends Cubit<QuranState> {
     }
     return pageSurahsNames.toSet().toList();
   }
+
 }

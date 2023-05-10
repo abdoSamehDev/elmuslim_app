@@ -11,3 +11,16 @@ class HomeChangeBotNavIndexState extends HomeState {}
 class HomeChangeAppThemeState extends HomeState {}
 
 class HomeChangeAppLanguageState extends HomeState {}
+
+class QuranBookMarkPageState extends HomeState {}
+
+class QuranRemoveBookMarkState extends HomeState {}
+
+class CheckQuranBookMarkPageState extends HomeState {
+  // final bool isThereABookMarkedPage;
+  //
+  // CheckQuranBookMarkPageState(this.isThereABookMarkedPage);
+}
+
+class GetQuranBookMarkPageState extends HomeState {}
+

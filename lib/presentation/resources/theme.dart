@@ -80,12 +80,12 @@ ThemeData getApplicationLightTheme() {
       style: ElevatedButton.styleFrom(
         backgroundColor: ColorManager.lightPrimary,
         disabledBackgroundColor: ColorManager.lightGrey,
-        foregroundColor: ColorManager.white,
+        foregroundColor: ColorManager.gold,
         disabledForegroundColor: ColorManager.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSize.s14.r),
         ),
-        textStyle: getRegularStyle(fontSize: FontSize.s12.r),
+        textStyle: getSemiBoldStyle(fontSize: FontSize.s14.r),
       ),
     ),
 
@@ -141,15 +141,15 @@ ThemeData getApplicationLightTheme() {
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: EdgeInsets.all(AppPadding.p8.w),
       hintStyle: getRegularStyle(
-        fontSize: FontSize.s14,
+        fontSize: FontSize.s12,
         color: ColorManager.lightGrey,
       ),
       labelStyle: getMediumStyle(
-        fontSize: FontSize.s14,
+        fontSize: FontSize.s12,
         color: ColorManager.lightGrey,
       ),
       errorStyle: getRegularStyle(
-        fontSize: FontSize.s12,
+        fontSize: FontSize.s10,
         color: ColorManager.error,
       ),
 
@@ -235,14 +235,14 @@ ThemeData getApplicationLDarkTheme() {
     //elevated button theme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: ColorManager.darkPrimary,
+        backgroundColor: ColorManager.darkSecondary,
         disabledBackgroundColor: ColorManager.darkGrey,
-        foregroundColor: ColorManager.white,
+        foregroundColor: ColorManager.gold,
         disabledForegroundColor: ColorManager.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSize.s14.r),
         ),
-        textStyle: getRegularStyle(fontSize: FontSize.s12.r),
+        textStyle: getSemiBoldStyle(fontSize: FontSize.s14.r),
       ),
     ),
 
@@ -312,7 +312,7 @@ ThemeData getApplicationLDarkTheme() {
       //focused border style
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: ColorManager.darkPrimary,
+          color: ColorManager.darkSecondary,
           width: AppSize.s1_5.r,
         ),
         borderRadius: BorderRadius.circular(AppSize.s8.r),

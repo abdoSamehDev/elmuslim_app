@@ -20,6 +20,16 @@ extension NonNulInt on int? {
   }
 }
 
+extension NonNulBool on bool? {
+  bool orFalse() {
+    if (this == null) {
+      return false;
+    } else {
+      return this!;
+    }
+  }
+}
+
 extension ArabicNumber on int {
   String toArabic() {
     String arabicString = toString()

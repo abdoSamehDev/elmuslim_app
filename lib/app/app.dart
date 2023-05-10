@@ -1,4 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elmuslim_app/presentation/custom_adhkar/cubit/custom_adhkar_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,6 +34,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void didChangeDependencies() {
     _preferences.getAppLocale().then((locale) => context.setLocale(locale));
+    // _preferences.isThereABookMarked().then((value) => isThereABookMark = value.orFalse());
     super.didChangeDependencies();
   }
 
@@ -45,13 +48,19 @@ class _MyAppState extends State<MyApp> {
           return MultiBlocProvider(
             providers: [
               BlocProvider(
-                  create: (BuildContext context) => instance<HomeCubit>()),
+                  create: (BuildContext context) => instance<HomeCubit>()..isThereABookMarked()),
               BlocProvider(
                   create: (BuildContext context) =>
                       instance<QuranCubit>()..getQuranData()),
               BlocProvider(
                   create: (BuildContext context) =>
                       instance<HadithCubit>()..getHadithData()),
+              BlocProvider(
+                  create: (BuildContext context) =>
+                  instance<AdhkarCubit>()..getAdhkarData()),
+              BlocProvider(
+                  create: (BuildContext context) =>
+                  instance<CustomAdhkarCubit>()..getAllCustomAdhkar()),
             ],
             child: BlocConsumer<HomeCubit, HomeState>(
               listener: (context, state) {},

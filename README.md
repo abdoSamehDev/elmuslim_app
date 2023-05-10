@@ -11,9 +11,10 @@ El Muslim is your daily guide to Islamic practices and beliefs, providing a comp
 
 ## Features
 
-- Reading the Holy Quran with easy navigation between surahs and verses.
+- Reading the Holy Quran with easy navigation between surahs and verses, and the ability to bookmark pages for easy access later.
 - Collection of Forty Hadiths an-Nawawi for guidance on various aspects of Islamic life.
-- Daily supplications for morning and evening, bedtime, and other times.
+- Daily supplications for morning and evening, bedtime, and other times, as well as the ability to add custom adhkar and manage them from a dedicated list.
+- Improved experience of Quran reading for a smoother and more enjoyable experience.
 - Night mode for a customized reading experience.
 - Fully responsive and optimized for a variety of screen sizes.
 ***
@@ -25,6 +26,7 @@ El Muslim is your daily guide to Islamic practices and beliefs, providing a comp
 - Cubit from BLoC has been used as a state management library.
 - Native splash screen has been implemented. 
 - Shared preferences have been used to cache user preferences about language and theme mode.
+- Floor database has been used to save user custom adhkar.
 ***
 
 ## Screenshots
@@ -35,6 +37,7 @@ El Muslim is your daily guide to Islamic practices and beliefs, providing a comp
   <img src="assets/screenshots/03.png" alt="App Screenshots" width="300" height="auto" />
   <img src="assets/screenshots/04.png" alt="App Screenshots" width="300" height="auto" />
   <img src="assets/screenshots/05.png" alt="App Screenshots" width="300" height="auto" />
+  <img src="assets/screenshots/06.png" alt="App Screenshots" width="300" height="auto" />
 </div>
 
 ## Installation
@@ -81,7 +84,13 @@ We would like to thank the following sources for their contributions to El Musli
 
 ## Version History
 
-- v1.0.0 - Initial release.
+# v1.1.0
+- Improved the experience of Quran reading.
+- Added quran page bookmark feature to save where the user stops reading.
+- Added a feature that allows the user to add custom adhkar and access them from a custom adhkar list (also can delete a dhikr if they no longer want it in their custom adhkar list).
+
+# v1.0.0
+- Initial release.
 ***
 
 ## Legal

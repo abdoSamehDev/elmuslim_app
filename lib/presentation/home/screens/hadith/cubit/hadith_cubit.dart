@@ -13,10 +13,15 @@ class HadithCubit extends Cubit<HadithState> {
 
   static HadithCubit get(context) => BlocProvider.of(context);
 
+  List<HadithModel> hadithList = [];
+
   Future getHadithData() async {
     emit(HadithGetDataLoadingState());
     final result = await _hadithUseCase(const NoParameters());
     result.fold((l) => emit(HadithGetDataErrorState(l.message)),
-        (r) => emit(HadithGetDataSuccessState(r)));
+        (r) {
+          hadithList = r;
+          emit(HadithGetDataSuccessState(r));
+        });
   }
 }

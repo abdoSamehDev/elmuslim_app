@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+2
+version: 1.1.0+3
 
 environment:
   sdk: '>=2.19.0 <3.0.0'
@@ -35,17 +35,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  flutter_svg: ^2.0.4
+  flutter_svg: ^2.0.5
   build_runner: ^2.3.3
   dartz: ^0.10.1
-  shared_preferences: ^2.0.18
+  shared_preferences: ^2.1.0
   get_it: ^7.2.0
   easy_localization: ^3.0.1
-  flutter_phoenix: ^1.1.0
+  flutter_phoenix: ^1.1.1
   flutter_native_splash: ^2.2.19
   flutter_bloc: ^8.1.2
   equatable: ^2.0.5
   flutter_screenutil: ^5.7.0
+  conditional_builder_null_safety: ^0.0.6
+  json_serializable: ^6.6.1
+  json_annotation: ^4.8.0
+  floor: ^1.4.2
+  floor_generator: ^1.4.2
 
 
 flutter_native_splash:
@@ -153,7 +158,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
+    - assets/fonts/
+    - assets/images/
+    - assets/images/quran/
+    - assets/json/
+    - assets/screenshots/
+    - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
