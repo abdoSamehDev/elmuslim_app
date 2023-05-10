@@ -75,7 +75,7 @@ We would like to thank the following sources for their contributions to El Musli
 - Azkar data from [Azkar Database](https://github.com/osamayy/azkar-db/blob/master/azkar.json)
 - Quran Icon from [Quran Icon](https://www.svgrepo.com/svg/52891/quran-rehal)
 - Hadith Icon from [Hadith Icon](https://iconscout.com/icon/ornament-3376032)
-- Tasbih Icon from [Hadith Icon](https://iconscout.com/icon/muslim-3)
+- Tasbih Icon from [Tasbih Icon](https://iconscout.com/icon/muslim-3)
 ***
 
 
