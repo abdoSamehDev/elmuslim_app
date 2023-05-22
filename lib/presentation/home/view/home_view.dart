@@ -1,25 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elmuslim_app/app/utils/constants.dart';
-import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
-import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
-import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elmuslim_app/app/utils/custom_search.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
 import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:elmuslim_app/presentation/home/viewmodel/home_viewmodel.dart';
 import 'package:elmuslim_app/presentation/resources/assets_manager.dart';
 import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:elmuslim_app/presentation/resources/styles_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeView extends StatelessWidget {
   final HomeViewModel _viewModel = instance<HomeViewModel>();
-
 
   HomeView({Key? key}) : super(key: key);
 
@@ -89,6 +89,19 @@ class HomeView extends StatelessWidget {
                     .titleLarge
                     ?.copyWith(color: ColorManager.gold),
               ),
+              actions: currentIndex == 0
+                  ? [
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {
+                          // Navigator.pushNamed(context, Routes.quranSearchRoute);
+                          // cubit.openSearch(searchController);
+                          showSearch(
+                              context: context, delegate: CustomSearch());
+                        },
+                      )
+                    ]
+                  : [],
             ),
             bottomNavigationBar: BottomNavigationBar(
               selectedItemColor: ColorManager.gold,

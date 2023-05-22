@@ -16,11 +16,6 @@ class QuranBookMarkPageState extends HomeState {}
 
 class QuranRemoveBookMarkState extends HomeState {}
 
-class CheckQuranBookMarkPageState extends HomeState {
-  // final bool isThereABookMarkedPage;
-  //
-  // CheckQuranBookMarkPageState(this.isThereABookMarkedPage);
-}
+class CheckQuranBookMarkPageState extends HomeState {}
 
 class GetQuranBookMarkPageState extends HomeState {}
-

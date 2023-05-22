@@ -8,11 +8,13 @@ class AppStrings {
   static const String countValidateReturn = "count_validate_return";
   static const String ok = "ok";
   static const String quran = "quran";
+  static const String searchInQuran = "search_in_quran";
   static const String surahName = "surah_name";
   static const String pageNumber = "page_number";
   static const String juz = "juz";
   static const String hizb = "hizb";
-  static const String firstOfSurahBasmalah = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
+  static const String firstOfSurahBasmalah =
+      "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ";
   static const String basmalah = "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيم";
   static const String hadith = "hadith";
   static const String nawawi = "40_nawawi";
@@ -26,7 +28,8 @@ class AppStrings {
   static const String adhkarReward = "adhkar_reward";
   static const String addNewDhikr = "add_new_dhikr";
   static const String newDhikr = "new_dhikr";
-  static const String newDhikrNumberOfRepetitions = "new_dhikr_number_of_repetitions";
+  static const String newDhikrNumberOfRepetitions =
+      "new_dhikr_number_of_repetitions";
   static const String noCustomAdhkar = "no_custom_adhkar";
   static const String add = "add";
   static const String settings = "settings";

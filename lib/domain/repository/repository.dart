@@ -4,9 +4,12 @@ import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
 import 'package:elmuslim_app/domain/models/adhkar/custom_adhkar_model.dart';
 import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
 import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_search_model.dart';
 
 abstract class Repository {
   Future<Either<Failure, List<QuranModel>>> getQuranData();
+
+  Future<Either<Failure, List<QuranSearchModel>>> getQuranSearchData();
 
   Future<Either<Failure, List<HadithModel>>> getHadithData();
 
@@ -15,7 +18,8 @@ abstract class Repository {
   //Database
   Future<Either<Failure, List<CustomAdhkarEntity>>> getAllCustomAdhkar();
 
-  Future<Either<Failure, CustomAdhkarEntity?>> getDhikrByDhikrText(String dhikr);
+  Future<Either<Failure, CustomAdhkarEntity?>> getDhikrByDhikrText(
+      String dhikr);
 
   Future<Either<Failure, void>> insertDhikr(CustomAdhkarEntity dhikr);
 

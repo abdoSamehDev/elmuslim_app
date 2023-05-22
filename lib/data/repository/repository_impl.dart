@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:elmuslim_app/app/error/exception.dart';
-
 import 'package:elmuslim_app/app/error/failure.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
 import 'package:elmuslim_app/data/data_source/local/local_data_source.dart';
@@ -11,6 +10,8 @@ import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
 import 'package:elmuslim_app/domain/models/adhkar/custom_adhkar_model.dart';
 import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
 import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_search_model.dart';
+
 import '../../domain/repository/repository.dart';
 
 class RepositoryImpl implements Repository {
@@ -51,6 +52,16 @@ class RepositoryImpl implements Repository {
   }
 
   @override
+  Future<Either<Failure, List<QuranSearchModel>>> getQuranSearchData() async {
+    final data = await _localDataSource.getQuranSearchData();
+    try {
+      return Right(data.map((e) => e.toDomain()).toList());
+    } on LocalException catch (failure) {
+      return Left(LocalFailure(failure.message));
+    }
+  }
+
+  @override
   Future<Either<Failure, void>> delDhikrByDhikrText(String dhikr) async {
     await _customAdhkarDao.delDhikrByDhikrText(dhikr);
     try {
@@ -81,8 +92,10 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future<Either<Failure, CustomAdhkarEntity?>> getDhikrByDhikrText(String dhikr) async {
-    CustomAdhkarEntity? resultDhikr = await _customAdhkarDao.getDhikrByDhikrText(dhikr);
+  Future<Either<Failure, CustomAdhkarEntity?>> getDhikrByDhikrText(
+      String dhikr) async {
+    CustomAdhkarEntity? resultDhikr =
+        await _customAdhkarDao.getDhikrByDhikrText(dhikr);
     try {
       return Right(resultDhikr);
     } on LocalException catch (failure) {

@@ -1,10 +1,9 @@
+import 'package:elmuslim_app/app/utils/app_prefs.dart';
 import 'package:elmuslim_app/app/utils/constants.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:elmuslim_app/app/utils/di.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:elmuslim_app/app/utils/app_prefs.dart';
-import 'package:elmuslim_app/app/utils/di.dart';
 
 part 'home_state.dart';
 
@@ -21,8 +20,6 @@ class HomeCubit extends Cubit<HomeState> {
     currentIndex = index;
     emit(HomeChangeBotNavIndexState());
   }
-
-
 
   bool darkModeOn(BuildContext context) {
     final currentThemeMode = _preferences.getAppTheme();
@@ -41,17 +38,18 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeChangeAppLanguageState());
   }
 
-
   bool isPageBookMarked(int quranPageNumber) {
     return _preferences.isPageBookMarked(quranPageNumber);
   }
 
   // bool isThereABookMarkedPage = false;
 
-  Future<bool> isThereABookMarked()async  {
+  Future<bool> isThereABookMarked() async {
     // bool isThereABookMarkedPage = false;
 
-    await _preferences.isThereABookMarked().then((value) => isThereABookMarkedPage = value);
+    await _preferences
+        .isThereABookMarked()
+        .then((value) => isThereABookMarkedPage = value);
 
     // await getQuranData();
     print(isThereABookMarkedPage);
@@ -68,7 +66,6 @@ class HomeCubit extends Cubit<HomeState> {
     }
     await isThereABookMarked();
     emit(QuranBookMarkPageState());
-
   }
 
   int? bookMarkedPage;

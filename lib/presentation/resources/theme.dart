@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
 import 'package:elmuslim_app/presentation/resources/styles_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum ThemeType {
   dark,
@@ -39,6 +39,21 @@ ThemeData getApplicationLightTheme() {
     disabledColor: ColorManager.lightGrey,
     shadowColor: ColorManager.lightSecondary,
     unselectedWidgetColor: ColorManager.lightGrey,
+
+    colorScheme: const ColorScheme(
+      background: ColorManager.lightBackground,
+      brightness: Brightness.light,
+      primary: ColorManager.lightPrimary,
+      onPrimary: ColorManager.lightSecondary,
+      secondary: ColorManager.lightSecondary,
+      onSecondary: ColorManager.lightPrimary,
+      error: ColorManager.error,
+      onError: ColorManager.lightPrimary,
+      onBackground: ColorManager.lightPrimary,
+      surface: ColorManager.lightPrimary,
+      onSurface: ColorManager.lightSecondary,
+    ),
+
     //cardView theme
     cardTheme: CardTheme(
       color: ColorManager.white,
@@ -196,6 +211,20 @@ ThemeData getApplicationLDarkTheme() {
     disabledColor: ColorManager.darkGrey,
     shadowColor: ColorManager.darkPrimary,
     unselectedWidgetColor: ColorManager.darkGrey,
+
+    colorScheme: const ColorScheme(
+      background: ColorManager.darkBackground,
+      brightness: Brightness.dark,
+      primary: ColorManager.darkSecondary,
+      onPrimary: ColorManager.darkPrimary,
+      secondary: ColorManager.darkSecondary,
+      onSecondary: ColorManager.darkPrimary,
+      error: ColorManager.error,
+      onError: ColorManager.darkPrimary,
+      onBackground: ColorManager.darkSecondary,
+      surface: ColorManager.darkPrimary,
+      onSurface: ColorManager.darkSecondary,
+    ),
 
     //cardView theme
     cardTheme: CardTheme(

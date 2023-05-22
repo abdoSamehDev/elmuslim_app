@@ -1,8 +1,11 @@
 import 'package:elmuslim_app/app/utils/extensions.dart';
 import 'package:elmuslim_app/data/responses/quran/quran_response.dart';
+import 'package:elmuslim_app/data/responses/quran/quran_search_response.dart';
 import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
 import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
 import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_search_model.dart';
+
 import '../responses/adhkar/adhkar_response.dart';
 import '../responses/hadith/hadith_response.dart';
 
@@ -15,6 +18,17 @@ extension AyahResponseMapper on AyahResponse {
       juz: juz.orZero(),
       page: page.orZero(),
       hizbQuarter: hizbQuarter.orZero(),
+    );
+  }
+}
+
+extension QuranSearchResponseMapper on QuranSearchResponse {
+  QuranSearchModel toDomain() {
+    return QuranSearchModel(
+      id: id.orZero(),
+      text: text.orEmpty(),
+      numberInSurah: int.parse(verseKey.split(":")[1]).orZero(),
+      surahNumber: int.parse(verseKey.split(":")[0]).orZero(),
     );
   }
 }

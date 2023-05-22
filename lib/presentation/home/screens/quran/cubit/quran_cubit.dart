@@ -1,13 +1,18 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:elmuslim_app/app/utils/constants.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
 import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_search_model.dart';
 import 'package:elmuslim_app/domain/usecase/base_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/quran_search_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/quran_usecase.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'quran_state.dart';
 
 class QuranCubit extends Cubit<QuranState> {
   final QuranUseCase _quranUseCase = instance<QuranUseCase>();
+
+  final QuranSearchUseCase _quranSearchUseCase = instance<QuranSearchUseCase>();
 
   QuranCubit() : super(QuranInitial());
 
@@ -18,11 +23,21 @@ class QuranCubit extends Cubit<QuranState> {
   Future getQuranData() async {
     emit(QuranGetDataLoadingState());
     final result = await _quranUseCase(const NoParameters());
-    result.fold((l) => emit(QuranGetDataErrorState(l.message)),
-        (r) {
+    result.fold((l) => emit(QuranGetDataErrorState(l.message)), (r) {
       quranData = r;
-          emit(QuranGetDataSuccessState(r));
-        });
+      emit(QuranGetDataSuccessState(r));
+    });
+  }
+
+  // List<QuranSearchModel> quranSearchData = [];
+
+  Future getQuranSearchData() async {
+    emit(QuranSearchGetDataLoadingState());
+    final result = await _quranSearchUseCase(const NoParameters());
+    result.fold((l) => emit(QuranSearchGetDataErrorState(l.message)), (r) {
+      quranSearchData = r;
+      emit(QuranSearchGetDataSuccessState(r));
+    });
   }
 
   List<AyahModel> getAyahsFromPageNo({
@@ -50,5 +65,4 @@ class QuranCubit extends Cubit<QuranState> {
     }
     return pageSurahsNames.toSet().toList();
   }
-
 }
