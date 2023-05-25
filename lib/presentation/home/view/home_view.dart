@@ -38,48 +38,47 @@ class HomeView extends StatelessWidget {
           // cubit.isThereABookMarked();
           int currentIndex = cubit.currentIndex;
           return Scaffold(
-            floatingActionButton:
-                isThereABookMarkedPage == true && currentIndex == 0
+            floatingActionButton: isThereABookMarkedPage == true &&
+                    currentIndex == Constants.quranIndex
+                ? FloatingActionButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.quranRoute,
+                        arguments: {
+                          'quranList': quranList,
+                          'pageNo': cubit.getBookMarkPage(),
+                        },
+                      );
+                    },
+                    backgroundColor: darkMode
+                        ? ColorManager.darkSecondary
+                        : ColorManager.lightPrimary,
+                    child: const Icon(
+                      Icons.bookmark,
+                      color: ColorManager.gold,
+                    ),
+                  )
+                : currentIndex == Constants.adhkarIndex
                     ? FloatingActionButton(
                         onPressed: () {
                           Navigator.pushNamed(
                             context,
-                            Routes.quranRoute,
-                            arguments: {
-                              'quranList': quranList,
-                              'pageNo': cubit.getBookMarkPage(),
-                            },
+                            Routes.customAdhkarRoute,
                           );
                         },
                         backgroundColor: darkMode
                             ? ColorManager.darkSecondary
                             : ColorManager.lightPrimary,
-                        child: const Icon(
-                          Icons.bookmark,
+                        child: SvgPicture.asset(
+                          ImageAsset.adhkarIcon,
+                          width: AppSize.s50.h,
+                          height: AppSize.s50.h,
                           color: ColorManager.gold,
+                          // Theme.of(context).primaryColor,
                         ),
                       )
-                    : currentIndex == 2
-                        ? FloatingActionButton(
-                            onPressed: () {
-                              // _showBotSheet(context, darkMode);
-                              Navigator.pushNamed(
-                                context,
-                                Routes.customAdhkarRoute,
-                              );
-                            },
-                            backgroundColor: darkMode
-                                ? ColorManager.darkSecondary
-                                : ColorManager.lightPrimary,
-                            child: SvgPicture.asset(
-                              ImageAsset.adhkarIcon,
-                              width: AppSize.s50.h,
-                              height: AppSize.s50.h,
-                              color: ColorManager.gold,
-                              // Theme.of(context).primaryColor,
-                            ),
-                          )
-                        : Container(),
+                    : Container(),
             appBar: AppBar(
               backgroundColor: Theme.of(context).primaryColor,
               title: Text(
@@ -89,7 +88,7 @@ class HomeView extends StatelessWidget {
                     .titleLarge
                     ?.copyWith(color: ColorManager.gold),
               ),
-              actions: currentIndex == 0
+              actions: currentIndex == Constants.quranIndex
                   ? [
                       IconButton(
                         icon: const Icon(Icons.search),
@@ -127,7 +126,7 @@ class HomeView extends StatelessWidget {
                     ImageAsset.quranIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == 0
+                    color: currentIndex == Constants.quranIndex
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
                   ),
@@ -138,7 +137,7 @@ class HomeView extends StatelessWidget {
                     ImageAsset.hadithIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == 1
+                    color: currentIndex == Constants.hadithIndex
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
                   ),
@@ -149,7 +148,7 @@ class HomeView extends StatelessWidget {
                     ImageAsset.adhkarIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == 2
+                    color: currentIndex == Constants.adhkarIndex
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
                   ),

@@ -5,6 +5,7 @@ import 'package:elmuslim_app/presentation/custom_adhkar/cubit/custom_adhkar_cubi
 import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/prayer_times/cubit/prayer_timings_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:elmuslim_app/presentation/resources/theme.dart';
@@ -57,6 +58,9 @@ class _MyAppState extends State<MyApp> {
               BlocProvider(
                   create: (BuildContext context) =>
                       instance<HadithCubit>()..getHadithData()),
+              BlocProvider(
+                  create: (BuildContext context) =>
+                      instance<PrayerTimingsCubit>()..getPrayerTimings()),
               BlocProvider(
                   create: (BuildContext context) =>
                       instance<AdhkarCubit>()..getAdhkarData()),

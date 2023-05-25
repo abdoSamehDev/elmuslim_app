@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: a36ec4843dc30ea6bf652bf25e3448db6c5e8bcf4aa55f063a5d1dad216d8214
+      sha256: ae92f5d747aee634b87f89d9946000c2de774be1d6ac3e58268224348cd0101a
       url: "https://pub.dev"
     source: hosted
-    version: "58.0.0"
+    version: "61.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      sha256: cc4242565347e98424ce9945c819c192ec0838cb9d1f6aa4a97cc96becbc5b27
+      sha256: ea3d8652bda62982addfd92fdc2d0214e5f82e43325104990d4f4c4a2a313562
       url: "https://pub.dev"
     source: hosted
-    version: "5.10.0"
+    version: "5.13.0"
   archive:
     dependency: transitive
     description:
@@ -225,6 +225,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.10.1"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      sha256: "347d56c26d63519552ef9a569f2a593dda99a81fdbdff13c584b7197cfe05059"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.2"
   easy_localization:
     dependency: "direct main"
     description:
@@ -381,6 +389,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
+  geocoding:
+    dependency: "direct main"
+    description:
+      name: geocoding
+      sha256: b34c0501bbbaf3190b85bef3078b27cf66c28a8915c6d3af50d67f356aa7da31
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
+  geocoding_android:
+    dependency: transitive
+    description:
+      name: geocoding_android
+      sha256: "5a1fc0cec9b0497b44ca31c1fa8d1c891f3aded1053e6bb2eac075d3bd1bf046"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
+  geocoding_ios:
+    dependency: transitive
+    description:
+      name: geocoding_ios
+      sha256: c85495ce8fb34e4fbd2dd8fc5f79263d622d9f88c4af948c965daf6b27a7f3a1
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
+  geocoding_platform_interface:
+    dependency: transitive
+    description:
+      name: geocoding_platform_interface
+      sha256: "8848605d307d844d89937cdb4b8ad7dfa880552078f310fa24d8a460f6dddab4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   get_it:
     dependency: "direct main"
     description:
@@ -437,6 +477,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.15"
+  internet_connection_checker:
+    dependency: "direct main"
+    description:
+      name: internet_connection_checker
+      sha256: "1c683e63e89c9ac66a40748b1b20889fd9804980da732bf2b58d6d5456c8e876"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+1"
   intl:
     dependency: transitive
     description:
@@ -493,6 +541,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  location:
+    dependency: "direct main"
+    description:
+      name: location
+      sha256: "9051959f6f2ccadd887b28b66e9cbbcc25b6838e37cf9e894c421ccc0ebf80b5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.4.0"
+  location_platform_interface:
+    dependency: transitive
+    description:
+      name: location_platform_interface
+      sha256: "62eeaf1658e92e4459b727f55a3c328eccbac8ba043fa6d262ac5286ad48384c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
+  location_web:
+    dependency: transitive
+    description:
+      name: location_web
+      sha256: "6c08c408a040534c0269c4ff9fe17eebb5a36dea16512fbaf116b9c8bc21545b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
   logging:
     dependency: transitive
     description:
@@ -629,6 +701,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  pretty_dio_logger:
+    dependency: "direct main"
+    description:
+      name: pretty_dio_logger
+      sha256: "00b80053063935cf9a6190da344c5373b9d0e92da4c944c878ff2fbef0ef6dc2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.1"
   process:
     dependency: transitive
     description:
@@ -661,14 +741,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.2"
-  quran:
+  retrofit:
     dependency: "direct main"
     description:
-      name: quran
-      sha256: b52ceeae1083a856a3eaacbbfbdd493e41789970b6d9bee61c6d968fc326d947
+      name: retrofit
+      sha256: "5eedbd8f73697f190dabc88520e0bcf2d3b2d9b9ad5c837f1dbb3ee6172d7709"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.2"
+    version: "4.0.1"
+  retrofit_generator:
+    dependency: "direct main"
+    description:
+      name: retrofit_generator
+      sha256: "7c0cca6106a8bc14ade20120700a3f607a932413f37d180e095b4658d415c6c8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -750,10 +838,10 @@ packages:
     dependency: transitive
     description:
       name: source_gen
-      sha256: c2bea18c95cfa0276a366270afaa2850b09b4a76db95d546f3d003dcc7011298
+      sha256: "373f96cf5a8744bc9816c1ff41cf5391bbdbe3d7a96fe98c622b6738a8a7bd33"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.7"
+    version: "1.3.2"
   source_helper:
     dependency: transitive
     description:
@@ -882,6 +970,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  tuple:
+    dependency: transitive
+    description:
+      name: tuple
+      sha256: "0ea99cd2f9352b2586583ab2ce6489d1f95a5f6de6fb9492faaf97ae2060f0aa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   typed_data:
     dependency: transitive
     description:
@@ -987,5 +1083,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=3.0.0-0 <4.0.0"
+  dart: ">=3.0.0 <4.0.0"
   flutter: ">=3.7.0-0"

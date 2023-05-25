@@ -1,10 +1,8 @@
-import 'dart:ui';
-
-import 'package:elmuslim_app/app/utils/extensions.dart';
-import 'package:flutter/material.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/app/utils/extensions.dart';
 import 'package:elmuslim_app/presentation/resources/language_manager.dart';
 import 'package:elmuslim_app/presentation/resources/theme.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String prefsLangKey = "LANG_KEY";
@@ -17,7 +15,7 @@ class AppPreferences {
 
   AppPreferences();
 
-  String getAppLanguage() {
+  Future<String> getAppLanguage() async {
     String? language = _preferences.getString(prefsLangKey);
     if (language != null && language.isNotEmpty) {
       return language;
@@ -26,8 +24,8 @@ class AppPreferences {
     }
   }
 
-  changeAppLanguage() {
-    String currentLanguage = getAppLanguage();
+  Future changeAppLanguage() async {
+    String currentLanguage = await getAppLanguage();
     if (currentLanguage == LanguageType.arabic.getValue()) {
       _preferences.setString(prefsLangKey, LanguageType.english.getValue());
     } else {
@@ -36,7 +34,7 @@ class AppPreferences {
   }
 
   Future<Locale> getAppLocale() async {
-    String currentLanguage = getAppLanguage();
+    String currentLanguage = await getAppLanguage();
     if (currentLanguage == LanguageType.arabic.getValue()) {
       return arabicLocale;
     } else {
@@ -67,13 +65,15 @@ class AppPreferences {
   }
 
   Future<void> bookMarkPage(int quranPageNumber) async {
-    await _preferences.setInt(bookMarkPageKey, quranPageNumber).then((value) => _preferences.setBool(bookMarkPageBoolKey, true));
-
+    await _preferences
+        .setInt(bookMarkPageKey, quranPageNumber)
+        .then((value) => _preferences.setBool(bookMarkPageBoolKey, true));
   }
 
-  Future<void> removeBookMarkPage() async{
-   await _preferences.remove(bookMarkPageKey).then((value) => _preferences.setBool(bookMarkPageBoolKey, false));
-
+  Future<void> removeBookMarkPage() async {
+    await _preferences
+        .remove(bookMarkPageKey)
+        .then((value) => _preferences.setBool(bookMarkPageBoolKey, false));
   }
 
   int? getBookMarkedPage() {
@@ -93,7 +93,7 @@ class AppPreferences {
   //   }
   // }
 
-  Future<bool> isThereABookMarked () async{
+  Future<bool> isThereABookMarked() async {
     return _preferences.getBool(bookMarkPageBoolKey).orFalse();
   }
 }

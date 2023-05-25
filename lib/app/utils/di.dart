@@ -1,6 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:elmuslim_app/app/utils/app_prefs.dart';
 import 'package:elmuslim_app/data/data_source/local/local_data_source.dart';
+import 'package:elmuslim_app/data/data_source/remote/remote_data_source.dart';
 import 'package:elmuslim_app/data/database/database.dart';
+import 'package:elmuslim_app/data/network/dio_factroy.dart';
+import 'package:elmuslim_app/data/network/network_info.dart';
+import 'package:elmuslim_app/data/network/prayer_timings_api.dart';
 import 'package:elmuslim_app/data/repository/repository_impl.dart';
 import 'package:elmuslim_app/domain/repository/repository.dart';
 import 'package:elmuslim_app/domain/usecase/adhkar_usecase.dart';
@@ -8,6 +13,7 @@ import 'package:elmuslim_app/domain/usecase/del_all_custom_adhkar_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/del_custom_dhikr_by_id_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/get_all_custom_adhkar_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/get_custom_dhikr_by_id_usecase.dart';
+import 'package:elmuslim_app/domain/usecase/get_prayer_timings_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/hadith_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/insert_new_dhikr_usecase.dart';
 import 'package:elmuslim_app/domain/usecase/quran_search_usecase.dart';
@@ -17,9 +23,11 @@ import 'package:elmuslim_app/presentation/custom_adhkar/cubit/custom_adhkar_cubi
 import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/prayer_times/cubit/prayer_timings_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../presentation/home/viewmodel/home_viewmodel.dart';
@@ -35,6 +43,26 @@ Future initAppModule() async {
   //app prefs instance
   instance.registerLazySingleton<AppPreferences>(() => AppPreferences());
 
+  //network info instance
+  instance.registerLazySingleton<InternetConnectionChecker>(
+      () => InternetConnectionChecker());
+  instance.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
+
+  //dio factory instance
+  instance.registerLazySingleton<DioFactory>(() => DioFactory());
+
+  //app service client instance
+  Dio dio = await instance<DioFactory>().getDio();
+  instance.registerLazySingleton<PrayerTimingsServiceClient>(
+      () => PrayerTimingsServiceClient(dio));
+
+  //Remote Data Source
+  instance
+      .registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImpl());
+
+  //Local Data Source
+  instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
+
   //Database instance
   final database =
       await $FloorAppDatabase.databaseBuilder('app_database.db').build();
@@ -44,14 +72,12 @@ Future initAppModule() async {
   instance.registerFactory<HomeCubit>(() => HomeCubit());
   instance.registerFactory<QuranCubit>(() => QuranCubit());
   instance.registerFactory<HadithCubit>(() => HadithCubit());
+  instance.registerFactory<PrayerTimingsCubit>(() => PrayerTimingsCubit());
   instance.registerFactory<AdhkarCubit>(() => AdhkarCubit());
   instance.registerFactory<CustomAdhkarCubit>(() => CustomAdhkarCubit());
 
   //Repository
   instance.registerLazySingleton<Repository>(() => RepositoryImpl());
-
-  //Data Source
-  instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
 
   //Page Controller
   instance.registerFactory<PageController>(() => PageController());
@@ -88,6 +114,13 @@ void initHadithModule() {
 void initAdhkarModule() {
   if (!GetIt.I.isRegistered<AdhkarUseCase>()) {
     instance.registerFactory<AdhkarUseCase>(() => AdhkarUseCase());
+  }
+}
+
+void initPrayerTimingsModule() {
+  if (!GetIt.I.isRegistered<GetPrayerTimingsUseCase>()) {
+    instance.registerFactory<GetPrayerTimingsUseCase>(
+        () => GetPrayerTimingsUseCase());
   }
 }
 

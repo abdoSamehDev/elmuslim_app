@@ -26,6 +26,7 @@ class RoutesGenerator {
         initQuranModule();
         initHadithModule();
         initAdhkarModule();
+        initPrayerTimingsModule();
         return MaterialPageRoute(builder: (_) => HomeView());
       case Routes.quranRoute:
         final args = settings.arguments as Map<String, dynamic>;
