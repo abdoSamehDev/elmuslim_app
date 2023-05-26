@@ -145,6 +145,18 @@ class HomeView extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
+                    ImageAsset.prayerIcon,
+                    width: AppSize.s20.r,
+                    height: AppSize.s20.r,
+                    color: currentIndex == Constants.prayerTimingsIndex
+                        ? ColorManager.gold
+                        : Theme.of(context).unselectedWidgetColor,
+                  ),
+                  // const FaIcon(FontAwesomeIcons.mosque),
+                  label: AppStrings.prayerTimes.tr(),
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
                     ImageAsset.adhkarIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,

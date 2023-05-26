@@ -6,7 +6,7 @@ class ImageAsset {
   //Bot Nav Icons
   static const String quranIcon = "$imagePath/quran-ic.svg";
   static const String hadithIcon = "$imagePath/hadith-ic.svg";
-  static const String hadithIcon2 = "$imagePath/hadith2-ic.svg";
+  static const String prayerIcon = "$imagePath/mosque-ic.svg";
   static const String adhkarIcon = "$imagePath/adhkar-ic.svg";
 }
 

@@ -43,6 +43,52 @@ class AppStrings {
   static const String changeAppTheme = "change_app_theme";
   static const String profile = "profile";
 
+  //Hadiths titles
+  static const List<String> hadithsTitles = [
+    "hadith_1",
+    "hadith_2",
+    "hadith_3",
+    "hadith_4",
+    "hadith_5",
+    "hadith_6",
+    "hadith_7",
+    "hadith_8",
+    "hadith_9",
+    "hadith_10",
+    "hadith_11",
+    "hadith_12",
+    "hadith_13",
+    "hadith_14",
+    "hadith_15",
+    "hadith_16",
+    "hadith_17",
+    "hadith_18",
+    "hadith_19",
+    "hadith_20",
+    "hadith_21",
+    "hadith_22",
+    "hadith_23",
+    "hadith_24",
+    "hadith_25",
+    "hadith_26",
+    "hadith_27",
+    "hadith_28",
+    "hadith_29",
+    "hadith_30",
+    "hadith_31",
+    "hadith_32",
+    "hadith_33",
+    "hadith_34",
+    "hadith_35",
+    "hadith_36",
+    "hadith_37",
+    "hadith_38",
+    "hadith_39",
+    "hadith_40",
+    "hadith_41",
+    "hadith_42"
+  ];
+
   //error handler
   // static const String success = "Success"; //success with data
   static const String noContent = "no_content"; //success with no data

@@ -53,14 +53,7 @@ class PrayerTimingsCubit extends Cubit<PrayerTimingsState> {
 
     List<Placemark> placeMarks = await placemarkFromCoordinates(
         locationData.latitude!, locationData.longitude!);
-    // .then((placemarks) {
 
-    // var output = 'No results found.';
-    // if (placemarks.isNotEmpty) {
-    //   output = placemarks[0].toString();
-    // }
-    // });
-    // print("Current Location: ${currentCountry}");
     print("placemarks: $placeMarks");
     if (placeMarks.isNotEmpty) {
       print("Current Location1: ${placeMarks[0].country.toString()}");
@@ -74,18 +67,7 @@ class PrayerTimingsCubit extends Cubit<PrayerTimingsState> {
     return (currentCity, currentCountry);
   }
 
-  // var getPrayerTimingsObject = GetPrayerTimingsUseCaseUseCaseInput(
-  //   date: "",
-  //   city: "",
-  //   country: "",
-  // );
-
-  Future<PrayerTimingsModel> getPrayerTimings(// {
-      // required String date,
-      // required String city,
-      // required String country,
-      // }
-      ) async {
+  Future<PrayerTimingsModel> getPrayerTimings() async {
     emit(GetPrayerTimesLoadingState());
     (String currentCity, String currentCountry) recordLocation =
         await getLocation();

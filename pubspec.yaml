@@ -58,6 +58,8 @@ dependencies:
   retrofit_generator: ^7.0.1
   location: ^4.4.0
   geocoding: ^2.1.0
+  wakelock: ^0.6.2
+  font_awesome_flutter: ^10.4.0
 
 
 flutter_native_splash:
