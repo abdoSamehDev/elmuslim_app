@@ -11,8 +11,9 @@ El Muslim is your daily guide to Islamic practices and beliefs, providing a comp
 
 ## Features
 
-- Reading the Holy Quran with easy navigation between surahs and verses, and the ability to bookmark pages for easy access later.
+- Reading the Holy Quran with easy navigation between surahs and verses, and the ability to bookmark pages for easy access later, and search its verses.
 - Collection of Forty Hadiths an-Nawawi for guidance on various aspects of Islamic life.
+- Prayer times from user location (requires internet connection and access permission to user location).
 - Daily supplications for morning and evening, bedtime, and other times, as well as the ability to add custom adhkar and manage them from a dedicated list.
 - Improved experience of Quran reading for a smoother and more enjoyable experience.
 - Night mode for a customized reading experience.
@@ -38,6 +39,7 @@ El Muslim is your daily guide to Islamic practices and beliefs, providing a comp
   <img src="assets/screenshots/04.png" alt="App Screenshots" width="300" height="auto" />
   <img src="assets/screenshots/05.png" alt="App Screenshots" width="300" height="auto" />
   <img src="assets/screenshots/06.png" alt="App Screenshots" width="300" height="auto" />
+  <img src="assets/screenshots/07.png" alt="App Screenshots" width="300" height="auto" />
 </div>
 
 ## Installation
@@ -77,12 +79,18 @@ We would like to thank the following sources for their contributions to El Musli
 - Hadith data from [Hadith Database](https://github.com/osamayy/40-hadith-nawawi-db/blob/main/40-hadith-nawawi)
 - Azkar data from [Azkar Database](https://github.com/osamayy/azkar-db/blob/master/azkar.json)
 - Quran Icon from [Quran Icon](https://www.svgrepo.com/svg/52891/quran-rehal)
+- Mosque Icon from [Mosque Icon](https://iconscout.com/icon/mosque-1626512)
 - Hadith Icon from [Hadith Icon](https://iconscout.com/icon/ornament-3376032)
 - Tasbih Icon from [Tasbih Icon](https://iconscout.com/icon/muslim-3)
 ***
 
 
 ## Version History
+
+# v1.2.0
+- Added prayer times (requires internet connection and access permission to user location).
+- Added Quran search feature.
+- Edited hadiths titles and enhanced the app.
 
 # v1.1.0
 - Improved the experience of Quran reading.
