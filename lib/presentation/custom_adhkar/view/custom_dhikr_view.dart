@@ -44,9 +44,13 @@ class CustomDhikrView extends StatelessWidget {
                         Text(
                           customDhikrText,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
                                 height: AppSize.s1_25.h,
-                                fontSize: calculateFontSize(customDhikrText.length),
+                                fontSize:
+                                    calculateFontSize(customDhikrText.length),
                               ),
                         ),
                       ],
@@ -100,143 +104,6 @@ class CustomDhikrView extends StatelessWidget {
                   ),
                 ],
               ),
-              // PageView.builder(
-              //   reverse: isEnglish,
-              //   controller: _pageController,
-              //   itemCount: adhkarFromCategory.length,
-              //   itemBuilder: (BuildContext context, int index) {
-              //     int count = cubit.count;
-              //     return Column(
-              //       children: [
-              //         Padding(
-              //           padding:
-              //           EdgeInsets.symmetric(vertical: AppPadding.p8.h),
-              //           child: Text(
-              //             "${(index + 1).toString().tr()} / ${adhkarFromCategory.length.toString().tr()}",
-              //             style: Theme.of(context)
-              //                 .textTheme
-              //                 .bodySmall
-              //                 ?.copyWith(
-              //                 fontFamily: FontConstants.uthmanTNFontFamily,
-              //                 height: AppSize.s1.h,
-              //                 color:
-              //                 Theme.of(context).unselectedWidgetColor),
-              //           ),
-              //         ),
-              //         Expanded(
-              //           child: Column(
-              //             children: [
-              //               Text(
-              //                 adhkarFromCategory[index]
-              //                     .dhikr
-              //                     .replaceAll("(", "")
-              //                     .replaceAll(")", "")
-              //                     .replaceAll(".", "")
-              //                     .replaceAll("﴿", "")
-              //                     .replaceAll("﴾", ""),
-              //                 textAlign: TextAlign.center,
-              //                 style: Theme.of(context)
-              //                     .textTheme
-              //                     .bodySmall
-              //                     ?.copyWith(
-              //                   height: AppSize.s1_23.h,
-              //                   fontSize: calculateFontSize(
-              //                       adhkarFromCategory[index]
-              //                           .dhikr
-              //                           .replaceAll("(", "")
-              //                           .replaceAll(")", "")
-              //                           .replaceAll(".", "")
-              //                           .length),
-              //                 ),
-              //               ),
-              //               Text(
-              //                 adhkarFromCategory[index].reference.isNotEmpty
-              //                     ? "${AppStrings.adhkarReference.tr()}: ${adhkarFromCategory[index].reference}"
-              //                     : Constants.empty,
-              //                 textAlign: TextAlign.center,
-              //                 style: Theme.of(context)
-              //                     .textTheme
-              //                     .bodySmall
-              //                     ?.copyWith(
-              //                     height: AppSize.s1.h,
-              //                     color: Theme.of(context)
-              //                         .unselectedWidgetColor),
-              //               ),
-              //               SizedBox(
-              //                 height: AppSize.s8.h,
-              //               ),
-              //               Text(
-              //                 adhkarFromCategory[index].description.isNotEmpty
-              //                     ? "${AppStrings.adhkarReward.tr()}: ${adhkarFromCategory[index].description}"
-              //                     : Constants.empty,
-              //                 textAlign: TextAlign.center,
-              //                 style: Theme.of(context)
-              //                     .textTheme
-              //                     .bodySmall
-              //                     ?.copyWith(
-              //                     height: AppSize.s1.h,
-              //                     color: Theme.of(context)
-              //                         .unselectedWidgetColor),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //         Padding(
-              //           padding: EdgeInsets.all(AppPadding.p12.h),
-              //           child: Column(
-              //             mainAxisAlignment: MainAxisAlignment.center,
-              //             crossAxisAlignment: CrossAxisAlignment.center,
-              //             children: [
-              //               getSeparator(context),
-              //               Padding(
-              //                 padding: EdgeInsets.only(bottom: AppPadding.p8.h),
-              //                 child: Text(
-              //                   "${count.toString().tr()} / ${adhkarFromCategory[index].count.isEmpty ? 1.toString().tr() : adhkarFromCategory[index].count.tr()}",
-              //                   textAlign: TextAlign.center,
-              //                   style: Theme.of(context)
-              //                       .textTheme
-              //                       .bodyLarge
-              //                       ?.copyWith(
-              //                     height: AppSize.s1.h,
-              //                     fontFamily:
-              //                     FontConstants.uthmanTNFontFamily,
-              //                   ),
-              //                 ),
-              //               ),
-              //               ElevatedButton(
-              //                 style: ElevatedButton.styleFrom(
-              //                   backgroundColor:
-              //                   Theme.of(context).secondaryHeaderColor,
-              //                   enableFeedback: true,
-              //                   shape: RoundedRectangleBorder(
-              //                     borderRadius:
-              //                     BorderRadius.circular(AppSize.s8.r),
-              //                   ),
-              //                 ),
-              //                 onPressed: () {
-              //                   cubit.dhikrCounter(
-              //                       int.parse(
-              //                           adhkarFromCategory[index].count.isEmpty
-              //                               ? "1"
-              //                               : adhkarFromCategory[index].count),
-              //                       _pageController,
-              //                       index);
-              //                 },
-              //                 child: SvgPicture.asset(
-              //                   ImageAsset.adhkarIcon,
-              //                   width: AppSize.s50.h,
-              //                   height: AppSize.s50.h,
-              //                   color: ColorManager.gold,
-              //                   // Theme.of(context).primaryColor,
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       ],
-              //     );
-              //   },
-              // ),
             ),
           );
         },

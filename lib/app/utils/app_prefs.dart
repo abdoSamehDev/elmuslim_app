@@ -84,15 +84,6 @@ class AppPreferences {
     return quranPageNumber == _preferences.getInt(bookMarkPageKey);
   }
 
-  // bool isThereABookMarked() {
-  //   int? bookMarkedPage = _preferences.getInt(bookMarkPageKey);
-  //   if(bookMarkedPage == null) {
-  //     return false;
-  //   } else{
-  //     return true;
-  //   }
-  // }
-
   Future<bool> isThereABookMarked() async {
     return _preferences.getBool(bookMarkPageBoolKey).orFalse();
   }

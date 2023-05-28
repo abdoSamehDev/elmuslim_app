@@ -141,13 +141,21 @@ extension DateResponseMapper on DateResponse? {
   }
 }
 
+extension PrayerTimingsDataResponseMapper on PrayerTimingsDataResponse? {
+  PrayerTimingsDataModel toDomain() {
+    return PrayerTimingsDataModel(
+      timings: this?.timings.toDomain(),
+      date: this?.date.toDomain(),
+    );
+  }
+}
+
 extension PrayerTimingsResponseMapper on PrayerTimingsResponse? {
   PrayerTimingsModel toDomain() {
     return PrayerTimingsModel(
       code: this?.code.orZero() ?? Constants.zero,
       status: this?.status.orEmpty() ?? Constants.empty,
-      timings: this?.timings.toDomain(),
-      date: this?.date.toDomain(),
+      data: this?.data.toDomain(),
     );
   }
 }

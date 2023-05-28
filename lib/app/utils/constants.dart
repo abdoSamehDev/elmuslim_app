@@ -8,12 +8,19 @@ class Constants {
   static const int prayerTimingsIndex = 2;
   static const int adhkarIndex = 3;
   static const int settingsIndex = 4;
+  static const int prayerNumbers = 6;
   static const int nextPageDuration = 500;
   static const String baseUrl = "https://api.aladhan.com/v1/timingsByCity/";
   static const String prayerTimingPath = "{date}?city={city}&country={country}";
+  static const String storeAppLink =
+      "https://play.google.com/store/apps/details?id=com.abdoSamehDev.elmuslim_app";
+  static const String followUsLink = "https://linktr.ee/abdosamehdev";
+  static const String paypalLink = "https://paypal.com/paypalme/ASameh20";
   static const Duration timeOut = Duration(seconds: 60);
   static const String token = "SEND TOKEN HERE";
 }
+
+(String, String) recordLocation = ("", "");
 
 bool isThereABookMarkedPage = false;
 

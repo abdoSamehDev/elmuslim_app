@@ -29,8 +29,6 @@ class QuranCubit extends Cubit<QuranState> {
     });
   }
 
-  // List<QuranSearchModel> quranSearchData = [];
-
   Future getQuranSearchData() async {
     emit(QuranSearchGetDataLoadingState());
     final result = await _quranSearchUseCase(const NoParameters());

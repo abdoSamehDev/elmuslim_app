@@ -41,6 +41,9 @@ class AppStrings {
   static const String changeAppLanguage = "change_app_language";
   static const String changeAppLanguageIcon = "change_app_language_icon";
   static const String changeAppTheme = "change_app_theme";
+  static const String rateTheApp = "rate_the_app";
+  static const String followUs = "follow_us";
+  static const String donation = "donation";
   static const String profile = "profile";
 
   //Hadiths titles
@@ -87,6 +90,25 @@ class AppStrings {
     "hadith_40",
     "hadith_41",
     "hadith_42"
+  ];
+
+  //Prayers names
+  static const List<String> englishPrayerNames = [
+    "Fajr",
+    "Sunrise",
+    "Dhuhr",
+    "Asr",
+    "Maghrib",
+    "Isha",
+  ];
+
+  static const List<String> arabicPrayerNames = [
+    "الفجر",
+    "الشروق",
+    "الظهر",
+    "العصر",
+    "المغرب",
+    "العشاء",
   ];
 
   //error handler

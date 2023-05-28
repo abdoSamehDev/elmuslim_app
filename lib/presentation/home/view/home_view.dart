@@ -93,8 +93,6 @@ class HomeView extends StatelessWidget {
                       IconButton(
                         icon: const Icon(Icons.search),
                         onPressed: () {
-                          // Navigator.pushNamed(context, Routes.quranSearchRoute);
-                          // cubit.openSearch(searchController);
                           showSearch(
                               context: context, delegate: CustomSearch());
                         },

@@ -35,7 +35,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void didChangeDependencies() {
     _preferences.getAppLocale().then((locale) => context.setLocale(locale));
-    // _preferences.isThereABookMarked().then((value) => isThereABookMark = value.orFalse());
     super.didChangeDependencies();
   }
 
@@ -49,8 +48,9 @@ class _MyAppState extends State<MyApp> {
           return MultiBlocProvider(
             providers: [
               BlocProvider(
-                  create: (BuildContext context) =>
-                      instance<HomeCubit>()..isThereABookMarked()),
+                  create: (BuildContext context) => instance<HomeCubit>()
+                    ..getLocation()
+                    ..isThereABookMarked()),
               BlocProvider(
                   create: (BuildContext context) => instance<QuranCubit>()
                     ..getQuranData()

@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
 import 'package:elmuslim_app/domain/models/adhkar/custom_adhkar_model.dart';
 import 'package:elmuslim_app/domain/usecase/base_usecase.dart';
@@ -31,33 +30,22 @@ class CustomAdhkarCubit extends Cubit<CustomAdhkarState> {
   bool isBotSheetShown = false;
   IconData fabIcon = Icons.add;
 
-  void changeBotSheetState(
-      {
+  void changeBotSheetState({
     required bool isShown,
-    // required IconData icon
-  }
-  ) {
-    // isBotSheetShown = !isBotSheetShown;
-    print(isBotSheetShown);
+  }) {
     isBotSheetShown = isShown;
-    // fabIcon = icon;
 
     emit(ChangeBotSheetState());
   }
 
-
   List<CustomAdhkarEntity> customAdhkar = [];
 
   Future<void> getAllCustomAdhkar() async {
-    print(customAdhkar.length);
     emit(GetAllCustomAdhkarLoadingState());
     final result = await _getAllCustomAdhkarUseCase(const NoParameters());
     result.fold((l) {
       emit(GetAllCustomAdhkarErrorState(l.message));
     }, (r) {
-      // for (var dhikr in r) {
-      //   customAdhkar.add(dhikr);
-      // }
       customAdhkar = r;
       emit(GetAllCustomAdhkarSuccessState());
     });
@@ -69,39 +57,40 @@ class CustomAdhkarCubit extends Cubit<CustomAdhkarState> {
     await _insertNewDhikrUseCase(dhikr).then((value) => value.fold((l) {
           emit(InsertNewDhikrErrorState(l.message));
         }, (r) {
-      getAllCustomAdhkar();
+          getAllCustomAdhkar();
           emit(InsertNewDhikrSuccessState());
-          print(customAdhkar.length);
         }));
   }
 
   Future<void> updateCustomDhikr(CustomAdhkarEntity dhikr) async {
     emit(UpdateCustomDhikrLoadingState());
     await _updateCustomDhikrUseCase(dhikr).then((value) => value.fold((l) {
-      emit(UpdateCustomDhikrErrorState(l.message));
-    }, (r) {
-      getAllCustomAdhkar();
-      emit(UpdateCustomDhikrSuccessState());
-    }));
+          emit(UpdateCustomDhikrErrorState(l.message));
+        }, (r) {
+          getAllCustomAdhkar();
+          emit(UpdateCustomDhikrSuccessState());
+        }));
   }
 
   Future<void> delCustomDhikrByDhikrText(String dhikr) async {
     // emit(DelCustomDhikrByDhikrTextLoadingState());
-    await _delCustomDhikrByDhikrTextUseCase(dhikr).then((value) => value.fold((l) {
-      emit(DelCustomDhikrByDhikrTextErrorState(l.message));
-    }, (r) {
-      getAllCustomAdhkar();
-      emit(DelCustomDhikrByDhikrTextSuccessState());
-    }));
+    await _delCustomDhikrByDhikrTextUseCase(dhikr)
+        .then((value) => value.fold((l) {
+              emit(DelCustomDhikrByDhikrTextErrorState(l.message));
+            }, (r) {
+              getAllCustomAdhkar();
+              emit(DelCustomDhikrByDhikrTextSuccessState());
+            }));
   }
 
   Future<void> delAllCustomAdhkar() async {
     emit(DelAllCustomAdhkarLoadingState());
-    await _delAllCustomAdhkarUseCase(customAdhkar).then((value) => value.fold((l) {
-      emit(DelAllCustomAdhkarErrorState(l.message));
-    }, (r) {
-      getAllCustomAdhkar();
-      emit(DelAllCustomAdhkarSuccessState());
-    }));
+    await _delAllCustomAdhkarUseCase(customAdhkar)
+        .then((value) => value.fold((l) {
+              emit(DelAllCustomAdhkarErrorState(l.message));
+            }, (r) {
+              getAllCustomAdhkar();
+              emit(DelAllCustomAdhkarSuccessState());
+            }));
   }
 }

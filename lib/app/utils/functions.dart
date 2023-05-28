@@ -1,9 +1,9 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:elmuslim_app/app/utils/extensions.dart';
 import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<String> fetchDataFromJson(String jsonPath) async {
   String jsonString = await rootBundle.loadString(jsonPath);
@@ -47,111 +47,99 @@ double calculateQuranPageFontSize(List<AyahModel> ayahs, int noOfSurahs) {
   if (noOfChars <= 600) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s24;
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s22;
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s14;
     }
-
   } else if (noOfChars <= 1000) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s18; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s14_5; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s16; //K
     }
-
   } else if (noOfChars <= 1050) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16;
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16;
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s16_3;
     }
-
   } else if (noOfChars <= 1100) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s18; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s14; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s16_3; //K
     }
-
   } else if (noOfChars <= 1150) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s16; //K
     }
-
   } else if (noOfChars <= 1200) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s15_5; //K
     }
-
   } else if (noOfChars <= 1250) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s16; //K
     }
-
   } else if (noOfChars <= 1300) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16_7; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s15_7; //K
     }
-
   } else if (noOfChars <= 1350) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16_3; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s15_3; //K
     }
-
   } else if (noOfChars <= 1400) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16;
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16_3;
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s15_3;
     }
-
   } else if (noOfChars <= 1450) {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s15; //K
     }
-
   } else {
     if (noOfSurahs == 1) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 2){
+    } else if (noOfSurahs == 2) {
       fontSize = FontSize.s16; //K
-    } else if (noOfSurahs == 3){
+    } else if (noOfSurahs == 3) {
       fontSize = FontSize.s15; //K
     }
-
   }
 
   return fontSize;
@@ -181,6 +169,10 @@ int sum(List<int> numbers) {
   return total;
 }
 
-String getQuranImageNumberFromPageNumber (int quranPageNumber){
+String getQuranImageNumberFromPageNumber(int quranPageNumber) {
   return quranPageNumber.toString().padLeft(3, "0");
+}
+
+Uri getUri(String url) {
+  return Uri.parse(url);
 }

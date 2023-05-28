@@ -22,8 +22,7 @@ class RepositoryImpl implements Repository {
   final LocalDataSource _localDataSource = instance<LocalDataSource>();
   final RemoteDataSource _remoteDataSource = instance<RemoteDataSource>();
   final NetworkInfo _networkInfo = instance<NetworkInfo>();
-  final CustomAdhkarDao _customAdhkarDao =
-      instance<AppDatabase>().customAdhkarDao;
+  final AppDao _customAdhkarDao = instance<AppDatabase>().appDao;
 
   RepositoryImpl();
 
@@ -104,7 +103,7 @@ class RepositoryImpl implements Repository {
 
   @override
   Future<Either<Failure, void>> deleteAll(List<CustomAdhkarEntity> list) async {
-    await _customAdhkarDao.deleteAll(list);
+    await _customAdhkarDao.deleteAllCustomAdhkar(list);
     try {
       return const Right(null);
     } on LocalException catch (failure) {

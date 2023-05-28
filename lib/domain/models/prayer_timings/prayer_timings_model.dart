@@ -141,24 +141,37 @@ class DateModel extends Equatable {
       ];
 }
 
-class PrayerTimingsModel extends Equatable {
-  final int code;
-  final String status;
+class PrayerTimingsDataModel extends Equatable {
   final TimingsModel? timings;
   final DateModel? date;
 
-  const PrayerTimingsModel({
-    required this.code,
-    required this.status,
+  const PrayerTimingsDataModel({
     required this.timings,
     required this.date,
   });
 
   @override
   List<Object?> get props => [
-        code,
-        status,
         timings,
         date,
+      ];
+}
+
+class PrayerTimingsModel extends Equatable {
+  final int code;
+  final String status;
+  final PrayerTimingsDataModel? data;
+
+  const PrayerTimingsModel({
+    required this.code,
+    required this.status,
+    required this.data,
+  });
+
+  @override
+  List<Object?> get props => [
+        code,
+        status,
+        data,
       ];
 }

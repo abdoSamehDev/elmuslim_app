@@ -1,30 +1,28 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
-import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
 import 'package:elmuslim_app/presentation/common/components/components.dart';
 import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
 import 'package:elmuslim_app/presentation/resources/language_manager.dart';
+import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
+import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // bool isThereABookMarkedPage = QuranCubit.get(context).isThereABookMarkedPage;
     return BlocConsumer<QuranCubit, QuranState>(
       listener: (context, state) {},
       builder: (context, state) {
         QuranCubit cubit = QuranCubit.get(context);
         List<QuranModel> quranList = cubit.quranData;
-
 
         //Get Current App Locale
         final currentLocale = context.locale;
@@ -41,50 +39,43 @@ class QuranScreen extends StatelessWidget {
           condition: quranList.isNotEmpty,
           builder: (BuildContext context) {
             return Column(
-
               children: [
                 ListTile(
                   style: ListTileStyle.list,
                   leading: Text(
                     AppStrings.number.tr(),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall
-                        ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontFamily: FontConstants.uthmanTNFontFamily),
                   ),
                   title: Padding(
                     padding: EdgeInsets.symmetric(vertical: AppPadding.p5.h),
                     child: Text(
                       AppStrings.surahName.tr(),
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleSmall
-                          ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontFamily: FontConstants.uthmanTNFontFamily),
                     ),
                   ),
                   trailing: Text(
                     AppStrings.pageNumber.tr(),
                     textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall
-                        ?.copyWith(fontFamily: FontConstants.uthmanTNFontFamily),
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontFamily: FontConstants.uthmanTNFontFamily),
                   ),
                 ),
                 Expanded(
                   child: ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) => _surahsIndexItem(
-                          surahId: (index + 1).toString().tr(),
-                          surahName: quranList[index].name,
-                          englishSurahName: quranList[index].englishName,
-                          pageNo: quranList[index].ayahs[0].page,
-                          quranList: quranList,
-                          isEnglish: isEnglish,
-                          context: context),
-                      separatorBuilder: (context, index) => getSeparator(context),
-                      itemCount: quranList.length,
-                    ),
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) => _surahsIndexItem(
+                        surahId: (index + 1).toString().tr(),
+                        surahName: quranList[index].name,
+                        englishSurahName: quranList[index].englishName,
+                        pageNo: quranList[index].ayahs[0].page,
+                        quranList: quranList,
+                        isEnglish: isEnglish,
+                        context: context),
+                    separatorBuilder: (context, index) => getSeparator(context),
+                    itemCount: quranList.length,
+                  ),
                 ),
               ],
             );

@@ -169,15 +169,32 @@ class DateResponse {
 }
 
 @JsonSerializable()
-class PrayerTimingsResponse extends BaseResponse {
+class PrayerTimingsDataResponse {
   @JsonKey(name: "timings")
   TimingsResponse? timings;
   @JsonKey(name: "date")
   DateResponse? date;
 
-  PrayerTimingsResponse(
+  PrayerTimingsDataResponse(
     this.timings,
     this.date,
+  );
+
+  //from Json
+  factory PrayerTimingsDataResponse.fromJson(Map<String, dynamic> json) =>
+      _$PrayerTimingsDataResponseFromJson(json);
+
+//to Json
+  Map<String, dynamic> toJson() => _$PrayerTimingsDataResponseToJson(this);
+}
+
+@JsonSerializable()
+class PrayerTimingsResponse extends BaseResponse {
+  @JsonKey(name: "data")
+  PrayerTimingsDataResponse? data;
+
+  PrayerTimingsResponse(
+    this.data,
   );
 
   //from Json

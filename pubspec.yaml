@@ -60,6 +60,10 @@ dependencies:
   geocoding: ^2.1.0
   wakelock: ^0.6.2
   font_awesome_flutter: ^10.4.0
+  url_launcher: ^6.1.11
+  intl: ^0.18.0
+  google_fonts: ^4.0.5
+  sqflite: ^2.2.8+4
 
 
 flutter_native_splash:

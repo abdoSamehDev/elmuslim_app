@@ -2,7 +2,7 @@ import 'package:elmuslim_app/domain/models/adhkar/custom_adhkar_model.dart';
 import 'package:floor/floor.dart';
 
 @dao
-abstract class CustomAdhkarDao {
+abstract class AppDao {
   @Query("SELECT * FROM CustomAdhkarEntity")
   Future<List<CustomAdhkarEntity>> getAllCustomAdhkar();
 
@@ -19,5 +19,5 @@ abstract class CustomAdhkarDao {
   Future<void> delDhikrByDhikrText(String dhikr);
 
   @delete
-  Future<void> deleteAll(List<CustomAdhkarEntity> list);
+  Future<void> deleteAllCustomAdhkar(List<CustomAdhkarEntity> list);
 }

@@ -103,7 +103,8 @@ class CustomAdhkarView extends StatelessWidget {
                                       decoration: InputDecoration(
                                         label: Text(AppStrings.newDhikr.tr()),
                                       ),
-                                      style: Theme.of(context).textTheme.bodySmall,
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
                                     ),
                                     SizedBox(
                                       height: AppSize.s20.h,
@@ -126,27 +127,9 @@ class CustomAdhkarView extends StatelessWidget {
                                             .newDhikrNumberOfRepetitions
                                             .tr()),
                                       ),
-                                      style: Theme.of(context).textTheme.bodySmall,
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
                                     ),
-                                    // SizedBox(
-                                    //   height: AppSize.s20.h,
-                                    // ),
-                                    // SizedBox(
-                                    //   width: double.infinity,
-                                    //   child: ElevatedButton(
-                                    //     onPressed: () {
-                                    //       cubit.insertNewDhikr(
-                                    //           CustomAdhkarEntity(
-                                    //               count:
-                                    //                   int.parse(
-                                    //                       newDhikrTimesController
-                                    //                           .text),
-                                    //               dhikr: newDhikrController
-                                    //                   .text));
-                                    //     },
-                                    //     child: Text(AppStrings.add.tr()),
-                                    //   ),
-                                    // ),
                                   ],
                                 ),
                               ),
@@ -241,72 +224,6 @@ class CustomAdhkarView extends StatelessWidget {
     );
   }
 
-  // void _showBotSheet(
-  //     BuildContext context, bool darkMode, CustomAdhkarCubit cubit) {
-  //   showModalBottomSheet(
-  //       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-  //       context: context,
-  //       elevation: AppSize.s4.r,
-  //       isScrollControlled: true,
-  //       // isDismissible: true,
-  //       builder: (BuildContext context) {
-  //         return Form(
-  //           key: formKey,
-  //           child: Padding(
-  //             padding: EdgeInsets.all(AppPadding.p16.r),
-  //             child: Column(
-  //               // mainAxisSize: MainAxisSize.min,
-  //               children: [
-  //                 Text(
-  //                   AppStrings.addNewDhikr.tr(),
-  //                   style: Theme.of(context).textTheme.titleMedium,
-  //                 ),
-  //                 SizedBox(
-  //                   height: AppSize.s20.h,
-  //                 ),
-  //                 TextField(
-  //                   cursorColor: darkMode
-  //                       ? ColorManager.darkSecondary
-  //                       : ColorManager.lightPrimary,
-  //                   controller: newDhikrController,
-  //                   keyboardType: TextInputType.text,
-  //                   decoration:
-  //                       InputDecoration(label: Text(AppStrings.newDhikr.tr())),
-  //                 ),
-  //                 SizedBox(
-  //                   height: AppSize.s10.h,
-  //                 ),
-  //                 TextField(
-  //                   cursorColor: darkMode
-  //                       ? ColorManager.darkSecondary
-  //                       : ColorManager.lightPrimary,
-  //                   controller: newDhikrTimesController,
-  //                   keyboardType: TextInputType.number,
-  //                   decoration: InputDecoration(
-  //                       label:
-  //                           Text(AppStrings.newDhikrNumberOfRepetitions.tr())),
-  //                 ),
-  //                 SizedBox(
-  //                   height: AppSize.s20.h,
-  //                 ),
-  //                 SizedBox(
-  //                   width: double.infinity,
-  //                   child: ElevatedButton(
-  //                     onPressed: () {
-  //                       cubit.insertNewDhikr(CustomAdhkarEntity(
-  //                           count: int.parse(newDhikrTimesController.text),
-  //                           dhikr: newDhikrController.text));
-  //                     },
-  //                     child: Text(AppStrings.add.tr()),
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         );
-  //       });
-  // }
-
   Widget _customAdhkarIndexItem(
       {required CustomAdhkarCubit cubit,
       required String dhikrId,
@@ -325,10 +242,6 @@ class CustomAdhkarView extends StatelessWidget {
             Icons.delete,
             color: ColorManager.white,
           ),
-          // trailing: Icon(
-          //   Icons.delete,
-          //   color: ColorManager.white,
-          // ),
         ),
       ),
       // direction: DismissDirection.horizontal,

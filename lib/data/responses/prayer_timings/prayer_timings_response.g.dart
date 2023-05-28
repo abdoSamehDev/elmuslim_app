@@ -120,15 +120,31 @@ Map<String, dynamic> _$DateResponseToJson(DateResponse instance) =>
       'gregorian': instance.gregorian,
     };
 
-PrayerTimingsResponse _$PrayerTimingsResponseFromJson(
+PrayerTimingsDataResponse _$PrayerTimingsDataResponseFromJson(
         Map<String, dynamic> json) =>
-    PrayerTimingsResponse(
+    PrayerTimingsDataResponse(
       json['timings'] == null
           ? null
           : TimingsResponse.fromJson(json['timings'] as Map<String, dynamic>),
       json['date'] == null
           ? null
           : DateResponse.fromJson(json['date'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$PrayerTimingsDataResponseToJson(
+        PrayerTimingsDataResponse instance) =>
+    <String, dynamic>{
+      'timings': instance.timings,
+      'date': instance.date,
+    };
+
+PrayerTimingsResponse _$PrayerTimingsResponseFromJson(
+        Map<String, dynamic> json) =>
+    PrayerTimingsResponse(
+      json['data'] == null
+          ? null
+          : PrayerTimingsDataResponse.fromJson(
+              json['data'] as Map<String, dynamic>),
     )
       ..code = json['code'] as int?
       ..status = json['status'] as String?;
@@ -138,6 +154,5 @@ Map<String, dynamic> _$PrayerTimingsResponseToJson(
     <String, dynamic>{
       'code': instance.code,
       'status': instance.status,
-      'timings': instance.timings,
-      'date': instance.date,
+      'data': instance.data,
     };

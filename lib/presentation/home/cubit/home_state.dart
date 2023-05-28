@@ -19,3 +19,13 @@ class QuranRemoveBookMarkState extends HomeState {}
 class CheckQuranBookMarkPageState extends HomeState {}
 
 class GetQuranBookMarkPageState extends HomeState {}
+
+class GetLocationLoadingState extends HomeState {}
+
+class GetLocationSuccessState extends HomeState {}
+
+class GetLocationErrorState extends HomeState {
+  final String error;
+
+  const GetLocationErrorState(this.error);
+}

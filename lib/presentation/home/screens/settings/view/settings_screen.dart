@@ -1,13 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elmuslim_app/app/utils/constants.dart';
+import 'package:elmuslim_app/app/utils/functions.dart';
 import 'package:elmuslim_app/presentation/common/components/components.dart';
 import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
 import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
 import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -74,12 +77,43 @@ class SettingsScreen extends StatelessWidget {
                 value: darkMode,
                 onChanged: (value) {
                   cubit.changeAppTheme(context);
-                  print(darkMode);
                 },
               ),
               onTap: () {
                 cubit.changeAppTheme(context);
-                print(darkMode);
+              },
+              context: context,
+            ),
+            getSeparator(context),
+            _settingIndexItem(
+              icon: Icons.star_border,
+              settingName: AppStrings.rateTheApp.tr(),
+              trailing: null,
+              onTap: () async {
+                await launchUrl(getUri(Constants.storeAppLink),
+                    mode: LaunchMode.externalApplication);
+              },
+              context: context,
+            ),
+            getSeparator(context),
+            _settingIndexItem(
+              icon: Icons.add,
+              settingName: AppStrings.followUs.tr(),
+              trailing: null,
+              onTap: () async {
+                await launchUrl(getUri(Constants.followUsLink),
+                    mode: LaunchMode.externalApplication);
+              },
+              context: context,
+            ),
+            getSeparator(context),
+            _settingIndexItem(
+              icon: Icons.monetization_on_outlined,
+              settingName: AppStrings.donation.tr(),
+              trailing: null,
+              onTap: () async {
+                await launchUrl(getUri(Constants.paypalLink),
+                    mode: LaunchMode.externalApplication);
               },
               context: context,
             ),
@@ -92,7 +126,7 @@ class SettingsScreen extends StatelessWidget {
   Widget _settingIndexItem(
       {required IconData? icon,
       required String settingName,
-      required Widget trailing,
+      required Widget? trailing,
       required Function onTap,
       required BuildContext context}) {
     return Padding(
