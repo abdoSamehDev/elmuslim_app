@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 
 class Routes {
   static const String homeRoute = "/";
-  // static const String testRoute = "/test";
   static const String quranRoute = "/quran";
   static const String hadithRoute = "/hadith";
   static const String adhkarRoute = "/adhkar";
