@@ -20,6 +20,7 @@ class AppStrings {
   static const String nawawi = "40_nawawi";
   static const String prayerTimes = "prayer_times";
   static const String enableLocation = "enable_location";
+  static const String gettingLocation = "getting_location";
   static const String giveLocationAccessPermission =
       "give_location_access_permission";
   static const String noLocationFound = "no_location_found";

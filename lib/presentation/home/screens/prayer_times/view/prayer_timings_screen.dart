@@ -37,8 +37,25 @@ class PrayerTimingsScreen extends StatelessWidget {
             currentLocale.languageCode == LanguageType.english.getValue();
 
         if (prayerTimingsModel.code == 0) {
-          return const Center(
-              child: CircularProgressIndicator(color: ColorManager.gold));
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                AppStrings.gettingLocation.tr(),
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              SizedBox(
+                height: AppSize.s5.h,
+              ),
+              Center(
+                child: SizedBox(
+                    width: (MediaQuery.of(context).size.width * 0.55),
+                    child: const LinearProgressIndicator(
+                      color: ColorManager.gold,
+                    )),
+              ),
+            ],
+          );
         } else if (prayerTimingsModel.code == 200) {
           List<String> timings = [
             prayerTimingsModel.data!.timings!.fajr.convertTo12HourFormat(),

@@ -18,7 +18,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
-  int currentIndex = Constants.prayerTimingsIndex;
+  int currentIndex = Constants.quranIndex;
 
   void changeBotNavIndex(int index) {
     currentIndex = index;

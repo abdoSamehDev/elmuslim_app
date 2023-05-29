@@ -65,6 +65,7 @@
   "Maghrib": "Maghrib",
   "Isha": "Isha",
   "enable_location": "Please activate the location so that you can know the prayer times.",
+  "getting_location": "Getting your location...",
   "give_location_access_permission": "Please give the app permission to access your location so that you can know the prayer times.",
   "no_location_found": "The location was not found!",
   "number": "Number",
