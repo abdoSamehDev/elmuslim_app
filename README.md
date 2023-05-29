@@ -77,6 +77,7 @@ We would like to thank the following sources for their contributions to El Musli
 
 - Quran data from [Quran Database](http://api.alquran.cloud/v1/quran/quran-uthmani)
 - Hadith data from [Hadith Database](https://github.com/osamayy/40-hadith-nawawi-db/blob/main/40-hadith-nawawi)
+- Prayer times API from [Prayer times API](https://api.aladhan.com/v1/timingsByCity/29-05-2023?city=Suez&country=Egypt)
 - Azkar data from [Azkar Database](https://github.com/osamayy/azkar-db/blob/master/azkar.json)
 - Quran Icon from [Quran Icon](https://www.svgrepo.com/svg/52891/quran-rehal)
 - Mosque Icon from [Mosque Icon](https://iconscout.com/icon/mosque-1626512)
