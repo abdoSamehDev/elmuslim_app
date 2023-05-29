@@ -6,6 +6,16 @@ abstract class PrayerTimingsState {
 
 class PrayerTimesInitialState extends PrayerTimingsState {}
 
+class GetLocationLoadingState extends PrayerTimingsState {}
+
+class GetLocationSuccessState extends PrayerTimingsState {}
+
+class GetLocationErrorState extends PrayerTimingsState {
+  final String error;
+
+  const GetLocationErrorState(this.error);
+}
+
 class GetPrayerTimesLoadingState extends PrayerTimingsState {}
 
 class GetPrayerTimesSuccessState extends PrayerTimingsState {

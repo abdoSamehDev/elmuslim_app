@@ -1,8 +1,10 @@
 import 'dart:ui' as ui;
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elmuslim_app/app/error/failure.dart';
 import 'package:elmuslim_app/app/utils/constants.dart';
 import 'package:elmuslim_app/app/utils/extensions.dart';
+import 'package:elmuslim_app/data/network/error_handler.dart';
 import 'package:elmuslim_app/domain/models/prayer_timings/prayer_timings_model.dart';
 import 'package:elmuslim_app/presentation/common/components/components.dart';
 import 'package:elmuslim_app/presentation/home/screens/prayer_times/cubit/prayer_timings_cubit.dart';
@@ -24,6 +26,9 @@ class PrayerTimingsScreen extends StatelessWidget {
     return BlocConsumer<PrayerTimingsCubit, PrayerTimingsState>(
       listener: (BuildContext context, state) {},
       builder: (context, state) {
+        PrayerTimingsCubit cubit = PrayerTimingsCubit.get(context);
+        PrayerTimingsModel prayerTimingsModel = cubit.prayerTimingsModel;
+
         //Get Current App Locale
         final currentLocale = context.locale;
 
@@ -31,11 +36,10 @@ class PrayerTimingsScreen extends StatelessWidget {
         bool isEnglish =
             currentLocale.languageCode == LanguageType.english.getValue();
 
-        if (state is GetPrayerTimesLoadingState) {
+        if (prayerTimingsModel.code == 0) {
           return const Center(
               child: CircularProgressIndicator(color: ColorManager.gold));
-        } else if (state is GetPrayerTimesSuccessState) {
-          PrayerTimingsModel prayerTimingsModel = state.prayerTimingsModel;
+        } else if (prayerTimingsModel.code == 200) {
           List<String> timings = [
             prayerTimingsModel.data!.timings!.fajr.convertTo12HourFormat(),
             prayerTimingsModel.data!.timings!.sunrise.convertTo12HourFormat(),
@@ -44,7 +48,6 @@ class PrayerTimingsScreen extends StatelessWidget {
             prayerTimingsModel.data!.timings!.maghrib.convertTo12HourFormat(),
             prayerTimingsModel.data!.timings!.isha.convertTo12HourFormat(),
           ];
-
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -98,11 +101,86 @@ class PrayerTimingsScreen extends StatelessWidget {
               ),
             ],
           );
-        } else if (state is GetPrayerTimesErrorState) {
-          return Center(child: Text(state.error));
         } else {
-          return Container();
+          int errorCode = prayerTimingsModel.code;
+          ServerFailure failure = errorCode.getServerFailureFromCode();
+          return Center(child: Text(failure.message));
         }
+
+        // if (state is GetPrayerTimesLoadingState ||
+        //     state is GetLocationLoadingState ||
+        //     state is GetLocationSuccessState) {
+        //   return const Center(
+        //       child: CircularProgressIndicator(color: ColorManager.gold));
+        // } else if (state is GetPrayerTimesSuccessState) {
+        //   PrayerTimingsModel prayerTimingsModel = state.prayerTimingsModel;
+        //   List<String> timings = [
+        //     prayerTimingsModel.data!.timings!.fajr.convertTo12HourFormat(),
+        //     prayerTimingsModel.data!.timings!.sunrise.convertTo12HourFormat(),
+        //     prayerTimingsModel.data!.timings!.dhuhr.convertTo12HourFormat(),
+        //     prayerTimingsModel.data!.timings!.asr.convertTo12HourFormat(),
+        //     prayerTimingsModel.data!.timings!.maghrib.convertTo12HourFormat(),
+        //     prayerTimingsModel.data!.timings!.isha.convertTo12HourFormat(),
+        //   ];
+        //
+        //   return Column(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: [
+        //       Padding(
+        //         padding: EdgeInsets.symmetric(vertical: AppSize.s5.h),
+        //         child: Text(
+        //           isEnglish
+        //               ? prayerTimingsModel.data!.date!.gregorian!.weekday!.en
+        //               : prayerTimingsModel.data!.date!.hijri!.weekday!.ar,
+        //           style: Theme.of(context).textTheme.displayMedium,
+        //         ),
+        //       ),
+        //       isEnglish
+        //           ? Text(
+        //               "${prayerTimingsModel.data!.date!.hijri!.day} ${prayerTimingsModel.data!.date!.hijri!.month!.en} ${prayerTimingsModel.data!.date!.hijri!.year}",
+        //               style: GoogleFonts.sourceSansPro(),
+        //               textAlign: TextAlign.start,
+        //               textDirection: ui.TextDirection.ltr,
+        //             )
+        //           : Text(
+        //               "${prayerTimingsModel.data!.date!.hijri!.day} ${prayerTimingsModel.data!.date!.hijri!.month!.ar} ${prayerTimingsModel.data!.date!.hijri!.year}",
+        //               style: Theme.of(context).textTheme.bodyLarge,
+        //             ),
+        //       Padding(
+        //         padding: EdgeInsets.symmetric(vertical: AppSize.s5.h),
+        //         child: Text(
+        //           prayerTimingsModel.data!.date!.gregorian!.date,
+        //           style: Theme.of(context).textTheme.bodySmall?.copyWith(
+        //               color: Theme.of(context).unselectedWidgetColor),
+        //         ),
+        //       ),
+        //       Center(
+        //         child: Column(
+        //           // mainAxisAlignment: MainAxisAlignment.center,
+        //           children: [
+        //             Column(
+        //               children: [
+        //                 for (var index = 0;
+        //                     index < Constants.prayerNumbers;
+        //                     index++)
+        //                   _prayerIndexItem(
+        //                       isEnglish: isEnglish,
+        //                       context: context,
+        //                       timings: timings,
+        //                       prayerTimingsModel: prayerTimingsModel,
+        //                       index: index)
+        //               ],
+        //             ),
+        //           ],
+        //         ),
+        //       ),
+        //     ],
+        //   );
+        // } else if (state is GetPrayerTimesErrorState) {
+        //   return Center(child: Text(state.error));
+        // } else {
+        //   return Container();
+        // }
       },
     );
   }

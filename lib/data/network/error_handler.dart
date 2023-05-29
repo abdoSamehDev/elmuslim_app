@@ -122,6 +122,43 @@ class ResponseCode {
   static const int unknown = -7;
 }
 
+extension ResponseCodeExtension on int {
+  ServerFailure getServerFailureFromCode() {
+    if (this == ResponseCode.success) {
+      return DataSource.success.getServerFailure();
+    } else if (this == ResponseCode.noContent) {
+      return DataSource.noContent.getServerFailure();
+    } else if (this == ResponseCode.badRequest) {
+      return DataSource.badRequest.getServerFailure();
+    } else if (this == ResponseCode.unauthorized) {
+      return DataSource.unauthorized.getServerFailure();
+    } else if (this == ResponseCode.forbidden) {
+      return DataSource.forbidden.getServerFailure();
+    } else if (this == ResponseCode.notFound) {
+      return DataSource.notFound.getServerFailure();
+    } else if (this == ResponseCode.internalServerError) {
+      return DataSource.internalServerError.getServerFailure();
+    }
+
+    //local status code
+    else if (this == ResponseCode.connectTimeout) {
+      return DataSource.connectTimeout.getServerFailure();
+    } else if (this == ResponseCode.cancel) {
+      return DataSource.cancel.getServerFailure();
+    } else if (this == ResponseCode.receiveTimeOut) {
+      return DataSource.receiveTimeOut.getServerFailure();
+    } else if (this == ResponseCode.sendTimeout) {
+      return DataSource.sendTimeout.getServerFailure();
+    } else if (this == ResponseCode.cacheError) {
+      return DataSource.cacheError.getServerFailure();
+    } else if (this == ResponseCode.noInternetConnection) {
+      return DataSource.noInternetConnection.getServerFailure();
+    } else {
+      return DataSource.unknown.getServerFailure();
+    }
+  }
+}
+
 class ResponseMessage {
   static String success = AppStrings.success.tr(); //success with data
   static String noContent = AppStrings.noContent.tr(); //success with no data
