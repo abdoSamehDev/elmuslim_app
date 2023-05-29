@@ -1,16 +1,17 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:elmuslim_app/app/utils/extensions.dart';
 import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
 import 'package:elmuslim_app/presentation/common/components/components.dart';
 import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
 import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/language_manager.dart';
+import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
+import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HadithScreen extends StatelessWidget {
   const HadithScreen({Key? key}) : super(key: key);
@@ -22,6 +23,13 @@ class HadithScreen extends StatelessWidget {
       builder: (context, state) {
         HadithCubit cubit = HadithCubit.get(context);
         List<HadithModel> hadithList = cubit.hadithList;
+
+        //Get Current App Locale
+        final currentLocale = context.locale;
+
+        //Check if current app language is English
+        bool isEnglish =
+            currentLocale.languageCode == LanguageType.english.getValue();
         return ConditionalBuilder(
           condition: hadithList.isNotEmpty,
           builder: (BuildContext context) {
@@ -29,6 +37,7 @@ class HadithScreen extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) => _hadithsIndexItem(
                   hadithModel: hadithList[index],
+                  isEnglish: isEnglish,
                   index: index,
                   context: context),
               separatorBuilder: (context, index) => getSeparator(context),
@@ -46,6 +55,7 @@ class HadithScreen extends StatelessWidget {
 
   Widget _hadithsIndexItem(
       {required HadithModel hadithModel,
+      required bool isEnglish,
       required int index,
       required BuildContext context}) {
     return Padding(
@@ -63,13 +73,10 @@ class HadithScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          hadithModel.hadith.orEmpty().split('''
-
-''')[0].orEmpty(),
+          AppStrings.hadithsTitles[index].tr(),
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontFamily: FontConstants.meQuranFontFamily,
-              wordSpacing: AppSize.s5.w,
-              letterSpacing: AppSize.s0_1.w),
+                fontFamily: FontConstants.elMessiriFontFamily,
+              ),
         ),
         onTap: () {
           Navigator.pushNamed(

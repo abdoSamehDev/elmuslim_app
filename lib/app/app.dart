@@ -1,16 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elmuslim_app/presentation/custom_adhkar/cubit/custom_adhkar_cubit.dart';
-import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:elmuslim_app/app/utils/app_prefs.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/presentation/custom_adhkar/cubit/custom_adhkar_cubit.dart';
 import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/hadith/cubit/hadith_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/prayer_times/cubit/prayer_timings_cubit.dart';
 import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:elmuslim_app/presentation/resources/theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyApp extends StatefulWidget {
   // const MyApp({Key? key}) : super(key: key);
@@ -34,7 +35,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void didChangeDependencies() {
     _preferences.getAppLocale().then((locale) => context.setLocale(locale));
-    // _preferences.isThereABookMarked().then((value) => isThereABookMark = value.orFalse());
     super.didChangeDependencies();
   }
 
@@ -48,19 +48,25 @@ class _MyAppState extends State<MyApp> {
           return MultiBlocProvider(
             providers: [
               BlocProvider(
-                  create: (BuildContext context) => instance<HomeCubit>()..isThereABookMarked()),
+                  create: (BuildContext context) => instance<HomeCubit>()
+                    ..getLocation()
+                    ..isThereABookMarked()),
               BlocProvider(
-                  create: (BuildContext context) =>
-                      instance<QuranCubit>()..getQuranData()),
+                  create: (BuildContext context) => instance<QuranCubit>()
+                    ..getQuranData()
+                    ..getQuranSearchData()),
               BlocProvider(
                   create: (BuildContext context) =>
                       instance<HadithCubit>()..getHadithData()),
               BlocProvider(
                   create: (BuildContext context) =>
-                  instance<AdhkarCubit>()..getAdhkarData()),
+                      instance<PrayerTimingsCubit>()..getPrayerTimings()),
               BlocProvider(
                   create: (BuildContext context) =>
-                  instance<CustomAdhkarCubit>()..getAllCustomAdhkar()),
+                      instance<AdhkarCubit>()..getAdhkarData()),
+              BlocProvider(
+                  create: (BuildContext context) =>
+                      instance<CustomAdhkarCubit>()..getAllCustomAdhkar()),
             ],
             child: BlocConsumer<HomeCubit, HomeState>(
               listener: (context, state) {},

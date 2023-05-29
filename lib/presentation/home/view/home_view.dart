@@ -1,25 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elmuslim_app/app/utils/constants.dart';
-import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
-import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
-import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:elmuslim_app/app/utils/custom_search.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
 import 'package:elmuslim_app/presentation/home/cubit/home_cubit.dart';
+import 'package:elmuslim_app/presentation/home/screens/quran/cubit/quran_cubit.dart';
 import 'package:elmuslim_app/presentation/home/viewmodel/home_viewmodel.dart';
 import 'package:elmuslim_app/presentation/resources/assets_manager.dart';
 import 'package:elmuslim_app/presentation/resources/color_manager.dart';
 import 'package:elmuslim_app/presentation/resources/font_manager.dart';
+import 'package:elmuslim_app/presentation/resources/routes_manager.dart';
 import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:elmuslim_app/presentation/resources/styles_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeView extends StatelessWidget {
   final HomeViewModel _viewModel = instance<HomeViewModel>();
-
 
   HomeView({Key? key}) : super(key: key);
 
@@ -38,48 +38,47 @@ class HomeView extends StatelessWidget {
           // cubit.isThereABookMarked();
           int currentIndex = cubit.currentIndex;
           return Scaffold(
-            floatingActionButton:
-                isThereABookMarkedPage == true && currentIndex == 0
+            floatingActionButton: isThereABookMarkedPage == true &&
+                    currentIndex == Constants.quranIndex
+                ? FloatingActionButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.quranRoute,
+                        arguments: {
+                          'quranList': quranList,
+                          'pageNo': cubit.getBookMarkPage(),
+                        },
+                      );
+                    },
+                    backgroundColor: darkMode
+                        ? ColorManager.darkSecondary
+                        : ColorManager.lightPrimary,
+                    child: const Icon(
+                      Icons.bookmark,
+                      color: ColorManager.gold,
+                    ),
+                  )
+                : currentIndex == Constants.adhkarIndex
                     ? FloatingActionButton(
                         onPressed: () {
                           Navigator.pushNamed(
                             context,
-                            Routes.quranRoute,
-                            arguments: {
-                              'quranList': quranList,
-                              'pageNo': cubit.getBookMarkPage(),
-                            },
+                            Routes.customAdhkarRoute,
                           );
                         },
                         backgroundColor: darkMode
                             ? ColorManager.darkSecondary
                             : ColorManager.lightPrimary,
-                        child: const Icon(
-                          Icons.bookmark,
+                        child: SvgPicture.asset(
+                          ImageAsset.adhkarIcon,
+                          width: AppSize.s50.h,
+                          height: AppSize.s50.h,
                           color: ColorManager.gold,
+                          // Theme.of(context).primaryColor,
                         ),
                       )
-                    : currentIndex == 2
-                        ? FloatingActionButton(
-                            onPressed: () {
-                              // _showBotSheet(context, darkMode);
-                              Navigator.pushNamed(
-                                context,
-                                Routes.customAdhkarRoute,
-                              );
-                            },
-                            backgroundColor: darkMode
-                                ? ColorManager.darkSecondary
-                                : ColorManager.lightPrimary,
-                            child: SvgPicture.asset(
-                              ImageAsset.adhkarIcon,
-                              width: AppSize.s50.h,
-                              height: AppSize.s50.h,
-                              color: ColorManager.gold,
-                              // Theme.of(context).primaryColor,
-                            ),
-                          )
-                        : Container(),
+                    : Container(),
             appBar: AppBar(
               backgroundColor: Theme.of(context).primaryColor,
               title: Text(
@@ -89,6 +88,17 @@ class HomeView extends StatelessWidget {
                     .titleLarge
                     ?.copyWith(color: ColorManager.gold),
               ),
+              actions: currentIndex == Constants.quranIndex
+                  ? [
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: () {
+                          showSearch(
+                              context: context, delegate: CustomSearch());
+                        },
+                      )
+                    ]
+                  : [],
             ),
             bottomNavigationBar: BottomNavigationBar(
               selectedItemColor: ColorManager.gold,
@@ -114,7 +124,7 @@ class HomeView extends StatelessWidget {
                     ImageAsset.quranIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == 0
+                    color: currentIndex == Constants.quranIndex
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
                   ),
@@ -125,7 +135,7 @@ class HomeView extends StatelessWidget {
                     ImageAsset.hadithIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == 1
+                    color: currentIndex == Constants.hadithIndex
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
                   ),
@@ -133,10 +143,22 @@ class HomeView extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
+                    ImageAsset.prayerIcon,
+                    width: AppSize.s20.r,
+                    height: AppSize.s20.r,
+                    color: currentIndex == Constants.prayerTimingsIndex
+                        ? ColorManager.gold
+                        : Theme.of(context).unselectedWidgetColor,
+                  ),
+                  // const FaIcon(FontAwesomeIcons.mosque),
+                  label: AppStrings.prayerTimes.tr(),
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
                     ImageAsset.adhkarIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == 2
+                    color: currentIndex == Constants.adhkarIndex
                         ? ColorManager.gold
                         : Theme.of(context).unselectedWidgetColor,
                   ),

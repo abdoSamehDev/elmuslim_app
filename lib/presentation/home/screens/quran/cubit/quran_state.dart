@@ -20,3 +20,16 @@ class QuranGetDataErrorState extends QuranState {
   const QuranGetDataErrorState(this.error);
 }
 
+class QuranSearchGetDataLoadingState extends QuranState {}
+
+class QuranSearchGetDataSuccessState extends QuranState {
+  final List<QuranSearchModel> quranList;
+
+  const QuranSearchGetDataSuccessState(this.quranList);
+}
+
+class QuranSearchGetDataErrorState extends QuranState {
+  final String error;
+
+  const QuranSearchGetDataErrorState(this.error);
+}

@@ -4,13 +4,17 @@ import 'package:elmuslim_app/app/utils/functions.dart';
 import 'package:elmuslim_app/data/responses/adhkar/adhkar_response.dart';
 import 'package:elmuslim_app/data/responses/hadith/hadith_response.dart';
 import 'package:elmuslim_app/data/responses/quran/quran_response.dart';
+import 'package:elmuslim_app/data/responses/quran/quran_search_response.dart';
 
 const String quranPath = "assets/json/quran.json";
+const String simpleQuranPath = "assets/json/simple_quran.json";
 const String hadithPath = "assets/json/40_hadith_nawawi.json";
 const String adhkarPath = "assets/json/adhkar.json";
 
 abstract class LocalDataSource {
   Future<List<QuranResponse>> getQuranData();
+
+  Future<List<QuranSearchResponse>> getQuranSearchData();
 
   Future<List<HadithResponse>> getHadithData();
 
@@ -41,5 +45,13 @@ class LocalDataSourceImpl implements LocalDataSource {
     final data = jsonDecode(jsonString);
     return List<QuranResponse>.from(
         (data as List).map((e) => QuranResponse.fromJson(e)));
+  }
+
+  @override
+  Future<List<QuranSearchResponse>> getQuranSearchData() async {
+    final jsonString = await fetchDataFromJson(simpleQuranPath);
+    final data = jsonDecode(jsonString);
+    return List<QuranSearchResponse>.from(
+        (data as List).map((e) => QuranSearchResponse.fromJson(e)));
   }
 }

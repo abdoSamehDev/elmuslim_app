@@ -1,4 +1,5 @@
 import 'package:elmuslim_app/app/utils/constants.dart';
+import 'package:intl/intl.dart';
 
 extension NonNulString on String? {
   String orEmpty() {
@@ -44,5 +45,17 @@ extension ArabicNumber on int {
         .replaceAll('8', '\u0668')
         .replaceAll('9', '\u0669');
     return arabicString;
+  }
+}
+
+extension ConvertTimeFormat on String {
+  String convertTo12HourFormat() {
+    DateFormat inputFormat = DateFormat('HH:mm');
+    DateFormat outputFormat = DateFormat('h:mm');
+
+    DateTime dateTime = inputFormat.parse(this);
+    String formattedTime = outputFormat.format(dateTime);
+
+    return formattedTime;
   }
 }

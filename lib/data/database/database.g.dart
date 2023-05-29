@@ -61,7 +61,7 @@ class _$AppDatabase extends AppDatabase {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
-  CustomAdhkarDao? _customAdhkarDaoInstance;
+  AppDao? _appDaoInstance;
 
   Future<sqflite.Database> open(
     String path,
@@ -94,14 +94,13 @@ class _$AppDatabase extends AppDatabase {
   }
 
   @override
-  CustomAdhkarDao get customAdhkarDao {
-    return _customAdhkarDaoInstance ??=
-        _$CustomAdhkarDao(database, changeListener);
+  AppDao get appDao {
+    return _appDaoInstance ??= _$AppDao(database, changeListener);
   }
 }
 
-class _$CustomAdhkarDao extends CustomAdhkarDao {
-  _$CustomAdhkarDao(
+class _$AppDao extends AppDao {
+  _$AppDao(
     this.database,
     this.changeListener,
   )   : _queryAdapter = QueryAdapter(database),
@@ -172,7 +171,7 @@ class _$CustomAdhkarDao extends CustomAdhkarDao {
   }
 
   @override
-  Future<void> deleteAll(List<CustomAdhkarEntity> list) async {
+  Future<void> deleteAllCustomAdhkar(List<CustomAdhkarEntity> list) async {
     await _customAdhkarEntityDeletionAdapter.deleteList(list);
   }
 }

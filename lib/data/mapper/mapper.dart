@@ -1,8 +1,14 @@
+import 'package:elmuslim_app/app/utils/constants.dart';
 import 'package:elmuslim_app/app/utils/extensions.dart';
+import 'package:elmuslim_app/data/responses/prayer_timings/prayer_timings_response.dart';
 import 'package:elmuslim_app/data/responses/quran/quran_response.dart';
+import 'package:elmuslim_app/data/responses/quran/quran_search_response.dart';
 import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
 import 'package:elmuslim_app/domain/models/hadith/hadith_model.dart';
+import 'package:elmuslim_app/domain/models/prayer_timings/prayer_timings_model.dart';
 import 'package:elmuslim_app/domain/models/quran/quran_model.dart';
+import 'package:elmuslim_app/domain/models/quran/quran_search_model.dart';
+
 import '../responses/adhkar/adhkar_response.dart';
 import '../responses/hadith/hadith_response.dart';
 
@@ -15,6 +21,17 @@ extension AyahResponseMapper on AyahResponse {
       juz: juz.orZero(),
       page: page.orZero(),
       hizbQuarter: hizbQuarter.orZero(),
+    );
+  }
+}
+
+extension QuranSearchResponseMapper on QuranSearchResponse {
+  QuranSearchModel toDomain() {
+    return QuranSearchModel(
+      id: id.orZero(),
+      text: text.orEmpty(),
+      numberInSurah: int.parse(verseKey.split(":")[1]).orZero(),
+      surahNumber: int.parse(verseKey.split(":")[0]).orZero(),
     );
   }
 }
@@ -51,6 +68,94 @@ extension AdhkarResponseMapper on AdhkarResponse {
       description: description.orEmpty(),
       reference: reference.orEmpty(),
       dhikr: dhikr.orEmpty(),
+    );
+  }
+}
+
+extension WeekdayResponseMapper on WeekdayResponse? {
+  WeekdayModel toDomain() {
+    return WeekdayModel(
+      en: this?.en.orEmpty() ?? Constants.empty,
+      ar: this?.ar.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension MonthResponseMapper on MonthResponse? {
+  MonthModel toDomain() {
+    return MonthModel(
+      number: this?.number.orZero() ?? Constants.zero,
+      en: this?.en.orEmpty() ?? Constants.empty,
+      ar: this?.ar.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension HijriResponseMapper on HijriResponse? {
+  HijriModel toDomain() {
+    return HijriModel(
+      date: this?.date.orEmpty() ?? Constants.empty,
+      format: this?.format.orEmpty() ?? Constants.empty,
+      day: this?.day.orEmpty() ?? Constants.empty,
+      weekday: this?.weekday.toDomain(),
+      month: this?.month.toDomain(),
+      year: this?.year.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension GregorianResponseMapper on GregorianResponse? {
+  GregorianModel toDomain() {
+    return GregorianModel(
+      date: this?.date.orEmpty() ?? Constants.empty,
+      format: this?.format.orEmpty() ?? Constants.empty,
+      day: this?.day.orEmpty() ?? Constants.empty,
+      weekday: this?.weekday.toDomain(),
+      month: this?.month.toDomain(),
+      year: this?.year.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension TimingsResponseMapper on TimingsResponse? {
+  TimingsModel toDomain() {
+    return TimingsModel(
+      fajr: this?.fajr.orEmpty() ?? Constants.empty,
+      sunrise: this?.sunrise.orEmpty() ?? Constants.empty,
+      dhuhr: this?.dhuhr.orEmpty() ?? Constants.empty,
+      asr: this?.asr.orEmpty() ?? Constants.empty,
+      maghrib: this?.maghrib.orEmpty() ?? Constants.empty,
+      isha: this?.isha.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension DateResponseMapper on DateResponse? {
+  DateModel toDomain() {
+    return DateModel(
+      readable: this?.readable.orEmpty() ?? Constants.empty,
+      timestamp: this?.readable.orEmpty() ?? Constants.empty,
+      hijri: this?.hijri.toDomain(),
+      gregorian: this?.gregorian.toDomain(),
+    );
+  }
+}
+
+extension PrayerTimingsDataResponseMapper on PrayerTimingsDataResponse? {
+  PrayerTimingsDataModel toDomain() {
+    return PrayerTimingsDataModel(
+      timings: this?.timings.toDomain(),
+      date: this?.date.toDomain(),
+    );
+  }
+}
+
+extension PrayerTimingsResponseMapper on PrayerTimingsResponse? {
+  PrayerTimingsModel toDomain() {
+    return PrayerTimingsModel(
+      code: this?.code.orZero() ?? Constants.zero,
+      status: this?.status.orEmpty() ?? Constants.empty,
+      data: this?.data.toDomain(),
     );
   }
 }
