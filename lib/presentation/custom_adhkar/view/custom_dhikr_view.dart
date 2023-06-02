@@ -95,8 +95,8 @@ class CustomDhikrView extends StatelessWidget {
                             ImageAsset.adhkarIcon,
                             width: AppSize.s50.h,
                             height: AppSize.s50.h,
-                            color: ColorManager.gold,
-                            // Theme.of(context).primaryColor,
+                            colorFilter: const ColorFilter.mode(
+                                ColorManager.gold, BlendMode.srcIn),
                           ),
                         ),
                       ],

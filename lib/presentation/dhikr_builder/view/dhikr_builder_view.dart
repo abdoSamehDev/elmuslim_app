@@ -1,12 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:elmuslim_app/app/utils/constants.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
 import 'package:elmuslim_app/app/utils/functions.dart';
+import 'package:elmuslim_app/domain/models/adhkar/adhkar_model.dart';
 import 'package:elmuslim_app/presentation/common/components/components.dart';
 import 'package:elmuslim_app/presentation/home/screens/adhkar/cubit/adhkar_cubit.dart';
 import 'package:elmuslim_app/presentation/resources/assets_manager.dart';
@@ -15,6 +11,10 @@ import 'package:elmuslim_app/presentation/resources/font_manager.dart';
 import 'package:elmuslim_app/presentation/resources/language_manager.dart';
 import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
 import 'package:elmuslim_app/presentation/resources/values.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DhikrBuilderView extends StatelessWidget {
   final List<AdhkarModel> adhkarList;
@@ -36,8 +36,9 @@ class DhikrBuilderView extends StatelessWidget {
         builder: (context, state) {
           AdhkarCubit cubit = AdhkarCubit.get(context);
 
-          final List<AdhkarModel> adhkarFromCategory = cubit.getAdhkarFromCategory(
-              adhkarList: adhkarList, category: category);
+          final List<AdhkarModel> adhkarFromCategory =
+              cubit.getAdhkarFromCategory(
+                  adhkarList: adhkarList, category: category);
           //Get Current App Locale
           final currentLocale = context.locale;
 
@@ -96,12 +97,12 @@ class DhikrBuilderView extends StatelessWidget {
                                   .bodySmall
                                   ?.copyWith(
                                     height: calculateFontLineHeight(
-                                    adhkarFromCategory[index]
-                                        .dhikr
-                      .replaceAll("(", "")
-                      .replaceAll(")", "")
-                      .replaceAll(".", "")
-                      .length),
+                                        adhkarFromCategory[index]
+                                            .dhikr
+                                            .replaceAll("(", "")
+                                            .replaceAll(")", "")
+                                            .replaceAll(".", "")
+                                            .length),
                                     fontSize: calculateFontSize(
                                         adhkarFromCategory[index]
                                             .dhikr
@@ -177,19 +178,19 @@ class DhikrBuilderView extends StatelessWidget {
                               ),
                               onPressed: () {
                                 cubit.dhikrCounter(
-                                    int.parse(
-                                        adhkarFromCategory[index].count.isEmpty
-                                            ? "1"
-                                            : adhkarFromCategory[index].count),
-                                    _pageController,
-                                    );
+                                  int.parse(
+                                      adhkarFromCategory[index].count.isEmpty
+                                          ? "1"
+                                          : adhkarFromCategory[index].count),
+                                  _pageController,
+                                );
                               },
                               child: SvgPicture.asset(
                                 ImageAsset.adhkarIcon,
                                 width: AppSize.s50.h,
                                 height: AppSize.s50.h,
-                                color: ColorManager.gold,
-                                // Theme.of(context).primaryColor,
+                                colorFilter: const ColorFilter.mode(
+                                    ColorManager.gold, BlendMode.srcIn),
                               ),
                             ),
                           ],

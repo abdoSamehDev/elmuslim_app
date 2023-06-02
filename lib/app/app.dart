@@ -60,7 +60,9 @@ class _MyAppState extends State<MyApp> {
                       instance<HadithCubit>()..getHadithData()),
               BlocProvider(
                   create: (BuildContext context) =>
-                      instance<PrayerTimingsCubit>()..getPrayerTimings()),
+                      instance<PrayerTimingsCubit>()
+                        ..getPrayerTimings()
+                        ..isNetworkConnected()),
               BlocProvider(
                   create: (BuildContext context) =>
                       instance<AdhkarCubit>()..getAdhkarData()),

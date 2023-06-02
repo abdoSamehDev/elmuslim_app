@@ -7,6 +7,10 @@ class AppStrings {
   static const String dhikrValidateReturn = "dhikr_validate_return";
   static const String countValidateReturn = "count_validate_return";
   static const String ok = "ok";
+  static const String doneTag = "Done Tag";
+  static const String cancelTag = "Cancel Tag";
+  static const String done = "done";
+  static const String cancelButton = "cancel";
   static const String quran = "quran";
   static const String searchInQuran = "search_in_quran";
   static const String surahName = "surah_name";

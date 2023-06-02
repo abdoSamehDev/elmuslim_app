@@ -53,7 +53,20 @@ extension ConvertTimeFormat on String {
     DateFormat inputFormat = DateFormat('HH:mm');
     DateFormat outputFormat = DateFormat('h:mm');
 
-    DateTime dateTime = inputFormat.parse(this);
+    DateTime dateTime;
+    try {
+      dateTime = inputFormat.parse(this);
+    } catch (e) {
+      String hoursString = split(":")[0];
+      String minsString = split(":")[1];
+      int hours = int.parse(hoursString);
+      if (hours > 12) {
+        hours = hours - 12;
+      }
+      String finalTime = "$hours:$minsString";
+      return finalTime;
+    }
+
     String formattedTime = outputFormat.format(dateTime);
 
     return formattedTime;

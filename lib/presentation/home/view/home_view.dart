@@ -74,8 +74,8 @@ class HomeView extends StatelessWidget {
                           ImageAsset.adhkarIcon,
                           width: AppSize.s50.h,
                           height: AppSize.s50.h,
-                          color: ColorManager.gold,
-                          // Theme.of(context).primaryColor,
+                          colorFilter: const ColorFilter.mode(
+                              ColorManager.gold, BlendMode.srcIn),
                         ),
                       )
                     : Container(),
@@ -124,9 +124,11 @@ class HomeView extends StatelessWidget {
                     ImageAsset.quranIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == Constants.quranIndex
-                        ? ColorManager.gold
-                        : Theme.of(context).unselectedWidgetColor,
+                    colorFilter: ColorFilter.mode(
+                        currentIndex == Constants.quranIndex
+                            ? ColorManager.gold
+                            : Theme.of(context).unselectedWidgetColor,
+                        BlendMode.srcIn),
                   ),
                   label: AppStrings.quran.tr(),
                 ),
@@ -135,9 +137,11 @@ class HomeView extends StatelessWidget {
                     ImageAsset.hadithIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == Constants.hadithIndex
-                        ? ColorManager.gold
-                        : Theme.of(context).unselectedWidgetColor,
+                    colorFilter: ColorFilter.mode(
+                        currentIndex == Constants.hadithIndex
+                            ? ColorManager.gold
+                            : Theme.of(context).unselectedWidgetColor,
+                        BlendMode.srcIn),
                   ),
                   label: AppStrings.hadith.tr(),
                 ),
@@ -146,9 +150,11 @@ class HomeView extends StatelessWidget {
                     ImageAsset.prayerIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == Constants.prayerTimingsIndex
-                        ? ColorManager.gold
-                        : Theme.of(context).unselectedWidgetColor,
+                    colorFilter: ColorFilter.mode(
+                        currentIndex == Constants.prayerTimingsIndex
+                            ? ColorManager.gold
+                            : Theme.of(context).unselectedWidgetColor,
+                        BlendMode.srcIn),
                   ),
                   // const FaIcon(FontAwesomeIcons.mosque),
                   label: AppStrings.prayerTimes.tr(),
@@ -158,9 +164,11 @@ class HomeView extends StatelessWidget {
                     ImageAsset.adhkarIcon,
                     width: AppSize.s20.r,
                     height: AppSize.s20.r,
-                    color: currentIndex == Constants.adhkarIndex
-                        ? ColorManager.gold
-                        : Theme.of(context).unselectedWidgetColor,
+                    colorFilter: ColorFilter.mode(
+                        currentIndex == Constants.adhkarIndex
+                            ? ColorManager.gold
+                            : Theme.of(context).unselectedWidgetColor,
+                        BlendMode.srcIn),
                   ),
                   label: AppStrings.adhkar.tr(),
                 ),

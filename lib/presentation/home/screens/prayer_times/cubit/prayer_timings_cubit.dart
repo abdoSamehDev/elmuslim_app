@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elmuslim_app/app/utils/constants.dart';
 import 'package:elmuslim_app/app/utils/di.dart';
+import 'package:elmuslim_app/data/network/network_info.dart';
 import 'package:elmuslim_app/domain/models/prayer_timings/prayer_timings_model.dart';
 import 'package:elmuslim_app/domain/usecase/get_prayer_timings_usecase.dart';
 import 'package:elmuslim_app/presentation/resources/strings_manager.dart';
@@ -13,10 +14,23 @@ part 'prayer_timings_state.dart';
 class PrayerTimingsCubit extends Cubit<PrayerTimingsState> {
   final GetPrayerTimingsUseCase _getPrayerTimingsUseCase =
       instance<GetPrayerTimingsUseCase>();
+  final NetworkInfo networkInfo = instance<NetworkInfo>();
 
   PrayerTimingsCubit() : super(PrayerTimesInitialState());
 
   static PrayerTimingsCubit get(context) => BlocProvider.of(context);
+
+  bool isConnected = false;
+
+  Future<void> isNetworkConnected() async {
+    emit(GetConnectionLoadingState());
+    await networkInfo.isConnected.then((value) {
+      isConnected = value;
+      emit(GetConnectionSuccessState());
+    }).catchError((error) {
+      emit(GetConnectionErrorState(error.toString()));
+    });
+  }
 
   location_package.Location location = location_package.Location();
 
